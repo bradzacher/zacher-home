@@ -1,0 +1,97 @@
+$padding: 8px;
+
+body {
+    font-family: sans-serif;
+}
+core-header-panel {
+    height: 100%;
+}
+#navheader {
+    background-color: #56BA89;
+}
+.content {
+    padding: 20px;
+    > div {
+        width: 600px;
+    }
+}
+
+my-paper-card {
+    margin-bottom: $padding;
+    width: 100%;
+
+    &.about {
+        > div {
+            margin-left: calc(1em - #{$padding});
+
+            > img {
+                padding-right: $padding;
+                border-radius: 10%;
+            }
+        }
+    }
+}
+
+$icon-size: 64px;
+$icon-gutter: 30px;
+@function calc-offset($i) {
+    @return -($i * $icon-size + $i * $icon-gutter);
+}
+@mixin icon($x, $y) {
+    background-position: calc-offset($x) calc-offset($y);
+}
+.social-icon {
+    height: $icon-size;
+    width: $icon-size;
+    background-image: url(../img/social.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: 0 0;
+
+    &.icon-facebook {
+        @include icon(0, 0);
+    }
+    &.icon-twitter {
+        @include icon(2, 0);
+    }
+    &.icon-github {
+        @include icon(4, 7);
+    }
+    &.icon-steam {
+        @include icon(4, 4);
+    }
+    &.icon-instagram {
+        @include icon(0, 4);
+    }
+    &.icon-gplus {
+        @include icon(3, 0);
+    }
+    &.icon-youtube {
+        @include icon(2, 4);
+    }
+    &.icon-linkedin {
+        @include icon(3, 3);
+    }
+}
+
+.projects-list {
+    overflow: visible;
+
+    > core-list {
+        min-height: 400px;
+        overflow-y: visible !important;
+
+        > div {
+            img {
+                height: 64px;
+                width: 64px;
+            }
+            > div {
+                padding-left: $padding;
+            }
+
+            padding-bottom: (2 * $padding);
+            height: 80px;
+        }
+    }
+}

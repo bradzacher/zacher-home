@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Brad Zacher</title>
+</head>
+
+<body unresolved fullbleed>
+    <core-header-panel>
+        <core-toolbar id="navheader">
+            <span tool>Brad Zacher</span>
+        </core-toolbar>
+        <div class="content" layout vertical center-center>
+            <div>
+                <my-paper-card heading="About Me" class="about">
+                    <div>
+                        <img align="left" src="img/me.jpg"/>
+                        <p>
+                            I am a computer scientist. I am a keen motorcyclist. I am a lover of cider. I am from Adelaide.
+                        </p>
+                        <p>
+                            I pride myself on being able to work with many technologies to get the most responsive result.
+                        </p>
+                        <p>
+                            I'm always looking for new things to learn. Currently poking around the MEAN stack and ES6 in my free time.
+                        </p>
+                        <p>
+                            Proficient in many languages (namely JavaScript, C#, PHP, SQL and C/C++).
+                        </p>
+                    </div>
+                </my-paper-card>
+                <my-paper-card heading="Around the Web">
+                    <div layout horizontal around-justified center>
+                        <a class="social-icon icon-github" href="http://github.com/bradzacher"></a>
+                        <a class="social-icon icon-linkedin" href="http://linkedin.com/in/bradzacher"></a>
+                        <a class="social-icon icon-instagram" href="http://instagram.com/bradzacher"></a>
+                        <a class="social-icon icon-twitter" href="http://twitter.com/bradzacher"></a>
+                        <a class="social-icon icon-gplus" href="http://google.com/+BradZacher1"></a>
+                        <a class="social-icon icon-youtube" href="http://youtube.com/bradtest1"></a>
+                        <a class="social-icon icon-steam" href="http://steamcommunity.com/id/MuppetMaster42"></a>
+                    </div>
+                </my-paper-card>
+                <my-paper-card heading="Projects">
+                    <template is="auto-binding" id="projects-list">
+                        <div class="projects-list">
+                            <core-list data="{{data}}">
+                                <template>
+                                    <div class="item" layout horizontal center between>
+                                        <core-image src="img/{{model.img}}" load="false"></core-image>
+                                        <div layout vertical flex>
+                                            <div>{{model.name}}</div>
+                                            <div><a href="{{model.link}}">{{model.link}}</a></div>
+                                            <div>{{model.description}}</div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </core-list>
+                        </div>
+                    </template>
+                </my-paper-card>
+            </div>
+        </div>
+    </core-header-panel>
+
+    <script src="lib/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="lib/polymer/polymer.html">
+
+    <link rel="import" href="lib/core-header-panel/core-header-panel.html">
+    <link rel="import" href="lib/core-toolbar/core-toolbar.html">
+    <link rel="import" href="lib/core-list/core-list.html">
+    <link rel="import" href="lib/core-image/core-image.html">
+
+    <link rel="import" href="elements/my-paper-card.html">
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
