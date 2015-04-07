@@ -3,6 +3,11 @@
 <head>
     <link rel="stylesheet" href="css/styles.css" />
     <title>Brad Zacher</title>
+    <style type="text/css">
+        body[unresolved] {
+            opacity: 0;
+        }
+    </style>
 </head>
 
 <body unresolved fullbleed>
@@ -10,10 +15,10 @@
         <core-toolbar id="navheader">
             <span tool>Brad Zacher</span>
         </core-toolbar>
-        <div class="content" layout vertical center-center>
+        <div class="main-content" layout vertical center-center>
             <div>
                 <my-paper-card heading="About Me" class="about">
-                    <div>
+                    <div class="about-content">
                         <img align="left" src="img/me.jpg"/>
                         <p>
                             I am a computer scientist. I am a keen motorcyclist. I am a lover of cider. I am from Adelaide.
@@ -48,8 +53,15 @@
                                     <div class="item" layout horizontal center between>
                                         <core-image src="img/{{model.img}}" load="false"></core-image>
                                         <div layout vertical flex>
-                                            <div>{{model.name}}</div>
-                                            <div><a href="{{model.link}}">{{model.link}}</a></div>
+                                            <div class="item-heading">{{model.name}}</div>
+                                            <div>
+                                                <template if="{{model.demoLink}}">
+                                                    <a href="{{model.demoLink}}">(Demo)</a>
+                                                </template>
+                                                <template if="{{model.sourceLink}}">
+                                                    <a href="{{model.sourceLink}}">(Source)</a>
+                                                </template>
+                                            </div>
                                             <div>{{model.description}}</div>
                                         </div>
                                     </div>

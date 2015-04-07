@@ -6,14 +6,15 @@ body {
 core-header-panel {
     height: 100%;
 }
-#navheader {
-    background-color: #56BA89;
-}
-.content {
+.main-content {
     padding: 20px;
     > div {
         width: 600px;
     }
+}
+
+#navheader {
+    background-color: #56BA89;
 }
 
 my-paper-card {
@@ -21,7 +22,7 @@ my-paper-card {
     width: 100%;
 
     &.about {
-        > div {
+        .about-content {
             margin-left: calc(1em - #{$padding});
 
             > img {
@@ -81,13 +82,17 @@ $icon-gutter: 30px;
         min-height: 400px;
         overflow-y: visible !important;
 
-        > div {
+        div.item {
             img {
                 height: 64px;
                 width: 64px;
             }
             > div {
                 padding-left: $padding;
+
+                .item-heading {
+                    font-weight: bold;
+                }
             }
 
             padding-bottom: (2 * $padding);
