@@ -58,6 +58,9 @@ $icon-gutter: 30px;
     &.icon-github {
         @include icon(4, 7);
     }
+    &.icon-wakatime {
+        @include icon(2, 1);
+    }
     &.icon-steam {
         @include icon(4, 4);
     }
