@@ -23,13 +23,12 @@ body {
     .mdl-card__supporting-text {
         color: black;
         font-size: 16px;
+        width: auto;
     }
 }
 
 .about-card {
     .mdl-card__supporting-text {
-        margin-left: calc(1em - #{$padding});
-        
         > img {
             padding-right: #{$padding};
             border-radius: 10%;
@@ -93,6 +92,12 @@ body {
         &.icon-linkedin {
             @include icon(3, 3);
         }
+    }
+}
+
+.wakatime-card {
+    span {
+        float: right;
     }
 }
 
