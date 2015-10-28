@@ -1,105 +1,163 @@
 $padding: 8px;
-
+$pageWidth: 600px;
 body {
     font-family: sans-serif;
 }
-core-header-panel {
-    height: 100%;
-}
-.main-content {
-    padding: 20px;
-    > div {
-        width: 600px;
-    }
-}
 
-#navheader {
+.mdl-layout__header {
     background-color: #56BA89;
 }
 
-my-paper-card {
-    margin-bottom: $padding;
-    width: 100%;
+.page-content {
+    width: #{$pageWidth};
+    margin: auto;
+    padding-top: 20px;
+        
+    .mdl-card-wide {
+        width: #{$pageWidth};
+        margin-bottom: #{$padding};
+    }
+    .mdl-card__title {
+        background-color: #CFD8DC;
+    }
+    .mdl-card__supporting-text {
+        color: black;
+        font-size: 16px;
+    }
+}
 
-    &.about {
-        .about-content {
-            margin-left: calc(1em - #{$padding});
-
-            > img {
-                padding-right: $padding;
-                border-radius: 10%;
-            }
+.about-card {
+    .mdl-card__supporting-text {
+        margin-left: calc(1em - #{$padding});
+        
+        > img {
+            padding-right: #{$padding};
+            border-radius: 10%;
         }
     }
 }
 
-$icon-size: 64px;
-$icon-gutter: 30px;
-@function calc-offset($i) {
-    @return -($i * $icon-size + $i * $icon-gutter);
+.links-card {
+    $icon-size: 64px;
+    $icon-gutter: 30px;
+    @function calc-offset($i) {
+        @return -($i * $icon-size + $i * $icon-gutter);
+    }
+    @mixin icon($x, $y) {
+        background-position: calc-offset($x) calc-offset($y);
+    }
+    
+    .mdl-card__supporting-text {
+        margin: auto;
+        height: #{$icon-size};
+        font-size: 13px;
+        
+        > div {
+            display: inline-block;
+            height: #{$icon-size};
+        }
+    }
+    
+    .social-icon {
+        height: $icon-size;
+        width: $icon-size;
+        background-image: url(../img/social.png);
+        background-repeat: no-repeat;
+        display: inline-block;
+        background-position: 0 0;
+    
+        &.icon-facebook {
+            @include icon(0, 0);
+        }
+        &.icon-twitter {
+            @include icon(2, 0);
+        }
+        &.icon-github {
+            @include icon(4, 7);
+        }
+        &.icon-wakatime {
+            @include icon(2, 1);
+        }
+        &.icon-steam {
+            @include icon(4, 4);
+        }
+        &.icon-instagram {
+            @include icon(0, 4);
+        }
+        &.icon-gplus {
+            @include icon(3, 0);
+        }
+        &.icon-youtube {
+            @include icon(2, 4);
+        }
+        &.icon-linkedin {
+            @include icon(3, 3);
+        }
+    }
 }
-@mixin icon($x, $y) {
-    background-position: calc-offset($x) calc-offset($y);
-}
-.social-icon {
-    height: $icon-size;
-    width: $icon-size;
-    background-image: url(../img/social.png);
-    background-repeat: no-repeat;
-    display: inline-block;
-    background-position: 0 0;
 
-    &.icon-facebook {
-        @include icon(0, 0);
+.projects-card {
+    $mdlCardContentPadding: 16px;
+    $mdlCellMargin: 16px;
+    $projectCardDim: ($pageWidth / 2) - $mdlCardContentPadding - $mdlCellMargin;
+    
+    > .mdl-card__supporting-text {
+        width: 100%;
     }
-    &.icon-twitter {
-        @include icon(2, 0);
+    .mdl-grid {
+        padding: 0;
+        
+        .mdl-cell {
+            width: #{$projectCardDim};
+            height: #{$projectCardDim};
+        }
     }
-    &.icon-github {
-        @include icon(4, 7);
-    }
-    &.icon-wakatime {
-        @include icon(2, 1);
-    }
-    &.icon-steam {
-        @include icon(4, 4);
-    }
-    &.icon-instagram {
-        @include icon(0, 4);
-    }
-    &.icon-gplus {
-        @include icon(3, 0);
-    }
-    &.icon-youtube {
-        @include icon(2, 4);
-    }
-    &.icon-linkedin {
-        @include icon(3, 3);
-    }
-}
-
-.projects-list {
-    overflow: visible;
-
-    > core-list {
-        min-height: 400px;
-        overflow-y: visible !important;
-
-        div.item {
-            img {
-                height: 64px;
-                width: 64px;
-            }
-            > div {
-                padding-left: $padding;
-
-                .item-heading {
-                    font-weight: bold;
+    .mdl-card.project-card {
+        width: #{$projectCardDim};
+        height: #{$projectCardDim};
+        
+        .mdl-card__title {
+            background: none;
+        }
+        
+        > .mdl-card__actions {
+            height: 56px;
+            padding: 8px;
+            background-color: rgba(0, 0, 0, 0.2);
+            
+            > a {
+                width: 36px;
+                height: 36px;
+                padding: 4px;
+                float: right;
+                background-repeat: no-repeat;
+                background-position: center center;
+                
+                &.source-link {
+                    background-image: url(../img/github.png);
+                }
+                &.demo-link {
+                    background-image: url(../img/open_demo.png);
                 }
             }
-
-            padding-bottom: (2 * $padding);
-            height: 80px;
+        }
+        
+        background-repeat: no-repeat;
+        background-position: calc(100% - 16px) 16px;
+        &.dota2-stats {
+            background-image: url(../img/dota2-stats.png);
+        }
+        &.Eaglesong {
+            background-image: url(../img/Eaglesong.png);
+        }
+        &.HonsRecursiveSolverGE {
+            background-image: url(../img/HonsRecursiveSolverGE.png);
+        }
+        &.cell-game {
+            background-image: url(../img/cell-game.png);
+        }
+        &.NanodegreePopularMovies {
+            background-image: url(../img/NanodegreePopularMovies.png);
         }
     }
 }
