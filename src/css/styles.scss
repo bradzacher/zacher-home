@@ -1,5 +1,9 @@
 $padding: 8px;
 $pageWidth: 600px;
+.width {
+    width: 100%;
+}
+
 body {
     font-family: sans-serif;
 }
@@ -9,12 +13,13 @@ body {
 }
 
 .page-content {
-    width: #{$pageWidth};
+    max-width: #{$pageWidth};
+    width: 100%;
     margin: auto;
     padding-top: 20px;
         
     .mdl-card-wide {
-        width: #{$pageWidth};
+        width: 100%;
         margin-bottom: #{$padding};
     }
     .mdl-card__title {
@@ -48,12 +53,11 @@ body {
     
     .mdl-card__supporting-text {
         margin: auto;
-        height: #{$icon-size};
         font-size: 13px;
+        text-align: center;
         
         > div {
             display: inline-block;
-            height: #{$icon-size};
         }
     }
     
