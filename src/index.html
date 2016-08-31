@@ -139,12 +139,10 @@
           </div>
           <div class="mdl-card__supporting-text">
             <div class="figure-container">
-              <figure>
-                <embed src="https://wakatime.com/share/embeddable/943c469d-1475-4174-9a46-6ea69c34b057/71fc2c5d-c04a-4f1a-972d-f9e180f51a1e.svg"></embed>
-              </figure>
+              <canvas id="wakatime-canvas" height="400" width="320" />
             </div>
             <span class="powered-by">
-              Powered by <a href="https://wakatime.com/" target="_blank" rel="nofollow">WakaTime</a>
+              Powered by <a href="https://wakatime.com/" target="_blank" rel="nofollow">WakaTime</a> and <a href="http//www.chartjs.org" traget="_blank" rel="nofollow">Chart.js</a>
             </span>
           </div>
         </div>
@@ -270,28 +268,100 @@
     request.open('HEAD', link.href, true);
 
     request.onreadystatechange = function() {
-      if (this.readyState === 4) {
-        if (this.status >= 200 && this.status < 400) {
-          // Success! we don't need to change to the pdf
-        } else {
-          // Error - linkedinlabs is down :(
-          // change to the static pdf version
-          link.href = '/Brad_Zacher_Resume_2016-01-01.pdf'
+        if (this.readyState === 4) {
+            if (this.status >= 200 && this.status < 400) {
+                // Success! we dont need to change to the pdf
+            } else {
+                // Error - linkedinlabs is down :(
+                // change to the static pdf version
+                link.href = '/Brad_Zacher_Resume_2016-01-01.pdf'
+            }
         }
-      }
     };
 
     request.send();
     request = null;
-
-
+  </script>
+  
+  <script type="text/javascript">
+    var onResize = function() {
+        // scale the github calendar based off of the card width
+        var cardWidth = parseFloat(getComputedStyle(document.querySelector('.github-card')).width);
+        
+        // calendar size is 721px + 2em padding
+        var em = parseFloat(getComputedStyle(document.querySelector('#github-calendar')).fontSize) || 16;
+        var calendarSize = 721 + 2 * em;
+        
+        // calculate the scale
+        var scale = cardWidth / calendarSize;
+        
+        // dont super size it!
+        if (scale >= 1) {
+            return;
+        }
+        
+        // translation has to *increase* relative to scale
+        var translate = -50 * (1 / scale);
+        
+        // apply the translation
+        document.querySelector('#github-calendar .js-calendar-graph').style.transform = 'translate(' + translate + 'px, 0) scale(' + scale + ', ' + scale + ')';
+    };
+    
     // build the github calendar
     GitHubCalendar('#github-calendar', 'bradzacher', {
-      global_stats: false,
-      proxy: function() {
-        return 'github.php';
-      }
-    });
+        global_stats: false,
+        proxy: function() {
+          return 'github.php';
+        }
+    }).then(onResize);
+    
+    // listen for the resize
+    window.addEventListener('resize', onResize);
+  </script>
+  
+  <script type="text/javascript">
+    // build the wakatime graph
+    fetch('wakatime.php')
+      .then(function(response) {
+          return response.json();
+      })
+      .then(function(json) {
+          var dataset = {
+              data: [],
+              backgroundColor: [],
+              hoverBackgroundColor: []
+          };
+          var data = {
+              labels: [],
+              datasets: [
+                  dataset
+              ]
+          };
+
+          json.data.forEach(function(d, i) {
+              if (d.percent < 1) {
+                  // hide the 1%ers cos theyre too small to see
+                  return;
+              }
+
+              // autocalculate colour based on index #RAINBOW
+              var hue = (360 * i / json.data.length);
+              hue = Math.floor(hue);
+              var colour = 'hsl(' + hue + ', 100%, {0})';
+              
+              data.labels.push(d.name);
+              dataset.data.push(d.percent);
+              dataset.backgroundColor.push(colour.replace('{0}', '50%'));
+              // get brighter when we hover
+              dataset.hoverBackgroundColor.push(colour.replace('{0}', '70%'));
+          });
+
+          var myPieChart = new Chart(document.getElementById('wakatime-canvas'),{
+              type: 'pie',
+              data: data,
+              options: {}
+          });
+      });
   </script>
 </body>
 

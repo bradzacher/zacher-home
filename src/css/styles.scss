@@ -111,21 +111,6 @@ body {
     }
 }
 
-.wakatime-card {
-    .figure-container {
-        text-align: center;
-    }
-
-    figure {
-        display: inline-block;
-        width: calc(100vw - 2em);
-        height: 100vh;
-        max-height: 303px;
-        max-width: 400px;
-        margin: 0;
-    }
-}
-
 .github-card {
     // hide the summary text
     .contrib-footer {
@@ -142,16 +127,6 @@ body {
     .calendar-graph {
         // because we scale, we want slightly smaller
         height: 95px;
-
-        text.wday, text.month {
-            // increase the font-size for readability
-            font-size: 15px;
-        }
-    }
-
-    .js-calendar-graph {
-        // shrink the calendar to fit, and center it nicely
-        transform: scale(0.8) translate(-12%, 0px);
     }
 }
 
