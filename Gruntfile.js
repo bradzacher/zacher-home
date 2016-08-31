@@ -55,7 +55,8 @@ module.exports = function(grunt) {
             png: filesList('png'),
             gif: filesList('gif'),
             ico: filesList('ico'),
-            properties: filesList('properties')
+            php: filesList('php'),
+            properties: filesList('properties'),
         },
 
         // Task configuration.
@@ -206,8 +207,19 @@ module.exports = function(grunt) {
             ico: {
                 files: '<%= files.ico %>'
             },
+            php: {
+                files: '<%= files.php %>'
+            },
             properties: {
                 files: '<%= files.properties %>'
+            },
+            fetchLib: {
+                src: 'node_modules/whatwg-fetch/fetch.js',
+                dest: 'build/lib/fetch.js'
+            },
+            promiseLib: {
+                src: 'node_modules/es6-promise/dist/es6-promise.min.js',
+                dest: 'build/lib/promise.js'
             }
         },
         watch: {
@@ -253,10 +265,10 @@ module.exports = function(grunt) {
     grunt.registerTask('rebuild', ['newer-clean', 'build-js', 'copy-files', 'build-sass']);
 
     // build tasks
-    grunt.registerTask('build-js', ['jshint:all', 'copy:js']);
+    grunt.registerTask('build-js', ['jshint:all', 'copy:js', 'copy:fetchLib', 'copy:promiseLib']);
     grunt.registerTask('build-sass', ['sass:development', 'autoprefixer']);
     grunt.registerTask('copy-files', ['copy:html', 'copy:xml', 'copy:json', 'copy:css', 'copy:properties',
-                                        'copy:jpg', 'copy:gif', 'copy:png', 'copy:ico']);
+                                        'copy:jpg', 'copy:gif', 'copy:png', 'copy:ico', 'copy:php']);
     // newer build tasks
     grunt.registerTask('build-js-newer', ['newer:jshint:all', 'newer:copy:js']);
     grunt.registerTask('build-sass-newer', ['newer:sass:development', 'newer:autoprefixer']);

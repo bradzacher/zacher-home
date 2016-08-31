@@ -1,25 +1,27 @@
 {
-    "name": "zacher-home",
-    "version": "0.0.1",
-    "author": "Brad Zacher",
-    "description": "the landing page of zacher.com.au",
-    "dependencies": {
-        "grunt": "",
-        "express": "",
-        "compression": "",
-        "serve-index": "",
-        "open": "",
-        "jshint": "~2.5.5",
-        "grunt-contrib-jshint": "",
-        "grunt-contrib-watch": "",
-        "grunt-contrib-sass": "",
-        "grunt-contrib-copy": "",
-        "grunt-express-server": "",
-        "grunt-autoprefixer": "",
-        "grunt-newer": "",
-        "grunt-open": ""
-    },
-    "scripts": {
-        "start": "node dev_server.js http localhost 2723 /"
-    }
+  "name": "zacher-home",
+  "version": "0.0.1",
+  "author": "Brad Zacher",
+  "description": "the landing page of zacher.com.au",
+  "dependencies": {
+    "compression": "",
+    "es6-promise": "^3.2.1",
+    "express": "",
+    "grunt": "",
+    "grunt-autoprefixer": "",
+    "grunt-contrib-copy": "",
+    "grunt-contrib-jshint": "",
+    "grunt-contrib-sass": "",
+    "grunt-contrib-watch": "",
+    "grunt-express-server": "",
+    "grunt-newer": "",
+    "grunt-open": "",
+    "jshint": "~2.5.5",
+    "open": "",
+    "serve-index": "",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node dev_server.js http localhost 2723 /"
+  }
 }
