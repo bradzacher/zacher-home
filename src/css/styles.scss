@@ -104,7 +104,7 @@ body {
 }
 
 .wakatime-card, .github-card {
-    > div > span {
+    .powered-by {
         float: right;
         // the github calendar does somethign weird with the float which centers it - this will reset it to normal
         clear: both;
