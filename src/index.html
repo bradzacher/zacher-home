@@ -287,7 +287,10 @@
 
     // build the github calendar
     GitHubCalendar('#github-calendar', 'bradzacher', {
-      global_stats: false
+      global_stats: false,
+      proxy: function() {
+        return 'github.php';
+      }
     });
   </script>
 </body>
