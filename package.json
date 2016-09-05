@@ -4,9 +4,11 @@
   "author": "Brad Zacher",
   "description": "the landing page of zacher.com.au",
   "dependencies": {
+    "chart.js": "^2.2.2",
     "compression": "",
     "es6-promise": "^3.2.1",
     "express": "",
+    "github-calendar": "^1.1.7",
     "grunt": "",
     "grunt-autoprefixer": "",
     "grunt-contrib-copy": "",
@@ -17,6 +19,7 @@
     "grunt-newer": "",
     "grunt-open": "",
     "jshint": "~2.5.5",
+    "material-design-lite": "^1.2.0",
     "open": "",
     "serve-index": "",
     "whatwg-fetch": "^1.0.0"

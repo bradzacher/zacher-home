@@ -220,6 +220,26 @@ module.exports = function(grunt) {
             promiseLib: {
                 src: 'node_modules/es6-promise/dist/es6-promise.min.js',
                 dest: 'build/lib/promise.js'
+            },
+            chartLib: {
+                src: 'node_modules/chart.js/dist/chart.min.js',
+                dest: 'build/lib/chart.js'
+            },
+            githubCalendar: {
+                src: 'node_modules/github-calendar/dist/github-calendar.min.js',
+                dest: 'build/lib/github-calendar.js'
+            },
+            githubCalendarCss: {
+                src: 'node_modules/github-calendar/dist/github-calendar.css',
+                dest: 'build/lib/github-calendar.css'
+            },
+            mdl: {
+                src: 'node_modules/material-design-lite/dist/material.min.js',
+                dest: 'build/lib/mdl.js'
+            },
+            mdlCss: {
+                src: 'node_modules/material-design-lite/dist/material.indigo-pink.min.css',
+                dest: 'build/lib/mdl.css'
             }
         },
         watch: {
@@ -265,7 +285,8 @@ module.exports = function(grunt) {
     grunt.registerTask('rebuild', ['newer-clean', 'build-js', 'copy-files', 'build-sass']);
 
     // build tasks
-    grunt.registerTask('build-js', ['jshint:all', 'copy:js', 'copy:fetchLib', 'copy:promiseLib']);
+    grunt.registerTask('build-js', ['jshint:all', 'copy:js', 'copy:fetchLib', 'copy:promiseLib', 'copy:chartLib', 'copy:githubCalendar', 
+                                        'copy:githubCalendarCss', 'copy:mdl', 'copy:mdlCss']);
     grunt.registerTask('build-sass', ['sass:development', 'autoprefixer']);
     grunt.registerTask('copy-files', ['copy:html', 'copy:xml', 'copy:json', 'copy:css', 'copy:properties',
                                         'copy:jpg', 'copy:gif', 'copy:png', 'copy:ico', 'copy:php']);
