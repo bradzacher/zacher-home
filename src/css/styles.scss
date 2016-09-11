@@ -65,39 +65,39 @@ body {
         }
     }
     
-    .social-icon {
+    .around-the-web {
         height: $icon-size;
         width: $icon-size;
-        background-image: url(../img/social.png);
+        background-image: url(../img/around_the_web.png);
         background-repeat: no-repeat;
         display: inline-block;
         background-position: 0 0;
     
-        &.icon-facebook {
+        &#icon-facebook {
             @include icon(0, 0);
         }
-        &.icon-twitter {
+        &#icon-twitter {
             @include icon(2, 0);
         }
-        &.icon-github {
+        &#icon-github {
             @include icon(4, 7);
         }
-        &.icon-wakatime {
+        &#icon-wakatime {
             @include icon(2, 1);
         }
-        &.icon-steam {
+        &#icon-steam {
             @include icon(4, 4);
         }
-        &.icon-instagram {
+        &#icon-instagram {
             @include icon(0, 4);
         }
-        &.icon-gplus {
+        &#icon-gplus {
             @include icon(3, 0);
         }
-        &.icon-youtube {
+        &#icon-youtube {
             @include icon(2, 4);
         }
-        &.icon-linkedin {
+        &#icon-linkedin {
             @include icon(3, 3);
         }
     }
