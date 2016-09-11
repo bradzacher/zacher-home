@@ -347,12 +347,19 @@
     };
     
     // build the github calendar
-    GitHubCalendar('#github-calendar', 'bradzacher', {
+    var prom = GitHubCalendar('#github-calendar', 'bradzacher', {
         global_stats: false,
         proxy: function() {
           return 'github.php';
         }
-    }).then(onResize);
+    });
+    prom.then(onResize);
+    prom.then(function() {
+        // for some reason github's calendar doesn't always show the last few day of the period
+        // this fixes it by allowing a little extra space to render the svg
+        var width = document.querySelector('#github-calendar svg').attributes.getNamedItem('width');
+        width.value = parseFloat(width.value) + 11;
+    });
     
     // listen for the resize
     window.addEventListener('resize', onResize);
