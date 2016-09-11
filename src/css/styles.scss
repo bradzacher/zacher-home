@@ -103,6 +103,15 @@ body {
     }
 }
 
+.figure-container {
+    text-align: center;
+
+    #wakatime-canvas {
+        display: inline-block !important; // use !important to override chart.js's on-element styling
+        max-width: 400px;
+    }
+}
+
 .wakatime-card, .github-card {
     .powered-by {
         float: right;
