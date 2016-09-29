@@ -8,7 +8,7 @@
     "compression": "",
     "es6-promise": "^3.2.1",
     "express": "",
-    "github-calendar": "^1.1.7",
+    "github-calendar": "^1.1.8",
     "grunt": "",
     "grunt-autoprefixer": "",
     "grunt-contrib-copy": "",
