@@ -131,6 +131,10 @@ body {
     #github-calendar {
         // override the min-height the lib auto puts directly on the element
         min-height: auto !important;
+
+        h2 {
+            display: none;
+        }
     }
 
     .calendar-graph {
