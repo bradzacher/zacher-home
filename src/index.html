@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  
+
   <title>Brad Zacher</title>
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
   <meta name="description" content="Computer scientist. Cider drinker. Motorcyclist." />
   <meta name="keywords" content="Brad Zacher,Computer Science,Comp Scip,Software Engineer,Applications Development,Apps Dev,JavaScript,JS,C#," />
@@ -88,7 +88,7 @@
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation -->
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="https://blog.zacher.com.au/" rel="me">Blog</a>
+          <a class="mdl-navigation__link" href="https://medium.zacher.com.au/" rel="me">Blog</a>
           <a class="mdl-navigation__link" href="https://github.com/bradzacher" rel="me">Github</a>
           <a class="mdl-navigation__link" href="https://twitter.com/bradzacher" rel="me">Twitter</a>
         </nav>
@@ -128,11 +128,11 @@
               You can contact me via any of the below networks, or by gmail - bradzacher
             </p>
             <p>
-              I also have a blog - <a href="https://blog.zacher.com.au" rel="me">blog.zacher.com.au</a>.
+              I also have a blog - <a href="https://medium.zacher.com.au" rel="me">medium.zacher.com.au</a>.
             </p>
           </div>
         </div>
-        
+
         <!-- Links Card -->
         <div class="mdl-card-wide mdl-card mdl-shadow--2dp links-card">
           <div class="mdl-card__title">
@@ -151,7 +151,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Wakatime Card -->
         <div class="mdl-card-wide mdl-card mdl-shadow--2dp wakatime-card">
           <div class="mdl-card__title">
@@ -160,13 +160,18 @@
           <div class="mdl-card__supporting-text">
             <div class="figure-container">
               <canvas id="wakatime-canvas" height="400" width="320" />
+              <div id="wakatime-error" style="display: none">
+                <p>Something went wrong whilst fetching statistics from WakaTime.</p>
+                <p>Probably a timeout because of a cold start of their service.</p>
+                <p>Try refreshing in a sec.</p>
+              </div>
             </div>
             <span class="powered-by">
               Powered by <a href="https://wakatime.com/" target="_blank" rel="nofollow">WakaTime</a> and <a href="http://www.chartjs.org" traget="_blank" rel="nofollow">Chart.js</a>
             </span>
           </div>
         </div>
-        
+
         <!-- Github Calendar Card -->
         <div class="mdl-card-wide mdl-card mdl-shadow--2dp github-card">
           <div class="mdl-card__title">
@@ -187,7 +192,7 @@
           </div>
           <div class="mdl-card__supporting-text">
             <div class="mdl-grid">
-              
+
               <div class="mdl-cell mdl-cell--1-col">
                 <div class="mdl-card mdl-shadow--2dp project-card FioriBuildEnv">
                   <div class="mdl-card__title mdl-card--expand">
@@ -204,7 +209,7 @@
                 </div>
               </div>
               <div class="mdl-tooltip" for="source-link-FioriBuildEnv">View Source</div>
-              
+
               <div class="mdl-cell mdl-cell--1-col">
                 <div class="mdl-card mdl-shadow--2dp project-card odata-modeller">
                   <div class="mdl-card__title mdl-card--expand">
@@ -223,7 +228,7 @@
               </div>
               <div class="mdl-tooltip" for="source-link-odata-modeller">View Source</div>
               <div class="mdl-tooltip" for="demo-link-odata-modeller">View Demo</div>
-              
+
               <div class="mdl-cell mdl-cell--1-col">
                 <div class="mdl-card mdl-shadow--2dp project-card react-openui5">
                   <div class="mdl-card__title mdl-card--expand">
@@ -240,7 +245,7 @@
                 </div>
               </div>
               <div class="mdl-tooltip" for="source-link-react-openui5">View Source</div>
-              
+
               <div class="mdl-cell mdl-cell--1-col">
                 <div class="mdl-card mdl-shadow--2dp project-card fiori-examples">
                   <div class="mdl-card__title mdl-card--expand">
@@ -259,7 +264,7 @@
               </div>
               <div class="mdl-tooltip" for="source-link-fiori-examples">View Source</div>
               <div class="mdl-tooltip" for="demo-link-fiori-examples">View Demo</div>
-              
+
               <div class="mdl-cell mdl-cell--1-col">
                 <div class="mdl-card mdl-shadow--2dp project-card Eaglesong">
                   <div class="mdl-card__title mdl-card--expand">
@@ -276,7 +281,7 @@
                 </div>
               </div>
               <div class="mdl-tooltip" for="source-link-Eaglesong">View Source</div>
-              
+
               <div class="mdl-cell mdl-cell--1-col">
                 <div class="mdl-card mdl-shadow--2dp project-card NanodegreePopularMovies">
                   <div class="mdl-card__title mdl-card--expand">
@@ -293,7 +298,7 @@
                 </div>
               </div>
               <div class="mdl-tooltip" for="source-link-NanodegreePopularMovies">View Source</div>
-              
+
               <div class="mdl-cell mdl-cell--1-col">
                 <div class="mdl-card mdl-shadow--2dp project-card HonsRecursiveSolverGE">
                   <div class="mdl-card__title mdl-card--expand">
@@ -310,7 +315,7 @@
                 </div>
               </div>
               <div class="mdl-tooltip" for="source-link-HonsRecursiveSolverGE">View Source</div>
-              
+
               <div class="mdl-cell mdl-cell--1-col">
                 <div class="mdl-card mdl-shadow--2dp project-card dota2-stats">
                   <div class="mdl-card__title mdl-card--expand">
@@ -327,8 +332,8 @@
                 </div>
               </div>
               <div class="mdl-tooltip" for="demo-link-dota2-stats">View Demo</div>
-              
-            </div>            
+
+            </div>
           </div>
         </div>
       </div>
@@ -338,7 +343,7 @@
   <script type="text/javascript">
     // handle the linkedin labs resume builder going down
     var link = document.getElementById('resume-link');
-        
+
     var request = new XMLHttpRequest();
     request.open('HEAD', link.href, true);
 
@@ -357,31 +362,31 @@
     request.send();
     request = null;
   </script>
-  
+
   <script type="text/javascript">
     var onResize = function() {
         // scale the github calendar based off of the card width
         var cardWidth = parseFloat(getComputedStyle(document.querySelector('.github-card')).width);
-        
+
         // calendar size is 721px + 2em padding
         var em = parseFloat(getComputedStyle(document.querySelector('#github-calendar')).fontSize) || 16;
         var calendarSize = 721 + 2 * em;
-        
+
         // calculate the scale
         var scale = cardWidth / calendarSize;
-        
+
         // dont super size it!
         if (scale >= 1) {
             return;
         }
-        
+
         // translation has to *increase* relative to scale
         var translate = -50 * (1 / scale);
-        
+
         // apply the translation
         document.querySelector('#github-calendar .js-calendar-graph').style.transform = 'translate(' + translate + 'px, 0) scale(' + scale + ', ' + scale + ')';
     };
-    
+
     // build the github calendar
     var prom = GitHubCalendar('#github-calendar', 'bradzacher', {
         global_stats: false,
@@ -396,12 +401,14 @@
         var width = document.querySelector('#github-calendar svg').attributes.getNamedItem('width');
         width.value = parseFloat(width.value) + 11;
     });
-    
+
     // listen for the resize
     window.addEventListener('resize', onResize);
   </script>
-  
+
   <script type="text/javascript">
+    var canvas = document.getElementById('wakatime-canvas');
+    var errorDiv = document.getElementById('wakatime-error');
     // build the wakatime graph
     fetch('wakatime.php')
       .then(function(response) {
@@ -430,7 +437,7 @@
               var hue = (360 * i / json.data.length);
               hue = Math.floor(hue);
               var colour = 'hsl(' + hue + ', 100%, {0})';
-              
+
               data.labels.push(d.name);
               dataset.data.push(d.percent);
               dataset.backgroundColor.push(colour.replace('{0}', '50%'));
@@ -438,11 +445,15 @@
               dataset.hoverBackgroundColor.push(colour.replace('{0}', '70%'));
           });
 
-          var myPieChart = new Chart(document.getElementById('wakatime-canvas'),{
+          var myPieChart = new Chart(canvas,{
               type: 'pie',
               data: data,
               options: {}
           });
+      })
+      .catch(function() {
+          canvas.style.display = 'none !important';
+          errorDiv.style.display = 'block';
       });
   </script>
 </body>
