@@ -109,7 +109,7 @@
               I am a computer scientist. I am a keen motorcyclist. I am a lover of cider. I am from Adelaide.
             </p>
             <p>
-              I graduated with honours from the University of Adelaide.
+              I graduated with honours in Computer Science from the University of Adelaide.
             </p>
             <p>
               I am Lead Software Engineer at Assignar in Sydney.
@@ -165,7 +165,7 @@
               <div id="wakatime-error" style="display: none">
                 <p>Something went wrong whilst fetching statistics from WakaTime.</p>
                 <p>Probably a timeout because of a cold start of their service.</p>
-                <p>Try refreshing in a sec.</p>
+                <p>Try refreshing in a few seconds.</p>
               </div>
             </div>
             <span class="powered-by">
@@ -417,6 +417,10 @@
           return response.json();
       })
       .then(function(json) {
+          if (!json || !json.data) {
+            throw 'wakatime is probably warming up...';
+          }
+
           var dataset = {
               data: [],
               backgroundColor: [],
