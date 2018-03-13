@@ -124,7 +124,7 @@
               Proficient in many languages (namely JavaScript, C#, PHP, SQL and C/C++).
             </p>
             <p>
-              You can read more about me and my history in <a href="//resume.linkedinlabs.com/qnxd5g2qn" rel="nofollow" id="resume-link">my resume</a>.
+              You can read more about me and my history in <a href="/Brad_Zacher_Resume_2018.pdf" rel="nofollow" id="resume-link">my resume</a>.
             </p>
             <p>
               You can contact me via any of the networks below, or by gmail - bradzacher <a href="bradzacher.txt">GPG</a>.
@@ -341,29 +341,6 @@
       </div>
     </main>
   </div>
-
-  <script type="text/javascript">
-    // handle the linkedin labs resume builder going down
-    var link = document.getElementById('resume-link');
-
-    var request = new XMLHttpRequest();
-    request.open('HEAD', link.href, true);
-
-    request.onreadystatechange = function() {
-        if (this.readyState === 4) {
-            if (this.status >= 200 && this.status < 400) {
-                // Success! we dont need to change to the pdf
-            } else {
-                // Error - linkedinlabs is down :(
-                // change to the static pdf version
-                link.href = '/Brad_Zacher_Resume_2016-01-01.pdf'
-            }
-        }
-    };
-
-    request.send();
-    request = null;
-  </script>
 
   <script type="text/javascript">
     var onResize = function() {
