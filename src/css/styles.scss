@@ -105,6 +105,8 @@ body {
 
 .figure-container {
     text-align: center;
+    overflow: hidden;
+    max-height: 500px;
 
     #wakatime-canvas {
         display: inline-block !important; // use !important to override chart.js's on-element styling
