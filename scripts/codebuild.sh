@@ -5,7 +5,6 @@ DISTRIBUTIONID=$(aws ssm get-parameters --names "/zacher-com-au/CF_DISTRIBUTION_
 # build
 yarn install
 yarn build
-cat ./src/html/github-calendar.html
 
 # deploy
 aws s3 sync ./dist/ s3://$S3BUCKET/ --delete
