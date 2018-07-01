@@ -1,4 +1,4 @@
-/* eslint-disable strict, camelcase */
+/* eslint-disable camelcase */
 
 declare module 'github-calendar' {
     interface Options {
