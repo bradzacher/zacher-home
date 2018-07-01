@@ -1,0 +1,58 @@
+{% set heading = "Projects" %}
+{% set clazz = "projects-card" %}
+{% extends "./macros/card.njk" %}
+
+{% block body %}
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--1-col">
+        <div class="mdl-card mdl-shadow--2dp project-card FioriBuildEnv">
+            <div class="mdl-card__title mdl-card--expand">
+                <div class="mdl-card__title-text">
+                    FioriBuildEnv
+                </div>
+            </div>
+            <div class="mdl-card__supporting-text">
+                A fully featured local build and deployment environment for Fiori development.
+            </div>
+            <div class="mdl-card__actions">
+                <a class="source-link" id="source-link-FioriBuildEnv" href="https://github.com/bradzacher/FioriBuildEnv" target="_blank"></a>
+            </div>
+        </div>
+    </div>
+    <div class="mdl-tooltip" for="source-link-FioriBuildEnv">View Source</div>
+
+    <div class="mdl-cell mdl-cell--1-col">
+        <div class="mdl-card mdl-shadow--2dp project-card HonsRecursiveSolverGE">
+            <div class="mdl-card__title mdl-card--expand">
+                <div class="mdl-card__title-text">
+                    From Pictures to Programs
+                </div>
+            </div>
+            <div class="mdl-card__supporting-text">
+                My honours thesis - evolves recursive solutions using GP.
+            </div>
+            <div class="mdl-card__actions">
+                <a class="source-link" id="source-link-HonsRecursiveSolverGE" href="https://github.com/bradzacher/HonsRecursiveSolverGE" target="_blank"></a>
+            </div>
+        </div>
+    </div>
+    <div class="mdl-tooltip" for="source-link-HonsRecursiveSolverGE">View Source</div>
+
+    <div class="mdl-cell mdl-cell--1-col">
+        <div class="mdl-card mdl-shadow--2dp project-card dota2-stats">
+            <div class="mdl-card__title mdl-card--expand">
+                <div class="mdl-card__title-text">
+                    Dota 2 Stats
+                </div>
+            </div>
+            <div class="mdl-card__supporting-text">
+                A match stats site built using angularjs.
+            </div>
+            <div class="mdl-card__actions">
+                <a class="demo-link" id="demo-link-dota2-stats" href="https://dota.zacher.com.au/" target="_blank"></a>
+            </div>
+        </div>
+    </div>
+    <div class="mdl-tooltip" for="demo-link-dota2-stats">View Demo</div>
+</div>
+{% endblock %}
