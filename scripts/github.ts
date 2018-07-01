@@ -23,6 +23,7 @@ export default async function github() {
     })
 
     const res = dom.window.document.getElementById(divId)
-    console.log(res.outerHTML)
     fs.writeFileSync(path.resolve(__dirname, '../src/html/github-calendar.html'), res.outerHTML, 'utf8')
 }
+
+github()
