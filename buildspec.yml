@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - aws configure set preview.cloudfront true
+  build:
+    commands:
+      - npm install -g yarn
+      - yarn --version
+      - npm --version
+      - node --version
+      - chmod +x ./scripts/codebuild.sh
+      - ./scripts/codebuild.sh
+artifacts:
+  files:
+    - '**/*'
