@@ -5,6 +5,4 @@ import 'material-design-lite'
 import './serviceworker-registration'
 import wakatime from './wakatime'
 
-document.addEventListener('load', () => {
-    wakatime()
-})
+wakatime()

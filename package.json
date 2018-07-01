@@ -5,8 +5,12 @@
   "description": "the landing page of zacher.com.au",
   "license": "UNLICENCED",
   "scripts": {
+    "prestart": "yarn clean",
     "start": "parcel ./src/index.njk",
-    "build": "yarn clean && yarn parcel build ./src/index.njk && yarn cpx ./src/assets/me.jpg ./dist/assets/me.jpg",
+    "fetch-extras": "yarn ts-node --files ./scripts/github.ts && yarn ts-node --files ./scripts/wakatime.ts",
+    "prebuild": "yarn clean && yarn fetch-extras",
+    "build": "yarn clean && yarn parcel build ./src/index.njk",
+    "postbuild": "yarn cpx ./src/assets/me.jpg ./dist/assets/me.jpg",
     "clean": "rimraf dist .cache",
     "lint": "eslint src --ext .ts"
   },
