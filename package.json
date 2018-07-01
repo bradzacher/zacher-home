@@ -10,7 +10,7 @@
     "fetch-extras": "yarn ts-node --files ./scripts/github.ts && yarn ts-node --files ./scripts/wakatime.ts",
     "prebuild": "yarn clean && yarn fetch-extras",
     "build": "yarn clean && yarn parcel build ./src/index.njk",
-    "postbuild": "yarn cpx ./src/assets/me.jpg ./dist/assets/me.jpg",
+    "postbuild": "yarn cpx ./src/assets/me.jpg ./dist/assets/",
     "clean": "rimraf dist .cache",
     "lint": "eslint src --ext .ts"
   },
