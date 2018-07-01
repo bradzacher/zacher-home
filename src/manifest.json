@@ -1,0 +1,12 @@
+{
+    "background_color": "#56BA89",
+    "description": "Computer scientist. Cider drinker. Motorcyclist.",
+    "display": "standalone",
+    "icons": [],
+    "name": "Brad Zacher",
+    "orientation": "any",
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "short_name": "Brad Zacher",
+    "start_url": "/index.html"
+}

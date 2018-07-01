@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "assignar-node"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".ts",
+                    ".js",
+                    ".css",
+                    ".scss"
+                ]
+            }
+        }
+    }
+}

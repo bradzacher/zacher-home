@@ -1,30 +1,31 @@
 {
   "name": "zacher-home",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Brad Zacher",
   "description": "the landing page of zacher.com.au",
-  "dependencies": {
-    "chart.js": "^2.2.2",
-    "compression": "",
-    "es6-promise": "^3.2.1",
-    "express": "",
-    "github-calendar": "^1.1.10",
-    "grunt": "",
-    "grunt-autoprefixer": "",
-    "grunt-contrib-copy": "",
-    "grunt-contrib-jshint": "",
-    "grunt-contrib-sass": "",
-    "grunt-contrib-watch": "",
-    "grunt-express-server": "",
-    "grunt-newer": "",
-    "grunt-open": "",
-    "jshint": "~2.5.5",
-    "material-design-lite": "^1.2.0",
-    "open": "",
-    "serve-index": "",
-    "whatwg-fetch": "^1.0.0"
-  },
+  "license": "UNLICENCED",
   "scripts": {
-    "start": "node dev_server.js http localhost 2723 /"
+    "start": "parcel ./src/index.html",
+    "build": "yarn clean && yarn parcel build ./src/index.html",
+    "clean": "rimraf dist .cache",
+    "lint": "eslint src --ext .ts"
+  },
+  "devDependencies": {
+    "@types/chart.js": "^2.7.25",
+    "chart.js": "^2.2.2",
+    "eslint-config-assignar-node": "^0.1.5",
+    "eslint-import-resolver-node": "^0.3.2",
+    "github-calendar": "^1.1.10",
+    "material-design-icons": "^3.0.1",
+    "material-design-lite": "^1.2.0",
+    "node-sass": "^4.9.0",
+    "parcel": "^1.9.3",
+    "parcel-bundler": "^1.9.3",
+    "parcel-plugin-sw-precache": "^0.5.1",
+    "parcel-plugin-typescript": "^1.0.0",
+    "parcel-plugin-url-loader": "^1.2.5",
+    "rimraf": "^2.6.2",
+    "typescript": "^2.9.2",
+    "whatwg-fetch": "^1.0.0"
   }
 }

@@ -21,7 +21,7 @@ body {
     width: 100%;
     margin: auto;
     padding-top: 20px;
-        
+
     .mdl-card-wide {
         width: 100%;
         margin-bottom: #{$padding};
@@ -54,25 +54,25 @@ body {
     @mixin icon($x, $y) {
         background-position: calc-offset($x) calc-offset($y);
     }
-    
+
     .mdl-card__supporting-text {
         margin: auto;
         font-size: 13px;
         text-align: center;
-        
+
         > div {
             display: inline-block;
         }
     }
-    
+
     .around-the-web {
         height: $icon-size;
         width: $icon-size;
-        background-image: url(../img/around_the_web.png);
+        background-image: url("./assets/around_the_web.png");
         background-repeat: no-repeat;
         display: inline-block;
         background-position: 0 0;
-    
+
         &#icon-facebook {
             @include icon(0, 0);
         }
@@ -149,13 +149,13 @@ body {
     $mdlCardContentPadding: 16px;
     $mdlCellMargin: 16px;
     $projectCardDim: ($pageWidth / 2) - $mdlCardContentPadding - $mdlCellMargin;
-    
+
     > .mdl-card__supporting-text {
         width: 100%;
     }
     .mdl-grid {
         padding: 0;
-        
+
         .mdl-cell {
             width: #{$projectCardDim};
             height: #{$projectCardDim};
@@ -164,16 +164,16 @@ body {
     .mdl-card.project-card {
         width: #{$projectCardDim};
         height: #{$projectCardDim};
-        
+
         .mdl-card__title {
             background: none;
         }
-        
+
         > .mdl-card__actions {
             height: 56px;
             padding: 8px;
             background-color: rgba(0, 0, 0, 0.2);
-            
+
             > a {
                 width: 36px;
                 height: 36px;
@@ -181,38 +181,23 @@ body {
                 float: right;
                 background-repeat: no-repeat;
                 background-position: center center;
-                
+
                 &.source-link {
-                    background-image: url(../img/github.png);
+                    background-image: url("./assets/github.png");
                 }
                 &.demo-link {
-                    background-image: url(../img/open_demo.png);
+                    background-image: url("./assets/open_demo.png");
                 }
             }
         }
-        
+
         background-repeat: no-repeat;
         background-position: calc(100% - 16px) 16px;
         &.dota2-stats {
-            background-image: url(../img/dota2-stats.png);
-        }
-        &.odata-modeller {
-            background-image: url(../img/odata-modeller.png);
-        }
-        &.Eaglesong {
-            background-image: url(../img/Eaglesong.png);
+            background-image: url("./assets/dota2-stats.png");
         }
         &.HonsRecursiveSolverGE {
-            background-image: url(../img/HonsRecursiveSolverGE.png);
-        }
-        &.cell-game {
-            background-image: url(../img/cell-game.png);
-        }
-        &.NanodegreePopularMovies {
-            background-image: url(../img/NanodegreePopularMovies.png);
-        }
-        &.fiori-examples {
-            background-image: url(../img/OpenUI5_text_below.png);
+            background-image: url("./assets/HonsRecursiveSolverGE.png");
         }
     }
 }
