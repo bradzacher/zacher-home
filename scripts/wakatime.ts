@@ -4,6 +4,8 @@ import * as path from 'path'
 import 'isomorphic-fetch'
 import { ChartData } from 'chart.js'
 
+import { createBuildFolder, buildPath } from './createBuildFolder'
+
 const PAYLOAD_URL = 'https://wakatime.com/share/@bradzacher/49ceb738-f586-4b03-a190-1c082eb9a8ab.json'
 
 
@@ -20,6 +22,8 @@ interface Dataset {
 }
 
 export default async function wakatime() {
+    createBuildFolder()
+
     const response = await fetch(PAYLOAD_URL, {
         method: 'GET',
     })
@@ -59,7 +63,7 @@ export default async function wakatime() {
     })
 
     fs.writeFileSync(
-        path.resolve(__dirname, '../src/app/wakatime.json'),
+        path.resolve(buildPath, 'wakatime.json'),
         JSON.stringify(data, null, 4),
         'utf8',
     )

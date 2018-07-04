@@ -8,11 +8,11 @@
     "prestart": "yarn clean && yarn fetch-extras && yarn build-sprites",
     "start": "parcel ./src/index.njk",
     "prebuild": "yarn clean && yarn fetch-extras && yarn build-sprites",
-    "build": "yarn clean && yarn parcel build ./src/index.njk",
-    "postbuild": "yarn cpx ./src/assets/me.jpg ./dist/assets/",
+    "build": "yarn parcel build ./src/index.njk",
+    "postbuild": "yarn cpx ./src/assets/me.jpg ./dist/assets/ && yarn cpx ./src/googlee7fbe6e869687305.html ./dist && yarn cpx ./src/BingSiteAuth.xml ./dist",
     "build-sprites": "ts-node --files ./scripts/sprites.ts",
     "fetch-extras": "yarn ts-node --files ./scripts/github.ts && yarn ts-node --files ./scripts/wakatime.ts",
-    "clean": "rimraf dist .cache",
+    "clean": "rimraf dist .cache src/build",
     "lint": "eslint src --ext .ts"
   },
   "devDependencies": {

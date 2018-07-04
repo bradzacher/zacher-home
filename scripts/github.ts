@@ -4,11 +4,15 @@ import * as path from 'path'
 import 'isomorphic-fetch'
 import { JSDOM } from 'jsdom'
 
+import { createBuildFolder, buildPath } from './createBuildFolder'
+
 import GitHubCalendar = require('github-calendar')
 
 const divId = 'github-calendar'
 
 export default async function github() {
+    createBuildFolder()
+
     // polyfill the browser
     const dom = new JSDOM(`<div id="${divId}"></div>`)
     global.window = dom.window
@@ -23,7 +27,8 @@ export default async function github() {
     })
 
     const res = dom.window.document.getElementById(divId)
-    fs.writeFileSync(path.resolve(__dirname, '../src/html/github-calendar.html'), res.outerHTML, 'utf8')
+
+    fs.writeFileSync(path.resolve(buildPath, 'github-calendar.html'), res.outerHTML, 'utf8')
 }
 
 github()
