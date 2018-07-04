@@ -1,4 +1,10 @@
 node_modules
 .sass-cache
 .cache
+
+# ignore build files
 dist
+src/sprites.css
+src/assets/spritesheet.png
+src/html/github-calendar.html
+src/app/wakatime.json
