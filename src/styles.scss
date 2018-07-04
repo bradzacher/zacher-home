@@ -193,11 +193,20 @@ body {
 
         background-repeat: no-repeat;
         background-position: calc(100% - 16px) 16px;
-        &.dota2-stats {
-            background-image: url("./assets/dota2-stats.png");
-        }
         &.HonsRecursiveSolverGE {
             background-image: url("./assets/HonsRecursiveSolverGE.png");
+        }
+        &.mysqldump {
+            background-image: url("./assets/mysqldump.png");
+        }
+        &.DefinitelyTyped {
+            background-image: url("./assets/DefinitelyTyped.png");
+        }
+        &.eslint-config-assignar {
+            background-image: url("./assets/assignar.png");
+        }
+        &.eslint-plugin-typescript {
+            background-image: url("./assets/eslint.png");
         }
     }
 }

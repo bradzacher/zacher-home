@@ -1,0 +1,30 @@
+{% macro project(id, name, description, source=false, demo=false) %}
+
+    <div class="mdl-cell mdl-cell--1-col">
+        <div class="mdl-card mdl-shadow--2dp project-card {{ id }}">
+            <div class="mdl-card__title mdl-card--expand">
+                <div class="mdl-card__title-text">
+                    {{ name }}
+                </div>
+            </div>
+            <div class="mdl-card__supporting-text">
+                {{ description }}
+            </div>
+            <div class="mdl-card__actions">
+                {% if source %}
+                    <a class="source-link" id="source-link-{{ id }}" href="{{ source }}" target="_blank" rel="noopener"></a>
+                {% endif %}
+                {% if demo %}
+                    <a class="demo-link" id="demo-link-{{ id }}" href="{{ demo }}" target="_blank" rel="noopener"></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if source %}
+        <div class="mdl-tooltip" for="source-link-{{ id }}">View Source</div>
+    {% endif %}
+    {% if demo %}
+        <div class="mdl-tooltip" for="demo-link-{{ id }}">View Demo</div>
+    {% endif %}
+
+{% endmacro %}
