@@ -4,7 +4,7 @@ node_modules
 
 # ignore build files
 dist
-src/sprites.css
+src/sprites.scss
 src/assets/spritesheet.png
 src/html/github-calendar.html
 src/app/wakatime.json

@@ -1,3 +1,5 @@
+@import './sprites.scss';
+
 $padding: 8px;
 $pageWidth: 600px;
 .width {
@@ -20,7 +22,7 @@ body {
     max-width: #{$pageWidth};
     width: 100%;
     margin: auto;
-    padding-top: 20px;
+    padding-top: #{$padding * 2.5};
 
     .mdl-card-wide {
         width: 100%;
@@ -31,7 +33,7 @@ body {
     }
     .mdl-card__supporting-text {
         color: black;
-        font-size: 16px;
+        font-size: #{$padding * 2};
         width: auto;
     }
 }
@@ -46,18 +48,12 @@ body {
 }
 
 .links-card {
-    $icon-size: 64px;
+    $icon-size: #{$padding * 8};
     $icon-gutter: 30px;
-    @function calc-offset($i) {
-        @return -($i * $icon-size + $i * $icon-gutter);
-    }
-    @mixin icon($x, $y) {
-        background-position: calc-offset($x) calc-offset($y);
-    }
 
     .mdl-card__supporting-text {
         margin: auto;
-        font-size: 13px;
+        font-size: #{$padding * 1.75};
         text-align: center;
 
         > div {
@@ -68,38 +64,6 @@ body {
     .around-the-web {
         height: $icon-size;
         width: $icon-size;
-        background-image: url("./assets/around_the_web.png");
-        background-repeat: no-repeat;
-        display: inline-block;
-        background-position: 0 0;
-
-        &#icon-facebook {
-            @include icon(0, 0);
-        }
-        &#icon-twitter {
-            @include icon(2, 0);
-        }
-        &#icon-github {
-            @include icon(4, 7);
-        }
-        &#icon-wakatime {
-            @include icon(2, 1);
-        }
-        &#icon-steam {
-            @include icon(4, 4);
-        }
-        &#icon-instagram {
-            @include icon(0, 4);
-        }
-        &#icon-gplus {
-            @include icon(3, 0);
-        }
-        &#icon-youtube {
-            @include icon(2, 4);
-        }
-        &#icon-linkedin {
-            @include icon(3, 3);
-        }
     }
 }
 
@@ -146,8 +110,8 @@ body {
 }
 
 .projects-card {
-    $mdlCardContentPadding: 16px;
-    $mdlCellMargin: 16px;
+    $mdlCardContentPadding: $padding * 2;
+    $mdlCellMargin: $padding * 2;
     $projectCardDim: ($pageWidth / 2) - $mdlCardContentPadding - $mdlCellMargin;
 
     > .mdl-card__supporting-text {
@@ -167,46 +131,35 @@ body {
 
         .mdl-card__title {
             background: none;
+            position: relative;
+
+            > .project-card-icon {
+                position: absolute;
+                top: #{$padding};
+                right: #{$padding};
+            }
         }
 
         > .mdl-card__actions {
-            height: 56px;
-            padding: 8px;
+            height: #{$padding * 7};
+            padding: #{$padding};
             background-color: rgba(0, 0, 0, 0.2);
 
             > a {
-                width: 36px;
-                height: 36px;
-                padding: 4px;
+                width: #{$padding * 4.5};
+                height: #{$padding * 4.5};
+                padding: #{$padding * 0.5};
                 float: right;
                 background-repeat: no-repeat;
                 background-position: center center;
 
                 &.source-link {
-                    background-image: url("./assets/github.png");
+                    background-image: url("./assets/open_source.png");
                 }
                 &.demo-link {
                     background-image: url("./assets/open_demo.png");
                 }
             }
-        }
-
-        background-repeat: no-repeat;
-        background-position: calc(100% - 16px) 16px;
-        &.HonsRecursiveSolverGE {
-            background-image: url("./assets/HonsRecursiveSolverGE.png");
-        }
-        &.mysqldump {
-            background-image: url("./assets/mysqldump.png");
-        }
-        &.DefinitelyTyped {
-            background-image: url("./assets/DefinitelyTyped.png");
-        }
-        &.eslint-config-assignar {
-            background-image: url("./assets/assignar.png");
-        }
-        &.eslint-plugin-typescript {
-            background-image: url("./assets/eslint.png");
         }
     }
 }

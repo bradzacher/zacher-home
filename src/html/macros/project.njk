@@ -1,11 +1,12 @@
 {% macro project(id, name, description, source=false, demo=false) %}
 
     <div class="mdl-cell mdl-cell--1-col">
-        <div class="mdl-card mdl-shadow--2dp project-card {{ id }}">
+        <div class="mdl-card mdl-shadow--2dp project-card">
             <div class="mdl-card__title mdl-card--expand">
                 <div class="mdl-card__title-text">
                     {{ name }}
                 </div>
+                <div class="project-card-icon icon-{{ id }}"></div>
             </div>
             <div class="mdl-card__supporting-text">
                 {{ description }}
