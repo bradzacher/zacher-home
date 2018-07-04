@@ -141,17 +141,13 @@ body {
         }
 
         > .mdl-card__actions {
-            height: #{$padding * 7};
+            height: #{$padding * 6};
             padding: #{$padding};
             background-color: rgba(0, 0, 0, 0.2);
 
             > a {
-                width: #{$padding * 4.5};
-                height: #{$padding * 4.5};
                 padding: #{$padding * 0.5};
                 float: right;
-                background-repeat: no-repeat;
-                background-position: center center;
             }
         }
     }

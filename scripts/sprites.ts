@@ -74,20 +74,36 @@ function sprites() {
             })
         })
 
+        // build some SASS
         const lines : string[] = [
             '%sprite {',
-            `    height: ${size}px;`,
-            `    width: ${size}px;`,
             '    background-image: url("./build/spritesheet.png");',
             '    background-repeat: no-repeat;',
             '    display: inline-block;',
             '}',
             '',
         ]
+        const squareSizes : Record<string, boolean> = {}
+
+        // assume all sprites are squares
+        coordinates.forEach((sprite) => {
+            if (!squareSizes[sprite.height]) {
+                lines.push(
+                    `%sprite-${sprite.height} {`,
+                    '    @extend %sprite;',
+                    `    height: ${sprite.height}px;`,
+                    `    width: ${sprite.height}px;`,
+                    '}',
+                    '',
+                )
+                squareSizes[sprite.height] = true
+            }
+        })
+
         coordinates.forEach((sprite) => {
             lines.push(
                 `.icon-${sprite.name} {`,
-                '    @extend %sprite;',
+                `    @extend %sprite-${sprite.height};`,
                 `    background-position: ${-sprite.x}px ${-sprite.y}px;`,
                 '}',
                 '',
