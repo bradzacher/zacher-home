@@ -1,3 +1,4 @@
+{% from "./html/macros/social.njk" import social %}
 <!doctype html>
 <html>
 {% set host = "https://zacher.com.au" %}
@@ -45,32 +46,74 @@
   <link rel="stylesheet" href="../node_modules/github-calendar/dist/github-calendar-responsive.css" />
 
   <link rel="stylesheet" href="./styles.scss" />
+
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "alumniOf": {
+            "@type": "Organization",
+            "name": "University of Adelaide"
+        },
+        "birthDate": "1991-01-22",
+        "description": "Computer scientist. Cider drinker. Motorcyclist.",
+        "email": "brad.zacher@gmail.com",
+        "familyName": "Zacher",
+        "gender": {
+            "@type": "GenderType",
+            "name": "Male"
+        },
+        "givenName": "Brad",
+        "homeLocation": {
+            "@type": "Place",
+            "name": "Adelaide"
+        },
+        "honorificPrefix": "Mr.",
+        "image": "{{ gravatarUrl }}",
+        "jobTitle": "Lead Software Engineer",
+        "knowsAbout": [
+            "TypeScript",
+            "JavaScript",
+            "React",
+            "GraphQL",
+            "Node",
+            "SQL",
+            "C#",
+            "PHP",
+            "HTML",
+            "CSS"
+        ],
+        "knowsLanguage": [
+            {
+                "@type": "Language",
+                "name": "English"
+            }
+        ],
+        "name": "Brad Zacher",
+        "nationality": {
+            "@type": "Country",
+            "name": "Australia"
+        },
+        "sameAs": [
+            {% for link in social %}
+                "{{ link.link }}"
+                {% if not loop.last %},{% endif %}
+            {% endfor %}
+        ],
+        "url": "{{ host }}",
+        "workLocation": {
+            "@type": "Place",
+            "name": "Sydney"
+        },
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Assignar"
+        }
+    }
+  </script>
 </head>
 
 <body>
-  <div class="schema-data">
-    <div itemscope="Person" itemtype="https://schema.org/Person">
-      <span itemprop="honorificPrefix">Mr.</span>
-      <span itemprop="name">
-        <span itemprop="givenName">Brad</span>
-        <span itemprop="familyName">Zacher</span>
-      </span>
-      <span itemprop="birthDate">1991-01-22</span>
-      <link itemprop="gender" href="https://schema.org/Male" />
-      <span itemprop="image">
-        {{ gravatarUrl }}
-      </span>
-      <span itemprop="description">Computer scientist. Cider drinker. Motorcyclist.</span>
-      <span itemprop="nationality">Australia</span>
-      <span itemprop="email">bradzacher@gmail.com</span>
-      <span itemprop="alumniOf">University of Adelaide</span>
-      <span itemprop="homeLocation">Adelaide</span>
-      <span itemprop="jobTitle">Lead Software Engineer</span>
-      <span itemprop="worksFor">Assignar</span>
-      <span itemprop="workLocation">Sydney</span>
-    </div>
-  </div>
-
   <!-- Always shows a header, even in smaller screens. -->
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
