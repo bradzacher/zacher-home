@@ -1,5 +1,6 @@
 {
-    "background_color": "#56BA89",
+    "theme_color": "#56BA89",
+    "background_color": "#FFFFFFFF",
     "description": "Computer scientist. Cider drinker. Motorcyclist.",
     "display": "standalone",
     "icons": [],
