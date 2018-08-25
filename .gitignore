@@ -5,3 +5,4 @@ node_modules
 # ignore build files
 dist
 src/build
+yarn-error.log
