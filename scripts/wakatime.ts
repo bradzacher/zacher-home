@@ -6,7 +6,7 @@ import { ChartData } from 'chart.js'
 
 import { createBuildFolder, buildPath } from './createBuildFolder'
 
-const PAYLOAD_URL = 'https://wakatime.com/share/@bradzacher/49ceb738-f586-4b03-a190-1c082eb9a8ab.json'
+const PAYLOAD_URL = 'https://wakatime.com/share/@bradzacher/6c91698e-66c9-46cf-8aa5-e8742390f1db.json'
 
 
 interface WakatimeResponse {
