@@ -22,7 +22,7 @@
     "cpx": "^1.5.0",
     "eslint-config-assignar-node": "^0.1.5",
     "eslint-import-resolver-node": "^0.3.2",
-    "github-calendar": "^1.2.1",
+    "github-calendar": "^1.2.3",
     "isomorphic-fetch": "^2.2.1",
     "jsdom": "^11.11.0",
     "material-design-icons": "^3.0.1",
