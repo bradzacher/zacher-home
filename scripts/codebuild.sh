@@ -1,8 +1,10 @@
+#!/bin/bash
 set -e
 
 # grab the parameters from SSM
 S3BUCKET=$(aws ssm get-parameters --names "/zacher-com-au/S3_BUCKET" --query Parameters[0].Value --output text)
 DISTRIBUTIONID=$(aws ssm get-parameters --names "/zacher-com-au/CF_DISTRIBUTION_ID" --query Parameters[0].Value --output text)
+WAKATIMEID=$(aws ssm get-parameters --names "/zacher-com-au/WAKATIME_ID" --query Parameters[0].Value --output text)
 
 # build
 yarn install

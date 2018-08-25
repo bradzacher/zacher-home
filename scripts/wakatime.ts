@@ -6,7 +6,12 @@ import { ChartData } from 'chart.js'
 
 import { createBuildFolder, buildPath } from './createBuildFolder'
 
-const PAYLOAD_URL = 'https://wakatime.com/share/@bradzacher/6c91698e-66c9-46cf-8aa5-e8742390f1db.json'
+const wakatimeId = process.argv[2]
+if (!wakatimeId) {
+    console.error('Missing WAKATIMEID environment variable.')
+    process.exit(1)
+}
+const PAYLOAD_URL = `https://wakatime.com/share/@bradzacher/${wakatimeId}.json`
 
 
 interface WakatimeResponse {
@@ -69,4 +74,7 @@ export default async function wakatime() {
     )
 }
 
-wakatime()
+wakatime().catch((e) => {
+    console.error(e)
+    process.exit(1)
+})

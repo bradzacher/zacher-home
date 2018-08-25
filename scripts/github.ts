@@ -31,4 +31,7 @@ export default async function github() {
     fs.writeFileSync(path.resolve(buildPath, 'github-calendar.html'), res.outerHTML, 'utf8')
 }
 
-github()
+github().catch((e) => {
+    console.error(e)
+    process.exit(1)
+})
