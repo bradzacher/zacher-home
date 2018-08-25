@@ -26,7 +26,10 @@ interface Dataset {
     hoverBackgroundColor : string[]
 }
 
-export default async function wakatime() {
+const MAX_RETRIES = 5
+const RETRY_WAIT_MS = 2000
+
+export default async function wakatime(retryNumber = 0) {
     createBuildFolder()
 
     const response = await fetch(PAYLOAD_URL, {
@@ -35,6 +38,15 @@ export default async function wakatime() {
     const json : WakatimeResponse = await response.json()
 
     if (!json || !json.data) {
+        if (retryNumber < MAX_RETRIES) {
+            console.error(
+                `wakatime is warming up, waiting ${RETRY_WAIT_MS}ms before trying again (attempt #${retryNumber})`,
+            )
+            setTimeout(() => wakatime(retryNumber + 1), RETRY_WAIT_MS)
+
+            return
+        }
+
         throw new Error('wakatime is probably warming up...')
     }
 
