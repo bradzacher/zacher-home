@@ -21,6 +21,7 @@ const images = [
     'eslint.png',
     'HonsRecursiveSolverGE.png',
     'mysqldump.png',
+    'natural20.png',
     'open_source.png',
     'open_demo.png',
 ].map(p => path.resolve(assetFolder, p))
