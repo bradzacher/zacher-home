@@ -3,6 +3,7 @@
     "compilerOptions": {
         "allowSyntheticDefaultImports": false,
         "experimentalDecorators": true,
+        "jsx": "react",
         "lib": [
             "dom",
             "scripthost",
