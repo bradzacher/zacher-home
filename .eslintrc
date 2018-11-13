@@ -4,7 +4,10 @@
     ],
     "parserOptions": {
         "ecmaVersion": 2018,
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
     "rules": {
         "typescript/type-annotation-spacing": [
@@ -17,14 +20,7 @@
     },
     "settings": {
         "import/resolver": {
-            "node": {
-                "extensions": [
-                    ".ts",
-                    ".js",
-                    ".css",
-                    ".scss"
-                ]
-            }
+            "typescript": {}
         }
     },
     "overrides": [

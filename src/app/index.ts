@@ -1,4 +1,5 @@
-import 'isomorphic-fetch'
+// TODO remove this?
+
 import 'material-design-lite'
 
 // the small amount of JS code
