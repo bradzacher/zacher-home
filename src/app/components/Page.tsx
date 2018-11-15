@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-import App from './App'
 import { APP_ROOT_ID, GOOGLE_SITE_VERIFICATION, HOST, META, STRUCTURED, TAGLINE, THEME_COLOUR } from '../config'
 
 function mapMeta(meta : Record<string, string>, prefix : string) {
@@ -21,7 +20,18 @@ ga('create', 'UA-44247259-1', 'auto');
 ga('send', 'pageview');
 `
 
-const Page : React.FunctionComponent = () => (
+interface Props {
+    /**
+     * The raw HTML of the app
+     */
+    app : string
+    /**
+     * The css collected from the render
+     */
+    styles : string
+}
+
+const Page : React.FunctionComponent<Props> = React.memo(({ app, styles }) => (
     <html lang='en'>
         <head>
             <meta charSet='utf-8' />
@@ -47,15 +57,15 @@ const Page : React.FunctionComponent = () => (
             {mapMeta(META.facebook, 'fb')}
             {mapMeta(META.twitter, 'twitter')}
 
-            <script type='application/ld+json'>{JSON.stringify(STRUCTURED, null, 4)}</script>
+            <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED) }} />
+
+            <style type='text/css'>{styles}</style>
         </head>
         <body>
-            <div id={APP_ROOT_ID}>
-                <App />
-            </div>
-            <script type='text/javascript'>{GOOGLE_TRACKING_SCRIPT}</script>
+            <div id={APP_ROOT_ID} dangerouslySetInnerHTML={{ __html: app }} />
+            <script type='text/javascript' dangerouslySetInnerHTML={{ __html: GOOGLE_TRACKING_SCRIPT }} />
         </body>
     </html>
-)
+))
 
 export default Page

@@ -1,10 +1,10 @@
-export default [
-    { key: 'github', link: 'https://github.com/bradzacher' },
-    { key: 'wakatime', link: 'https://wakatime.com/@bradzacher' },
-    { key: 'linkedin', link: 'https://linkedin.com/in/bradzacher' },
-    { key: 'instagram', link: 'https://instagram.com/bradzacher' },
-    { key: 'twitter', link: 'https://twitter.com/bradzacher' },
-    { key: 'google', link: 'https://google.com/+BradZacher1' },
-    { key: 'youtube', link: 'https://youtube.com/BradZacher1' },
-    { key: 'steam', link: 'https://steamcommunity.com/id/MuppetMaster42' },
-]
+export default {
+    github: 'https://github.com/bradzacher',
+    instagram: 'https://instagram.com/bradzacher',
+    linkedin: 'https://linkedin.com/in/bradzacher',
+    medium: 'https://medium.com/@bradzacher',
+    steam: 'https://steamcommunity.com/id/MuppetMaster42',
+    twitter: 'https://twitter.com/bradzacher',
+    youtube: 'https://youtube.com/BradZacher1',
+    wakatime: 'https://wakatime.com/@bradzacher',
+}
