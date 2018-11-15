@@ -20,6 +20,7 @@
     "@types/react": "^16.7.4",
     "@types/react-dom": "^16.0.9",
     "@types/react-jss": "^8.6.0",
+    "@types/xml2js": "^0.4.3",
     "browser-sync": "^2.26.3",
     "chart.js": "^2.7.3",
     "chokidar": "^2.0.4",
@@ -27,18 +28,9 @@
     "eslint-config-assignar-node": "^1.3.1",
     "eslint-import-resolver-node": "^0.3.2",
     "eslint-import-resolver-typescript": "^1.1.1",
-    "github-calendar": "^1.2.4",
     "globby": "^8.0.1",
     "isomorphic-fetch": "^2.2.1",
     "jsdom": "^13.0.0",
-    "material-design-icons": "^3.0.1",
-    "material-design-lite": "^1.2.0",
-    "node-sass": "^4.10.0",
-    "nunjucks": "^3.1.3",
-    "parcel-bundler": "1.9.3",
-    "parcel-plugin-nunjucks": "^1.0.0",
-    "parcel-plugin-sw-precache": "^1.0.2",
-    "parcel-plugin-typescript": "^1.0.0",
     "prettier-eslint-cli": "^4.7.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -46,7 +38,8 @@
     "rimraf": "^2.6.2",
     "spritesmith": "^3.3.1",
     "ts-node": "^7.0.1",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "xml2js": "^0.4.19"
   },
   "sw-precache": {
     "navigateFallback": ""
