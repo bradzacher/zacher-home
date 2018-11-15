@@ -36,7 +36,7 @@ export default {
         '@type': 'Country',
         name: 'Australia',
     },
-    sameAs: social.map(s => s.link),
+    sameAs: Object.values(social),
     url: constants.HOST,
     workLocation: {
         '@type': 'Place',

@@ -1,5 +1,16 @@
 import * as React from 'react'
-// TODO
-const App : React.FunctionComponent = React.memo(() => null)
+
+import AppBar from './AppBar'
+import Content from './Content'
+import Theme from '../Theme'
+
+const App : React.FunctionComponent = () => (
+    <Theme>
+        <React.Fragment>
+            <AppBar />
+            <Content />
+        </React.Fragment>
+    </Theme>
+)
 
 export default App
