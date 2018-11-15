@@ -1,8 +1,9 @@
 import * as fs from 'fs'
+import * as globby from 'globby'
 import * as path from 'path'
 import * as Spritesmith from 'spritesmith'
 
-import { createBuildFolder, buildPath } from './createBuildFolder'
+import { createGeneratedFolder } from './createBuildFolder'
 
 interface Coordinates {
     x : number
@@ -11,107 +12,94 @@ interface Coordinates {
     height : number
 }
 
-const assetFolder = `${path.resolve(__dirname, '../src/assets/for-sprites/')}/`
+const assetFolder = `${path.resolve(__dirname, '../src/sprites/')}/`
 
 // Generate our spritesheet
-const images = [
-    'around_the_web_cut.png',
-    'DefinitelyTyped.png',
-    'assignar.png',
-    'eslint.png',
-    'HonsRecursiveSolverGE.png',
-    'mysqldump.png',
-    'natural20.png',
-    'open_source.png',
-    'open_demo.png',
-].map(p => path.resolve(assetFolder, p))
-
-// social image names
-const social = [
-    'github',
-    'wakatime',
-    'twitter',
-    'google',
-    'instagram',
-    'linkedin',
-    'steam',
-    'youtube',
-]
+const images = globby.sync(`${path.resolve(__dirname, '../src/sprites/')}/**/*.png`)
 
 function sprites() {
-    createBuildFolder()
+    const destinationFolder = createGeneratedFolder()
 
-    Spritesmith.run({
-        src: images,
-        layout: 'left-right',
-    }, (err, result) => {
-        if (err) {
-            throw err
-        }
-
-        // write the image
-        fs.writeFileSync(path.resolve(buildPath, 'spritesheet.png'), result.image)
-
-        // add the coordinates for the social links
-        const coordinates : (Coordinates & { name : string })[] = []
-        Object.keys(result.coordinates).forEach((k) => {
-            const name = k.replace(assetFolder, '').replace('.png', '')
-            if (name.startsWith('around_the_web')) {
-                return
+    Spritesmith.run(
+        {
+            src: images,
+            layout: 'left-right',
+        },
+        (err, result) => {
+            if (err) {
+                throw err
             }
 
-            coordinates.push(Object.assign({}, result.coordinates[k], {
-                name,
-            }))
-        })
-        const size = 64
-        social.forEach((k, i) => {
-            coordinates.push({
-                name: k,
-                height: size,
-                width: size,
-                x: i * size,
-                y: 0,
-            })
-        })
+            const spritePath = path.resolve(destinationFolder, 'sprites.png')
+            fs.writeFileSync(spritePath, result.image)
 
-        // build some SASS
-        const lines : string[] = [
-            '%sprite {',
-            '    background-image: url("./build/spritesheet.png");',
-            '    background-repeat: no-repeat;',
-            '    display: inline-block;',
-            '}',
-            '',
-        ]
-        const squareSizes : Record<string, boolean> = {}
+            // add the coordinates for the social links
+            const coordinates : (Coordinates & { name: string })[] = []
+            Object.keys(result.coordinates).forEach((k) => {
+                const name = k.replace(assetFolder, '').replace('.png', '')
+                if (name.startsWith('around_the_web')) {
+                    return
+                }
 
-        // assume all sprites are squares
-        coordinates.forEach((sprite) => {
-            if (!squareSizes[sprite.height]) {
-                lines.push(
-                    `%sprite-${sprite.height} {`,
-                    '    @extend %sprite;',
-                    `    height: ${sprite.height}px;`,
-                    `    width: ${sprite.height}px;`,
-                    '}',
-                    '',
+                coordinates.push(
+                    Object.assign({}, result.coordinates[k], {
+                        name,
+                    }),
                 )
-                squareSizes[sprite.height] = true
-            }
-        })
+            })
 
-        coordinates.forEach((sprite) => {
-            lines.push(
-                `.icon-${sprite.name} {`,
-                `    @extend %sprite-${sprite.height};`,
-                `    background-position: ${-sprite.x}px ${-sprite.y}px;`,
+            // build the typescript file
+            /* eslint-disable no-template-curly-in-string */
+            const lines = [
+                '/**',
+                ' * THIS FILE HAS BEEN AUTOMATICALLY GENERATED!',
+                ' *     ANY MANUAL CHANGES WILL BE LOST!',
+                ' */',
+                '',
+                'import * as fs from \'fs\'',
+                'import * as React from \'react\'',
+                'import injectSheet, { WithSheet } from \'react-jss\'',
+                'import { createStyles } from \'../Theme\'',
+                '',
+                'const base64Spritesheet = fs.readFileSync(`${__dirname}/sprites.png`).toString(\'base64\')',
+                '',
+                'const styles = createStyles(() => ({',
+                '    sprite: {',
+                '        backgroundImage: `url(data:image/png;base64,${base64Spritesheet})`,',
+                '        backgroundRepeat: \'no-repeat\',',
+                '        display: \'inline-block\',',
+                '    },',
+                ...coordinates.map(sprite =>
+                    [
+                        '',
+                        `    ${sprite.name}: {`,
+                        `        height: '${sprite.height}px',`,
+                        `        width: '${sprite.width}px',`,
+                        `        backgroundPosition: '${-sprite.x}px ${-sprite.y}px',`,
+                        '    },',
+                    ].join('\n')),
+                '}))',
+                '',
+                '// eslint-disable-next-line operator-linebreak',
+                'type SpriteName =',
+                ...coordinates.map(sprite => `    | '${sprite.name}'`),
+                '',
+                'type Props = WithSheet<typeof styles> & {',
+                '    name : SpriteName',
                 '}',
                 '',
-            )
-        })
-        fs.writeFileSync(path.resolve(buildPath, 'sprites.scss'), lines.join('\n'), 'utf8')
-    })
+                'const Sprite : React.FunctionComponent<Props> = ({ classes, name }) => (',
+                '    <div className={`${classes.sprite} ${classes[name]}`} />',
+                ')',
+                '',
+                'export default injectSheet(styles)(Sprite)',
+                '',
+            ]
+            /* eslint-enable no-template-curly-in-string */
+
+            fs.writeFileSync(path.resolve(destinationFolder, 'Sprite.tsx'), lines.join('\n'), 'utf8')
+        },
+    )
 }
 
 sprites()
