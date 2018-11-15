@@ -80,7 +80,7 @@ function sprites() {
                     ].join('\n')),
                 '}))',
                 '',
-                '// eslint-disable-next-line operator-linebreak',
+                '/* eslint-disable-next-line operator-linebreak */',
                 'type SpriteName =',
                 ...coordinates.map(sprite => `    | '${sprite.name}'`),
                 '',
