@@ -3,6 +3,6 @@ set -e
 
 ./scripts/node/prebuild.sh
 
-yarn parcel build ./src/index.njk
+yarn ts-node ./scripts/buildReact.ts
 
 ./scripts/node/postbuild.sh

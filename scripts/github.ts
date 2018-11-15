@@ -28,13 +28,16 @@ type ParsedSVG = {
 }
 const parseStringAsync = promisify(parseString) as (xml : string) => Promise<ParsedSVG>
 
+const attributeNameMap : Record<string, string> = {
+    'text-anchor': 'textAnchor',
+}
 function dumpAttributes(obj : { $: Record<string, string> }) {
     const attrString = Object.keys(obj.$).map((k) => {
         if (k === 'class') {
             return `className={classes.${obj.$[k]}}`
         }
 
-        return `${k}='${obj.$[k]}'`
+        return `${attributeNameMap[k] || k}='${obj.$[k]}'`
     })
 
     return attrString.join(' ')
@@ -71,7 +74,7 @@ export default async function github() {
 
     const reactSvg = indent(
         [
-            `<svg ${dumpAttributes(parsedSvg.svg)}>`,
+            '<svg width=\'100%\' viewBox=\'0 0 555 90\'>',
             `    <g ${dumpAttributes(parsedSvg.svg.g[0])}>`,
             ...indent(
                 parsedSvg.svg.g[0].g.reduce((acc, g) => {
@@ -103,11 +106,22 @@ export default async function github() {
         'import injectSheet, { WithSheet } from \'react-jss\'',
         'import { createStyles } from \'../Theme\'',
         '',
-        'const styles = createStyles(() => ({',
-        '    day: {},',
-        '    month: {},',
-        '    wday: {},',
-        '}))',
+        'const styles = createStyles(theme => {',
+        '    const label = {',
+        // svg colours the text via fill...
+        '        fill: theme.palette.grey,',
+        '        fontSize: \'1rem\',',
+        '    }',
+        '    return {',
+        '        day: {},',
+        '        month: {',
+        '            ...label',
+        '        },',
+        '        wday: {',
+        '            ...label',
+        '        },',
+        '    }',
+        '})',
         '',
         'type Props = WithSheet<typeof styles>',
         '',

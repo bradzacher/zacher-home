@@ -114,7 +114,7 @@ const styles = createStyles(() => ({
     },
 }))
 
-// eslint-disable-next-line operator-linebreak
+/* eslint-disable-next-line operator-linebreak */
 type SpriteName =
     | 'DefinitelyTyped'
     | 'HonsRecursiveSolverGE'

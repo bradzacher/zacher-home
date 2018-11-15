@@ -3,28 +3,45 @@ import { execSync } from 'child_process'
 import * as chokidar from 'chokidar'
 import * as path from 'path'
 
-const server = browserSync.create('zacher-home-ssr')
+const scriptsFolder = path.resolve(__dirname)
+const srcFolder = path.resolve(__dirname, '..', 'src/app')
 
+const server = browserSync.create('zacher-home-ssr')
 server.init({
     server: path.resolve(__dirname, '..', 'build'),
     ghostMode: false,
     open: false,
 })
 
-const srcFolder = path.resolve(__dirname, '..', 'src')
-const watcher = chokidar.watch(srcFolder, {
+// rebuild and reload on source change
+const srcWatcher = chokidar.watch(srcFolder, {
     ignoreInitial: true,
 })
 function onSourceChange(event : string) {
     return (filename : string) => {
-        console.info(`[${event}]:`, filename.replace(srcFolder, ''))
+        console.info(`[src][${event}]:`, filename.replace(srcFolder, ''))
         try {
-            execSync(`yarn ts-node ${__dirname}/build.ts`)
+            // use exec to run the build so it's always the latest code
+            execSync(`yarn ts-node ${scriptsFolder}/buildReact.ts`)
         } catch (e) {
             console.error(e.message)
         }
         server.reload(filename)
     }
 }
-watcher.on('add', onSourceChange('Add'))
-watcher.on('change', onSourceChange('Change'))
+srcWatcher.on('add', onSourceChange('add'))
+srcWatcher.on('change', onSourceChange('change'))
+
+// rebuild on script change
+const scriptsWatcher = chokidar.watch(scriptsFolder)
+function onScriptChange(fullFfilename : string) {
+    const filename = fullFfilename.replace(scriptsFolder, '')
+    console.info('[script][changed]:', filename)
+    try {
+        // use exec to run the script
+        execSync(`yarn ts-node ${scriptsFolder}/${filename}`)
+    } catch (e) {
+        console.error(e.message)
+    }
+}
+scriptsWatcher.on('change', onScriptChange)
