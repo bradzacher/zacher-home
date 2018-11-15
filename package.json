@@ -5,11 +5,11 @@
   "description": "the landing page of zacher.com.au",
   "license": "UNLICENCED",
   "scripts": {
-    "prestart": "./scripts/node/prebuild.sh",
-    "start": "parcel ./src/index.njk",
+    "prestart": "./scripts/node/build.sh",
+    "start": "ts-node ./scripts/server.ts",
     "build": "./scripts/node/build.sh",
-    "clean": "rimraf dist .cache src/build",
-    "lint": "eslint src --ext .ts"
+    "clean": "rimraf dist .cache src/app/generated build",
+    "lint": "eslint src scripts --ext .ts"
   },
   "devDependencies": {
     "@types/browser-sync": "^0.0.42",

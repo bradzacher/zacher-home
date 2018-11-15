@@ -8,16 +8,26 @@ import * as React from 'react'
 import injectSheet, { WithSheet } from 'react-jss'
 import { createStyles } from '../Theme'
 
-const styles = createStyles(() => ({
-    day: {},
-    month: {},
-    wday: {},
-}))
+const styles = createStyles(theme => {
+    const label = {
+        fill: theme.palette.grey,
+        fontSize: '1rem',
+    }
+    return {
+        day: {},
+        month: {
+            ...label
+        },
+        wday: {
+            ...label
+        },
+    }
+})
 
 type Props = WithSheet<typeof styles>
 
 const GithubCalendar : React.FunctionComponent<Props> = ({ classes }) => (
-    <svg width='563' height='88'>
+    <svg width='100%' viewBox='0 0 555 90'>
         <g transform='translate(16, 20)'>
                 <g transform='translate(0, 0)'>
                     <rect className={classes.day} width='8' height='8' x='11' y='0' fill='#ebedf0' data-count='0' data-date='2017-11-12' />
@@ -507,9 +517,9 @@ const GithubCalendar : React.FunctionComponent<Props> = ({ classes }) => (
                 <text x='431' y='-8' className={classes.month}>Sep</text>
                 <text x='481' y='-8' className={classes.month}>Oct</text>
                 <text x='521' y='-8' className={classes.month}>Nov</text>
-                <text text-anchor='start' className={classes.wday} dx='-12' dy='17'>Mon</text>
-                <text text-anchor='start' className={classes.wday} dx='-12' dy='37'>Wed</text>
-                <text text-anchor='start' className={classes.wday} dx='-12' dy='57'>Fri</text>
+                <text textAnchor='start' className={classes.wday} dx='-12' dy='17'>Mon</text>
+                <text textAnchor='start' className={classes.wday} dx='-12' dy='37'>Wed</text>
+                <text textAnchor='start' className={classes.wday} dx='-12' dy='57'>Fri</text>
         </g>
     </svg>
 )

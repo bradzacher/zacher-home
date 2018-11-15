@@ -4,6 +4,7 @@ import injectSheet, { WithSheet } from 'react-jss'
 import { createStyles } from '../Theme'
 import AboutMe from './cards/AboutMe'
 import AroundTheWeb from './cards/AroundTheWeb'
+import GithubCommits from './cards/GithubCommits'
 
 const styles = createStyles(() => ({
     main: {
@@ -19,6 +20,7 @@ const Content : React.FunctionComponent<Props> = ({ classes }) => (
     <main className={classes.main}>
         <AboutMe />
         <AroundTheWeb />
+        <GithubCommits />
     </main>
 )
 
