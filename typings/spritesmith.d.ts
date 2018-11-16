@@ -1,12 +1,15 @@
 declare module 'spritesmith' {
     interface Result {
         image : Buffer
-        coordinates : Record<string, {
-            x : number
-            y : number
-            width : number
-            height : number
-        }>
+        coordinates : Record<
+            string,
+            {
+                x : number
+                y : number
+                width : number
+                height : number
+            }
+        >
         properties : {
             width : number
             height : number
@@ -18,10 +21,7 @@ declare module 'spritesmith' {
     }
 
     interface Runner {
-        run(
-            opts : Opts,
-            cb : (err : Error | null, result : Result) => void,
-        ) : void
+        run(opts : Opts, cb : (err: Error | null, result: Result) => void) : void
     }
 
     const exprt : Runner

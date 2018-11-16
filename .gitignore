@@ -1,6 +1,7 @@
 node_modules
 .sass-cache
 .cache
+.wakatime-project
 
 # ignore build files
 dist

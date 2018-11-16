@@ -1,9 +1,9 @@
 // TODO remove this?
 
-import 'material-design-lite'
+// import 'material-design-lite'
 
 // the small amount of JS code
-import './serviceworker-registration'
+// import './serviceworker-registration'
 import wakatime from './wakatime'
 
 wakatime()
