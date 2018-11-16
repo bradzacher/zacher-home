@@ -1,6 +1,6 @@
 {
     "extends": [
-        "assignar-node"
+        "assignar-react"
     ],
     "parserOptions": {
         "ecmaVersion": 2018,
@@ -16,11 +16,19 @@
                 "before": true,
                 "after": true
             }
-        ]
+        ],
+        "react/prop-types": "off",
+        "react/no-array-index-key": "warning",
+        "react/jsx-one-expression-per-line": "off",
+        "react/jsx-wrap-multilines": "off",
+        "import/no-nodejs-modules": "off"
     },
     "settings": {
         "import/resolver": {
             "typescript": {}
+        },
+        "react": {
+            "version": "16.6.3"
         }
     },
     "overrides": [
@@ -28,6 +36,12 @@
             "files": "typings/**/*",
             "rules": {
                 "strict": "off"
+            }
+        },
+        {
+            "files": "scripts/**/*",
+            "rules": {
+                "import/no-nodejs-modules": "off"
             }
         }
     ]

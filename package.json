@@ -9,7 +9,11 @@
     "start": "ts-node ./scripts/server.ts",
     "build": "./scripts/node/build.sh",
     "clean": "rimraf dist .cache src/app/generated build",
-    "lint": "eslint src scripts --ext .ts"
+    "lint": "eslint src scripts --ext=.ts,.tsx",
+    "lint-errors": "yarn lint --quiet",
+    "format-no-write": "prettier-eslint src/**/*.{ts,tsx} scripts/**/*.{ts,tsx} typings/**/*.{ts,tsx} --eslint-config-path=.eslintrc --eslint-ignore --prettier-ignore --eslint-path=node_modules/eslint --config=.prettierrc",
+    "format": "yarn format-no-write --write",
+    "format-check": "yarn format-no-write --list-different"
   },
   "devDependencies": {
     "@types/browser-sync": "^0.0.42",
@@ -25,8 +29,6 @@
     "chart.js": "^2.7.3",
     "chokidar": "^2.0.4",
     "cpx": "^1.5.0",
-    "eslint-config-assignar-node": "^1.3.1",
-    "eslint-import-resolver-node": "^0.3.2",
     "eslint-import-resolver-typescript": "^1.1.1",
     "globby": "^8.0.1",
     "isomorphic-fetch": "^2.2.1",
@@ -43,5 +45,8 @@
   },
   "sw-precache": {
     "navigateFallback": ""
+  },
+  "dependencies": {
+    "eslint-config-assignar-react": "^1.3.1"
   }
 }

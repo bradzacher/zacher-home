@@ -13,7 +13,6 @@ if (!wakatimeId) {
 }
 const PAYLOAD_URL = `https://wakatime.com/share/@bradzacher/${wakatimeId}.json`
 
-
 interface WakatimeResponse {
     data : {
         name : string
@@ -57,9 +56,7 @@ export default async function wakatime(retryNumber = 0) {
     }
     const data : ChartData = {
         labels: [],
-        datasets: [
-            dataset,
-        ],
+        datasets: [dataset],
     }
 
     json.data.forEach((d, i) => {
@@ -69,7 +66,7 @@ export default async function wakatime(retryNumber = 0) {
         }
 
         // autocalculate colour based on index #RAINBOW
-        let hue = (360 * i / json.data.length)
+        let hue = (360 * i) / json.data.length
         hue = Math.floor(hue)
         const colour = `hsl(${hue}, 100%, {0})`
         data.labels.push(d.name)
@@ -79,11 +76,7 @@ export default async function wakatime(retryNumber = 0) {
         dataset.hoverBackgroundColor.push(colour.replace('{0}', '70%'))
     })
 
-    fs.writeFileSync(
-        path.resolve(buildPath, 'wakatime.json'),
-        JSON.stringify(data, null, 4),
-        'utf8',
-    )
+    fs.writeFileSync(path.resolve(buildPath, 'wakatime.json'), JSON.stringify(data, null, 4), 'utf8')
 }
 
 wakatime().catch((e) => {
