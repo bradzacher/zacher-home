@@ -19,6 +19,7 @@
         ],
         "react/prop-types": "off",
         "react/no-array-index-key": "warning",
+        "react/jsx-no-target-blank": "off",
         "react/jsx-one-expression-per-line": "off",
         "react/jsx-wrap-multilines": "off",
         "import/no-nodejs-modules": "off"

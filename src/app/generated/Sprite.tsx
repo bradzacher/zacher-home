@@ -3,6 +3,7 @@
  *     ANY MANUAL CHANGES WILL BE LOST!
  */
 
+import * as classnames from 'classnames'
 import * as fs from 'fs'
 import * as React from 'react'
 import injectSheet, { WithSheet } from 'react-jss'
@@ -134,11 +135,15 @@ type SpriteName =
     | 'youtube'
 
 type Props = WithSheet<typeof styles> & {
+    className ?: string
     name : SpriteName
 }
 
-const Sprite : React.FunctionComponent<Props> = ({ classes, name }) => (
-    <div className={`${classes.sprite} ${classes[name]}`} />
+const Sprite : React.FunctionComponent<Props> = ({ className, classes, name }) => (
+    <div className={classnames(classes.sprite, classes[name], className)} />
 )
 
 export default injectSheet(styles)(Sprite)
+export {
+    SpriteName,
+}

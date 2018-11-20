@@ -3,7 +3,7 @@ import injectSheet, { WithSheet } from 'react-jss'
 
 import { SOCIAL } from '../../config'
 import { createStyles } from '../../Theme'
-import Card from '../Card'
+import { Card, CardContent, CardTitle } from '../Card'
 
 const styles = createStyles(() => ({
     picture: {
@@ -48,22 +48,20 @@ const lines : React.ReactNode[] = [
 ]
 
 const AboutMe : React.FunctionComponent<Props> = ({ classes }) => (
-    <Card
-        title='About Me'
-        content={
-            <React.Fragment>
-                <img
-                    className={classes.picture}
-                    src='https://en.gravatar.com/userimage/88111926/67c389d0ebb48c35829460f965f820a9.png?size=200'
-                />
-                {lines.map((l, i) => (
-                    <p key={`${i}`} className={classes.line}>
-                        {l}
-                    </p>
-                ))}
-            </React.Fragment>
-        }
-    />
+    <Card>
+        <CardTitle>About Me</CardTitle>
+        <CardContent>
+            <img
+                className={classes.picture}
+                src='https://en.gravatar.com/userimage/88111926/67c389d0ebb48c35829460f965f820a9.png?size=200'
+            />
+            {lines.map((l, i) => (
+                <p key={`${i}`} className={classes.line}>
+                    {l}
+                </p>
+            ))}
+        </CardContent>
+    </Card>
 )
 
 export default injectSheet(styles)(AboutMe)

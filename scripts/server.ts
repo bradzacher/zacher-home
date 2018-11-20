@@ -39,7 +39,7 @@ function onScriptChange(fullFfilename : string) {
     console.info('[script][changed]:', filename)
     try {
         // use exec to run the script
-        execSync(`yarn ts-node ${scriptsFolder}/${filename}`)
+        execSync(`yarn ts-node --files ${scriptsFolder}/${filename}`)
     } catch (e) {
         console.error(e.message)
     }
