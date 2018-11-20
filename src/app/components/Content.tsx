@@ -5,6 +5,7 @@ import { createStyles } from '../Theme'
 import AboutMe from './cards/AboutMe'
 import AroundTheWeb from './cards/AroundTheWeb'
 import GithubCommits from './cards/GithubCommits'
+import OpenSource from './cards/OpenSource'
 
 const styles = createStyles(() => ({
     main: {
@@ -21,6 +22,7 @@ const Content : React.FunctionComponent<Props> = ({ classes }) => (
         <AboutMe />
         <AroundTheWeb />
         <GithubCommits />
+        <OpenSource />
     </main>
 )
 

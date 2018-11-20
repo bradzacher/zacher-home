@@ -2,6 +2,7 @@ import * as constants from './constants'
 
 export * from './constants'
 export { default as SOCIAL } from './social'
+export { default as OPEN_SOURCE } from './openSource'
 export { default as STRUCTURED } from './structured'
 export const META = {
     facebook: {

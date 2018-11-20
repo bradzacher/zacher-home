@@ -3,7 +3,7 @@ import injectSheet, { WithSheet } from 'react-jss'
 
 import GithubCalendar from '../../generated/GithubCalendar'
 import { createStyles } from '../../Theme'
-import Card from '../Card'
+import { Card, CardTitle, CardContent } from '../Card'
 
 const styles = createStyles(() => ({
     container: {
@@ -21,14 +21,14 @@ const styles = createStyles(() => ({
 type Props = WithSheet<typeof styles>
 
 const GithubCommits : React.FunctionComponent<Props> = ({ classes }) => (
-    <Card
-        title='Around the Web'
-        content={
+    <Card>
+        <CardTitle>Github Commits</CardTitle>
+        <CardContent>
             <div className={classes.container}>
                 <GithubCalendar />
             </div>
-        }
-    />
+        </CardContent>
+    </Card>
 )
 
 export default injectSheet(styles)(GithubCommits)

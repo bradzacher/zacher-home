@@ -4,7 +4,7 @@ import injectSheet, { WithSheet } from 'react-jss'
 import { SOCIAL } from '../../config'
 import Sprite from '../../generated/Sprite'
 import { createStyles } from '../../Theme'
-import Card from '../Card'
+import { Card, CardTitle, CardContent } from '../Card'
 import MeLink from '../MeLink'
 
 const styles = createStyles(() => ({
@@ -23,9 +23,9 @@ const styles = createStyles(() => ({
 type Props = WithSheet<typeof styles>
 
 const AroundTheWeb : React.FunctionComponent<Props> = ({ classes }) => (
-    <Card
-        title='Around the Web'
-        content={
+    <Card>
+        <CardTitle>Around the Web</CardTitle>
+        <CardContent>
             <div className={classes.container}>
                 {Object.keys(SOCIAL).map((key : keyof typeof SOCIAL) => (
                     <MeLink key={key} className={classes.link} href={SOCIAL[key]}>
@@ -33,8 +33,8 @@ const AroundTheWeb : React.FunctionComponent<Props> = ({ classes }) => (
                     </MeLink>
                 ))}
             </div>
-        }
-    />
+        </CardContent>
+    </Card>
 )
 
 export default injectSheet(styles)(AroundTheWeb)
