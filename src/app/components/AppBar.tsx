@@ -34,6 +34,16 @@ const styles = createStyles(theme => ({
         padding: '0 2rem',
         textDecoration: 'none',
     },
+    '@media (max-width: 500px)': {
+        header: {
+            paddingLeft: '2rem',
+        },
+    },
+    '@media (max-width: 360px)': {
+        nav: {
+            display: 'none',
+        },
+    },
 }))
 
 type Props = WithSheet<typeof styles>
