@@ -80,9 +80,6 @@ const globalStyles = {
         body: {
             fontSize: '1.5rem',
         },
-        a: {
-            color: theme.palette.secondary,
-        },
     },
 }
 const ThemeWithGlobalStyles = injectStylesheet(globalStyles)(Theme)

@@ -29,14 +29,13 @@ const lines : React.ReactNode[] = [
     'Proficient in many languages; namely TypeScript/JavaScript, PHP, SQL, C#, and C/C++.',
     <React.Fragment>
         You can read more about me and my history in{' '}
-        <a href='/assets/Brad_Zacher_Resume_2018.pdf' rel='nofollow' id='resume-link'>
+        <a href='/Brad_Zacher_Resume_2018.pdf' rel='nofollow' id='resume-link'>
             my resume
         </a>
         .
     </React.Fragment>,
     <React.Fragment>
-        You can contact me via any of the networks below, or by gmail - bradzacher{' '}
-        <a href='/assets/bradzacher.txt'>GPG</a>.
+        You can contact me via any of the networks below, or by gmail - bradzacher <a href='/bradzacher.txt'>GPG</a>.
     </React.Fragment>,
     <React.Fragment>
         I also have a blog on{' '}
