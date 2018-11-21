@@ -2,10 +2,10 @@ import * as classnames from 'classnames'
 import * as React from 'react'
 import injectStylesheet, { WithSheet } from 'react-jss'
 
-import { Card, CardTitle, CardContent, CardFooter } from './Card'
-import { OPEN_SOURCE } from '../config'
-import { createStyles } from '../Theme'
-import Sprite from '../generated/Sprite'
+import { Card, CardTitle, CardContent, CardFooter } from '.'
+import { OPEN_SOURCE } from '../../config'
+import { createStyles } from '../../Theme'
+import Sprite from '../../generated/Sprite'
 
 const styles = createStyles(() => ({
     container: {
@@ -36,7 +36,7 @@ const ProjectCard : React.FunctionComponent<Props & WithSheet<typeof styles>> = 
     <Card className={classnames(className, classes.container)}>
         <CardTitle shaded={false} className={classes.title}>
             <div className={classes.titleText}>{project.name}</div>
-            <Sprite className={classes.logo} name={project.spriteName} />
+            {project.spriteName && <Sprite className={classes.logo} name={project.spriteName} />}
         </CardTitle>
         <CardContent>{project.description}</CardContent>
         <CardFooter>

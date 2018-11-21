@@ -502,6 +502,7 @@ const GithubCalendar : React.FunctionComponent<Props> = ({ classes }) => (
                 <rect className={classes.day} width='8' height='8' x='-41' y='0' fill='#c6e48b' data-count='1' data-date='2018-11-18' />
                 <rect className={classes.day} width='8' height='8' x='-41' y='10' fill='#c6e48b' data-count='3' data-date='2018-11-19' />
                 <rect className={classes.day} width='8' height='8' x='-41' y='20' fill='#ebedf0' data-count='0' data-date='2018-11-20' />
+                <rect className={classes.day} width='8' height='8' x='-41' y='30' fill='#ebedf0' data-count='0' data-date='2018-11-21' />
             </g>
             <text x='11' y='-8' className={classes.month}>Nov</text>
             <text x='31' y='-8' className={classes.month}>Dec</text>
