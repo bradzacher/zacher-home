@@ -1,7 +1,6 @@
 import * as React from 'react'
 import injectSheet, { WithSheet } from 'react-jss'
 
-import { SOCIAL } from '../../config'
 import { createStyles } from '../../Theme'
 import { Card, CardContent, CardTitle } from '../Card'
 
@@ -36,13 +35,6 @@ const lines : React.ReactNode[] = [
     </React.Fragment>,
     <React.Fragment>
         You can contact me via any of the networks below, or by gmail - bradzacher <a href='/bradzacher.txt'>GPG</a>.
-    </React.Fragment>,
-    <React.Fragment>
-        I also have a blog on{' '}
-        <a href={SOCIAL.medium} rel='me'>
-            {SOCIAL.medium.replace('https://', '')}
-        </a>
-        .
     </React.Fragment>,
 ]
 

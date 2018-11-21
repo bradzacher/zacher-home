@@ -18,6 +18,7 @@ const styles = createStyles(() => ({
     },
     link: {
         marginRight: '0.5rem',
+        marginBottom: '0.5rem',
     },
 }))
 
