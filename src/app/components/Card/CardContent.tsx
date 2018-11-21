@@ -3,10 +3,10 @@ import * as React from 'react'
 import injectStylesheet, { WithSheet } from 'react-jss'
 import { createStyles } from '../../Theme'
 
-const styles = createStyles(() => ({
+const styles = createStyles(theme => ({
     container: {
         fontSize: '1.75rem',
-        padding: '2rem',
+        padding: `${theme.spacing.card.contentPadding}rem`,
     },
 }))
 type Props = WithSheet<typeof styles> & {

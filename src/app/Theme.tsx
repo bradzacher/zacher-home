@@ -46,7 +46,13 @@ const theme = {
         white: '#ffffff',
         grey: '#cccccc',
     },
-    spacing: {},
+    // spacings in REM
+    spacing: {
+        pageWidth: 100,
+        card: {
+            contentPadding: 2,
+        },
+    },
 }
 
 const Theme : React.FunctionComponent = ({ children }) => (

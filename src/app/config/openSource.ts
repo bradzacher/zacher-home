@@ -1,4 +1,4 @@
-import { SpriteName } from '../generated/Sprite'
+import Project from './Project'
 
 export default [
     {
@@ -34,10 +34,4 @@ export default [
         description: 'TypeScript type definitions for node modules.',
         source: 'https://github.com/DefinitelyTyped/DefinitelyTyped',
     },
-] as Array<{
-    spriteName : SpriteName
-    name : string
-    description : string
-    source ?: string
-    demo ?: string
-}>
+] as Array<Project>

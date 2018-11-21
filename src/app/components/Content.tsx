@@ -6,11 +6,12 @@ import AboutMe from './cards/AboutMe'
 import AroundTheWeb from './cards/AroundTheWeb'
 import GithubCommits from './cards/GithubCommits'
 import OpenSource from './cards/OpenSource'
+import Projects from './cards/Projects'
 
-const styles = createStyles(() => ({
+const styles = createStyles(theme => ({
     main: {
         margin: 'auto',
-        maxWidth: '100rem',
+        maxWidth: `${theme.spacing.pageWidth}rem`,
         paddingTop: '2.5rem',
     },
 }))
@@ -23,6 +24,7 @@ const Content : React.FunctionComponent<Props> = ({ classes }) => (
         <AroundTheWeb />
         <GithubCommits />
         <OpenSource />
+        <Projects />
     </main>
 )
 
