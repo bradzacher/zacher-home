@@ -5,15 +5,16 @@
   "description": "the landing page of zacher.com.au",
   "license": "UNLICENCED",
   "scripts": {
-    "prestart": "./scripts/node/build.sh",
-    "start": "ts-node --files ./scripts/server.ts",
-    "build": "./scripts/node/build.sh",
-    "clean": "rimraf dist .cache src/app/generated build",
-    "lint": "eslint src scripts --ext=.ts,.tsx",
-    "lint-errors": "yarn lint --quiet",
+    "build": "ts-node ./scripts/buildReact.ts",
+    "clean": "rimraf dist .cache build",
+    "copy-assets": "cpx ./src/assets/**/* ./build",
     "format-no-write": "prettier-eslint src/**/*.{ts,tsx} scripts/**/*.{ts,tsx} typings/**/*.{ts,tsx} --eslint-config-path=.eslintrc --eslint-ignore --prettier-ignore --eslint-path=node_modules/eslint --config=.prettierrc",
     "format": "yarn format-no-write --write",
-    "format-check": "yarn format-no-write --list-different"
+    "format-check": "yarn format-no-write --list-different",
+    "lint": "eslint src scripts --ext=.ts,.tsx",
+    "lint-errors": "yarn lint --quiet",
+    "prestart": "yarn build",
+    "start": "ts-node --files ./scripts/server.ts"
   },
   "devDependencies": {
     "@types/browser-sync": "^0.0.42",
@@ -26,6 +27,7 @@
     "@types/react-dom": "^16.0.9",
     "@types/react-jss": "^8.6.0",
     "@types/xml2js": "^0.4.3",
+    "aws-sdk": "^2.360.0",
     "browser-sync": "^2.26.3",
     "chart.js": "^2.7.3",
     "chokidar": "^2.0.4",
