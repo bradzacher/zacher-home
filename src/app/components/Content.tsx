@@ -7,6 +7,7 @@ import AroundTheWeb from './cards/AroundTheWeb'
 import GithubCommits from './cards/GithubCommits'
 import OpenSource from './cards/OpenSource'
 import Projects from './cards/Projects'
+import Wakatime from './cards/Wakatime'
 
 const styles = createStyles(theme => ({
     main: {
@@ -22,6 +23,7 @@ const Content : React.FunctionComponent<Props> = ({ classes }) => (
     <main className={classes.main}>
         <AboutMe />
         <AroundTheWeb />
+        <Wakatime />
         <GithubCommits />
         <OpenSource />
         <Projects />

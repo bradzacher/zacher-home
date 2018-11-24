@@ -7,7 +7,7 @@ import Page from '../src/app/components/Page'
 
 export default function render() {
     const sheets = new SheetsRegistry()
-    const appStr = ReactDOMServer.renderToString(
+    const appStr = ReactDOMServer.renderToStaticMarkup(
         <JssProvider registry={sheets}>
             <App />
         </JssProvider>,
