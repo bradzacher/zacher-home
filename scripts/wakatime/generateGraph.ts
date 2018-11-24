@@ -1,3 +1,7 @@
+import * as fs from 'fs'
+import * as path from 'path'
+
+import { createGeneratedFolder } from '../createBuildFolder'
 import getDataFromDynamo from './getDataFromDynamo'
 
 const THRESHOLD_PERCENTAGE = 0.05
@@ -20,8 +24,29 @@ async function generateGraph() {
         {} as Record<string, number>,
     )
 
-    console.log(languages)
-    // TODO
+    const totalSecondsAboveThreshold = Object.keys(languages).reduce((acc, k) => acc + languages[k], 0)
+
+    const lines = [
+        '/**',
+        ' * THIS FILE HAS BEEN AUTOMATICALLY GENERATED!',
+        ' *     ANY MANUAL CHANGES WILL BE LOST!',
+        ' */',
+        '',
+        'export default [',
+        ...Object.keys(languages).map(l =>
+            [
+                // easier to consume from react as an array
+                '    {',
+                `        name: '${l}',`,
+                `        percent: ${languages[l] / totalSecondsAboveThreshold},`,
+                '    },',
+            ].join('\n')),
+        ']',
+        '',
+    ]
+
+    const dest = createGeneratedFolder()
+    fs.writeFileSync(path.resolve(dest, 'WakatimeData.ts'), lines.join('\n'))
 }
 
-export default generateGraph
+generateGraph()

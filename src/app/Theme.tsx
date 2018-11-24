@@ -53,6 +53,18 @@ const theme = {
             contentPadding: 2,
         },
     },
+    classes: {
+        poweredByLink: {
+            marginTop: '1rem',
+            textAlign: 'right' as 'right',
+        },
+        graph: {
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'row' as 'row',
+            justifyContent: 'center',
+        },
+    },
 }
 
 const Theme : React.FunctionComponent = ({ children }) => (
