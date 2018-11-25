@@ -43,6 +43,7 @@ const AboutMe : React.FunctionComponent<Props> = ({ classes }) => (
         <CardTitle>About Me</CardTitle>
         <CardContent>
             <img
+                alt='A picture of my ugly mug'
                 className={classes.picture}
                 src='https://en.gravatar.com/userimage/88111926/67c389d0ebb48c35829460f965f820a9.png?size=200'
             />

@@ -30,7 +30,12 @@ const AroundTheWeb : React.FunctionComponent<Props> = ({ classes }) => (
         <CardContent>
             <div className={classes.container}>
                 {Object.keys(SOCIAL).map((key : keyof typeof SOCIAL) => (
-                    <MeLink key={key} className={classes.link} href={SOCIAL[key]}>
+                    <MeLink
+                        key={key}
+                        className={classes.link}
+                        href={SOCIAL[key]}
+                        title={`External link to my ${key} profile`}
+                    >
                         <Sprite name={key} />
                     </MeLink>
                 ))}

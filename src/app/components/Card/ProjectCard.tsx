@@ -41,12 +41,24 @@ const ProjectCard : React.FunctionComponent<Props & WithSheet<typeof styles>> = 
         <CardContent>{project.description}</CardContent>
         <CardFooter>
             {project.source && (
-                <a className={classes.link} href={project.source} target='_blank' rel='noopener'>
+                <a
+                    className={classes.link}
+                    href={project.source}
+                    target='_blank'
+                    rel='noopener'
+                    title='Open the project source on Github'
+                >
                     <Sprite name='open_source' />
                 </a>
             )}
             {project.demo && (
-                <a className={classes.link} href={project.demo} target='_blank' rel='noopener'>
+                <a
+                    className={classes.link}
+                    href={project.demo}
+                    target='_blank'
+                    rel='noopener'
+                    title='Open a demo of the project'
+                >
                     <Sprite name='open_demo' />
                 </a>
             )}

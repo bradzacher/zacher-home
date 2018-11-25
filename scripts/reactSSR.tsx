@@ -21,5 +21,5 @@ export default function render() {
 
     console.info('Finished Full Page SSR')
 
-    return fullPageStr
+    return ['<!DOCTYPE html>', fullPageStr].join('\n')
 }
