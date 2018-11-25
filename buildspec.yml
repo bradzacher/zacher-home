@@ -6,7 +6,6 @@ phases:
       - aws configure set preview.cloudfront true
   build:
     commands:
-      - git log --pretty=oneline -n 1
       - npm install -g yarn
       - yarn --version
       - npm --version
