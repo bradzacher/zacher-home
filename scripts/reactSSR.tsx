@@ -1,3 +1,4 @@
+import * as CleanCss from 'clean-css'
 import * as React from 'react'
 import * as ReactDOMServer from 'react-dom/server'
 import { JssProvider, SheetsRegistry } from 'react-jss'
@@ -13,5 +14,8 @@ export default function render() {
         </JssProvider>,
     )
 
-    return ReactDOMServer.renderToString(<Page app={appStr} styles={sheets.toString()} />)
+    const cssminifier = new CleanCss()
+    const styles = cssminifier.minify(sheets.toString()).styles
+
+    return ReactDOMServer.renderToString(<Page app={appStr} styles={styles} />)
 }

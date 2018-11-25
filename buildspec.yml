@@ -11,8 +11,8 @@ phases:
       - yarn --version
       - npm --version
       - node --version
-      - chmod +x ./scripts/codebuild.sh
-      - ./scripts/codebuild.sh
+      - yarn install
+      - yarn run-script ./scripts/codebuild.ts
 artifacts:
   files:
     - '**/*'
