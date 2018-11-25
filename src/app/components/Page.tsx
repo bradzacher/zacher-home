@@ -20,6 +20,21 @@ ga('create', 'UA-44247259-1', 'auto');
 ga('send', 'pageview');
 `
 
+// uninstall the old service worker because it can respond with the old version
+const UNREGISTER_SERVICE_WORKER = `
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        registrations.forEach(function(registration) {
+            registration.unregister()
+        })
+        // be a bit janky, but force a refresh so the actual latest page is shown
+        if (registrations.length) {
+            window.location.reload()
+        }
+    })
+}
+`
+
 interface Props {
     /**
      * The raw HTML of the app
@@ -64,6 +79,7 @@ const Page : React.FunctionComponent<Props> = React.memo(({ app, styles }) => (
         <body>
             <div id={APP_ROOT_ID} dangerouslySetInnerHTML={{ __html: app }} />
             <script type='text/javascript' dangerouslySetInnerHTML={{ __html: GOOGLE_TRACKING_SCRIPT }} />
+            <script type='text/javascript' dangerouslySetInnerHTML={{ __html: UNREGISTER_SERVICE_WORKER }} />
         </body>
     </html>
 ))
