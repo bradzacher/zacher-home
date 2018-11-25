@@ -7,6 +7,8 @@ async function clean() {
     await cleanDir('dist')
     await cleanDir('.cache')
     await cleanDir('build')
+
+    console.info('Cleaned build artefacts')
 }
 
 export default clean

@@ -8,6 +8,8 @@ async function copyAssets() {
     const src = path.resolve(__dirname, '../src/assets', '**/*')
     const dest = path.resolve(__dirname, '../build')
     await copy(src, dest)
+
+    console.info('Copied assets to build folder')
 }
 
 export default copyAssets

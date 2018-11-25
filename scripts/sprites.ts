@@ -19,6 +19,7 @@ const images = globby.sync(`${path.resolve(__dirname, '../src/sprites/')}/**/*.p
 
 function sprites() {
     const destinationFolder = createGeneratedFolder()
+    console.info('Generating spritesheet...')
 
     return new Promise((resolve, reject) => {
         Spritesmith.run(
@@ -104,6 +105,7 @@ function sprites() {
                 /* eslint-enable no-template-curly-in-string */
 
                 fs.writeFileSync(path.resolve(destinationFolder, 'Sprite.tsx'), lines.join('\n'), 'utf8')
+                console.info('Generated new Sprite.tsx')
 
                 return resolve()
             },

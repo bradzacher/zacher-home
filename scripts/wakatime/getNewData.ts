@@ -27,6 +27,8 @@ async function getNewData(lastDateStr : string) {
     now.setDate(now.getDate() - 1)
     const rangeEnd = now.toISOString().substring(0, DATE_STR_FORMAT.length)
 
+    console.info('Fetching Wakatime data between', rangeStart, 'and', rangeEnd, '...')
+
     // fetch the new dataset
     const apiKey = await getKey('WAKATIME_KEY')
     const url = `${API_URL_BASE}?api_key=${apiKey}&start=${rangeStart}&end=${rangeEnd}`
@@ -50,6 +52,8 @@ async function getNewData(lastDateStr : string) {
         },
         {} as Record<string, number>,
     )
+
+    console.info('Fetched Wakatime data')
 
     return {
         data: languages,

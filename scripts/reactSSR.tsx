@@ -17,5 +17,9 @@ export default function render() {
     const cssminifier = new CleanCss()
     const styles = cssminifier.minify(sheets.toString()).styles
 
-    return ReactDOMServer.renderToString(<Page app={appStr} styles={styles} />)
+    const fullPageStr = ReactDOMServer.renderToString(<Page app={appStr} styles={styles} />)
+
+    console.info('Finished Full Page SSR')
+
+    return fullPageStr
 }

@@ -17,6 +17,8 @@ async function getParameterFromSSM(key : string) {
         throw new Error(`Unable to get ${key} from parameter store`)
     }
 
+    console.info('Fetchde', key, 'from SSM')
+
     return parameter.Parameter.Value
 }
 

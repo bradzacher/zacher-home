@@ -52,6 +52,7 @@ function indent(lines : string[], size : number) {
 
 async function github() {
     const outFolder = createGeneratedFolder()
+    console.info('Fetching github contributions graph...')
 
     // fetch the contribution graph
     const response = await fetch('https://github.com/users/bradzacher/contributions', {
@@ -135,6 +136,8 @@ async function github() {
     ]
 
     fs.writeFileSync(path.resolve(outFolder, 'GithubCalendar.tsx'), lines.join('\n'), 'utf8')
+
+    console.info('Generated new GithubCalendar.tsx')
 }
 
 export default github

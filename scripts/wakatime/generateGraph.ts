@@ -47,6 +47,8 @@ async function generateGraph() {
 
     const dest = createGeneratedFolder()
     fs.writeFileSync(path.resolve(dest, 'WakatimeData.ts'), lines.join('\n'))
+
+    console.info('Generated new WakatimeData.ts')
 }
 
 export default generateGraph

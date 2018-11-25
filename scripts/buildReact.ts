@@ -8,6 +8,8 @@ function build() {
     const buildFolder = createBuildFolder()
     const html = SSR()
     fs.writeFileSync(path.resolve(buildFolder, 'index.html'), html, 'utf8')
+
+    console.info('Built new index.html')
 }
 
 export default build

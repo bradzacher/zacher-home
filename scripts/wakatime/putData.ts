@@ -18,6 +18,8 @@ async function putData(data : WakatimeDynamoData) {
         console.error(res.$response.error)
         throw new Error('Unable to update wakatime data')
     }
+
+    console.info('Updated Wakatime data in DynamoDB')
 }
 
 export default putData

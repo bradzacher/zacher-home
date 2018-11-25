@@ -27,6 +27,9 @@ async function getWakatimeData() {
         throw new Error('Unable to get stored wakatime data')
     }
 
+    const itemData = item.Item as WakatimeDynamoData
+    console.info('Fetched old Wakatime data updated on', itemData.LastReadEnd)
+
     return item.Item as WakatimeDynamoData
 }
 
