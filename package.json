@@ -1,37 +1,42 @@
 {
   "name": "zacher-home",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Brad Zacher",
   "description": "the landing page of zacher.com.au",
   "license": "UNLICENCED",
   "scripts": {
-    "build": "ts-node ./scripts/buildReact.ts",
-    "clean": "rimraf dist .cache build",
+    "build": "yarn run-script ./scripts/buildReact.ts",
+    "clean": "yarn run-script ./scripts/clean.ts",
     "copy-assets": "cpx ./src/assets/**/* ./build",
     "format-no-write": "prettier-eslint src/**/*.{ts,tsx} scripts/**/*.{ts,tsx} typings/**/*.{ts,tsx} --eslint-config-path=.eslintrc --eslint-ignore --prettier-ignore --eslint-path=node_modules/eslint --config=.prettierrc",
     "format": "yarn format-no-write --write",
     "format-check": "yarn format-no-write --list-different",
     "lint": "eslint src scripts --ext=.ts,.tsx",
     "lint-errors": "yarn lint --quiet",
+    "run-script": "ts-node --files ./scripts/scriptExecutor.ts",
     "prestart": "yarn build",
-    "start": "ts-node --files ./scripts/server.ts"
+    "start": "yarn run-script ./scripts/server.ts"
   },
   "devDependencies": {
     "@types/browser-sync": "^0.0.42",
     "@types/chart.js": "^2.7.40",
     "@types/chokidar": "^1.7.5",
     "@types/classnames": "^2.2.6",
+    "@types/clean-css": "^3.4.30",
+    "@types/cpx": "^1.5.0",
     "@types/globby": "^8.0.0",
     "@types/jsdom": "^12.2.0",
     "@types/react": "^16.7.4",
     "@types/react-dom": "^16.0.9",
     "@types/react-jss": "^8.6.0",
+    "@types/rimraf": "^2.0.2",
     "@types/xml2js": "^0.4.3",
     "aws-sdk": "^2.360.0",
     "browser-sync": "^2.26.3",
     "chart.js": "^2.7.3",
     "chokidar": "^2.0.4",
     "classnames": "^2.2.6",
+    "clean-css": "^4.2.1",
     "cpx": "^1.5.0",
     "eslint-config-assignar-react": "^1.3.1",
     "eslint-import-resolver-typescript": "^1.1.1",
@@ -47,8 +52,5 @@
     "ts-node": "^7.0.1",
     "typescript": "^3.1.6",
     "xml2js": "^0.4.19"
-  },
-  "sw-precache": {
-    "navigateFallback": ""
   }
 }

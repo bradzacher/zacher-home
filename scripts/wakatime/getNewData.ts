@@ -1,6 +1,6 @@
 import 'isomorphic-fetch'
 
-import getKey from './getKey'
+import getKey from '../getParameterFromSSM'
 
 interface WakatimeUserSummaryResponse {
     error ?: string
@@ -28,7 +28,7 @@ async function getNewData(lastDateStr : string) {
     const rangeEnd = now.toISOString().substring(0, DATE_STR_FORMAT.length)
 
     // fetch the new dataset
-    const apiKey = await getKey()
+    const apiKey = await getKey('WAKATIME_KEY')
     const url = `${API_URL_BASE}?api_key=${apiKey}&start=${rangeStart}&end=${rangeEnd}`
 
     const rawResponse = await fetch(url, {

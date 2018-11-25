@@ -50,7 +50,7 @@ function indent(lines : string[], size : number) {
     return lines.map(l => `${spaces}${l}`)
 }
 
-export default async function github() {
+async function github() {
     const outFolder = createGeneratedFolder()
 
     // fetch the contribution graph
@@ -137,7 +137,4 @@ export default async function github() {
     fs.writeFileSync(path.resolve(outFolder, 'GithubCalendar.tsx'), lines.join('\n'), 'utf8')
 }
 
-github().catch((e) => {
-    console.error(e)
-    process.exit(1)
-})
+export default github

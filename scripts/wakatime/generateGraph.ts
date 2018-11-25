@@ -49,4 +49,4 @@ async function generateGraph() {
     fs.writeFileSync(path.resolve(dest, 'WakatimeData.ts'), lines.join('\n'))
 }
 
-generateGraph()
+export default generateGraph
