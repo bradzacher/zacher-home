@@ -5,7 +5,13 @@ import putData from './putData'
 async function update() {
     // get all the data
     const oldData = await getDataFromDynamo()
-    const { data: newData, readEnd } = await getNewData(oldData.LastReadEnd)
+    const newDataRes = await getNewData(oldData.LastReadEnd)
+    if (!newDataRes) {
+        // no new data to update
+        return
+    }
+
+    const { data: newData, readEnd } = newDataRes
 
     // merge the data together
     Object.keys(newData).forEach((l) => {

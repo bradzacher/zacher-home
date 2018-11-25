@@ -18,6 +18,8 @@
         "removeComments": false,
         "resolveJsonModule": true,
         "sourceMap": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
         "target": "es5"
     },
     "include": [

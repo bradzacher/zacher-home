@@ -27,6 +27,12 @@ async function getNewData(lastDateStr : string) {
     now.setDate(now.getDate() - 1)
     const rangeEnd = now.toISOString().substring(0, DATE_STR_FORMAT.length)
 
+    if (rangeEnd < rangeStart) {
+        console.info('Already have data up to today')
+
+        return null
+    }
+
     console.info('Fetching Wakatime data between', rangeStart, 'and', rangeEnd, '...')
 
     // fetch the new dataset
