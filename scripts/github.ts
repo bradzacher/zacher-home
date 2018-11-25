@@ -65,6 +65,10 @@ async function github() {
     const dom = new JSDOM(rawHtml)
     const res = dom.window.document.querySelector('svg.js-calendar-graph-svg')
 
+    if (!res) {
+        throw new Error('Couldn\'t find svg element in github contributions response')
+    }
+
     const rawSvgStr = res.outerHTML
         .split('\n')
         // remove the hidden text elements
@@ -78,15 +82,18 @@ async function github() {
             '<svg width=\'100%\' viewBox=\'0 0 555 90\'>',
             `    <g ${dumpAttributes(parsedSvg.svg.g[0])}>`,
             ...indent(
-                parsedSvg.svg.g[0].g.reduce((acc, g) => {
-                    acc.push(
-                        `<g ${dumpAttributes(g)}>`,
-                        ...indent(g.rect.map(rect => `<rect ${dumpAttributes(rect)} />`), 1),
-                        '</g>',
-                    )
+                parsedSvg.svg.g[0].g.reduce(
+                    (acc, g) => {
+                        acc.push(
+                            `<g ${dumpAttributes(g)}>`,
+                            ...indent(g.rect.map(rect => `<rect ${dumpAttributes(rect)} />`), 1),
+                            '</g>',
+                        )
 
-                    return acc
-                }, []),
+                        return acc
+                    },
+                    [] as string[],
+                ),
                 2,
             ),
             ...indent(parsedSvg.svg.g[0].text.map(text => `<text ${dumpAttributes(text)}>${text._}</text>`), 2),
