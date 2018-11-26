@@ -2,3 +2,5 @@ node_modules
 dist
 build
 .cache
+
+src/assets/service-worker.js
