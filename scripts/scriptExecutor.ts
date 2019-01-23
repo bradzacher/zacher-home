@@ -7,7 +7,7 @@ async function main() {
     }
 
     const scriptPath = pathArg.startsWith('.') ? path.resolve(process.cwd(), pathArg) : pathArg
-    const script : { default: () => Promise<void> } = await import(scriptPath)
+    const script : { default : () => Promise<void> } = await import(scriptPath)
     await script.default()
 }
 

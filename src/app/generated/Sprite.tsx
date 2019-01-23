@@ -4,7 +4,7 @@
  */
 
 import * as classnames from 'classnames'
-import * as fs from 'fs'
+import * as fs from 'fs' // eslint-disable-line import/no-nodejs-modules
 import * as React from 'react'
 import injectSheet, { WithSheet } from 'react-jss'
 import { createStyles } from '../Theme'
@@ -42,49 +42,49 @@ const styles = createStyles(() => ({
         backgroundPosition: '-64px -64px',
     },
 
-    github: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-128px 0px',
-    },
-
-    instagram: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-128px -64px',
-    },
-
-    linkedin: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '0px -128px',
-    },
-
-    medium: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-64px -128px',
-    },
-
-    mysqldump: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '0px 0px',
-    },
-
-    natural20: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-192px 0px',
-    },
-
-    open_demo: {
+    githubSmall: {
         height: '32px',
         width: '32px',
         backgroundPosition: '-160px -192px',
     },
 
-    open_source: {
+    github: {
+        height: '64px',
+        width: '64px',
+        backgroundPosition: '-128px -64px',
+    },
+
+    instagram: {
+        height: '64px',
+        width: '64px',
+        backgroundPosition: '0px -128px',
+    },
+
+    linkedin: {
+        height: '64px',
+        width: '64px',
+        backgroundPosition: '-64px -128px',
+    },
+
+    medium: {
+        height: '64px',
+        width: '64px',
+        backgroundPosition: '0px 0px',
+    },
+
+    mysqldump: {
+        height: '64px',
+        width: '64px',
+        backgroundPosition: '-192px 0px',
+    },
+
+    natural20: {
+        height: '64px',
+        width: '64px',
+        backgroundPosition: '-192px -64px',
+    },
+
+    openExternal: {
         height: '32px',
         width: '32px',
         backgroundPosition: '-128px -192px',
@@ -105,7 +105,7 @@ const styles = createStyles(() => ({
     wakatime: {
         height: '64px',
         width: '64px',
-        backgroundPosition: '-192px -64px',
+        backgroundPosition: '-128px 0px',
     },
 
     youtube: {
@@ -115,20 +115,19 @@ const styles = createStyles(() => ({
     },
 }))
 
-/* eslint-disable-next-line operator-linebreak */
 type SpriteName =
     | 'DefinitelyTyped'
     | 'HonsRecursiveSolverGE'
     | 'assignar'
     | 'eslint'
+    | 'githubSmall'
     | 'github'
     | 'instagram'
     | 'linkedin'
     | 'medium'
     | 'mysqldump'
     | 'natural20'
-    | 'open_demo'
-    | 'open_source'
+    | 'openExternal'
     | 'steam'
     | 'twitter'
     | 'wakatime'

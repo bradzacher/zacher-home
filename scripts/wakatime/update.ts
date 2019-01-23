@@ -14,7 +14,7 @@ async function update() {
     const { data: newData, readEnd } = newDataRes
 
     // merge the data together
-    Object.keys(newData).forEach((l) => {
+    Object.keys(newData).forEach(l => {
         const seconds = oldData.Seconds[l] || 0
         oldData.Seconds[l] = seconds + newData[l]
     })

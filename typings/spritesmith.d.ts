@@ -16,12 +16,12 @@ declare module 'spritesmith' {
         }
     }
     interface Opts {
-        src : string[]
+        src : Array<string>
         layout : string
     }
 
     interface Runner {
-        run(opts : Opts, cb : (err: Error | null, result: Result) => void) : void
+        run(opts : Opts, cb : (err : Error | null, result : Result) => void) : void
     }
 
     const exprt : Runner

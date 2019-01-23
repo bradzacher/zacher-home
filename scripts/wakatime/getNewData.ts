@@ -8,7 +8,7 @@ interface WakatimeUserSummaryResponse {
     data : Array<{
         languages : Array<{
             name : string
-            total_seconds : number // eslint-disable-line camelcase
+            total_seconds : number
         }>
     }>
 }
@@ -50,14 +50,11 @@ async function getNewData(lastDateStr : string) {
     }
 
     // consolidate the data
-    const languages = jsonResponse.data[0].languages.reduce(
-        (acc, language) => {
-            acc[language.name] = language.total_seconds
+    const languages = jsonResponse.data[0].languages.reduce<Record<string, number>>((acc, language) => {
+        acc[language.name] = language.total_seconds
 
-            return acc
-        },
-        {} as Record<string, number>,
-    )
+        return acc
+    }, {})
 
     console.info('Fetched Wakatime data')
 

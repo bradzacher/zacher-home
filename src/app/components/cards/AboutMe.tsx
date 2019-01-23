@@ -19,23 +19,23 @@ const styles = createStyles(() => ({
 
 type Props = WithSheet<typeof styles>
 
-const lines : React.ReactNode[] = [
+const lines : Array<React.ReactNode> = [
     'I am a computer scientist. I am a lover of cider. I am from Adelaide, Australia.',
     'I graduated with honours in Computer Science from the University of Adelaide.',
     'I am a Software Engineer at Facebook in Menlo Park.',
     'I am always looking for new things to learn. Currently digging deep into TypeScript, linting, Node and GraphQL.',
     'I pride myself on being able to work with many technologies.',
     'Proficient in many languages; namely TypeScript/JavaScript, PHP, SQL, C#, and C/C++.',
-    <React.Fragment>
+    <>
         You can read more about me and my history in{' '}
         <a href='/Brad_Zacher_Resume_2018.pdf' rel='nofollow' id='resume-link'>
             my resume
         </a>
         .
-    </React.Fragment>,
-    <React.Fragment>
+    </>,
+    <>
         You can contact me via any of the networks below, or by gmail - bradzacher <a href='/bradzacher.txt'>GPG</a>.
-    </React.Fragment>,
+    </>,
 ]
 
 const AboutMe : React.FunctionComponent<Props> = ({ classes }) => (

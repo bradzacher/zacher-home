@@ -8,6 +8,7 @@ export { default as STRUCTURED } from './structured'
 export const META = {
     facebook: {
         admins: constants.FB_PROFILE_ID,
+        // eslint-disable-next-line @typescript-eslint/camelcase
         profile_id: constants.FB_PROFILE_ID,
     },
     keywords: [

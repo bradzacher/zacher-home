@@ -36,8 +36,8 @@ function sprites() {
                 fs.writeFileSync(spritePath, result.image)
 
                 // add the coordinates for the social links
-                const coordinates : (Coordinates & { name: string })[] = []
-                Object.keys(result.coordinates).forEach((k) => {
+                const coordinates : Array<Coordinates & { name : string }> = []
+                Object.keys(result.coordinates).forEach(k => {
                     const name = k.replace(assetFolder, '').replace('.png', '')
                     if (name.startsWith('around_the_web')) {
                         return
@@ -50,6 +50,11 @@ function sprites() {
                     )
                 })
 
+                // fix up any kebab casing to be camel case
+                coordinates.forEach(sprite => {
+                    sprite.name = sprite.name.replace(/(-\w)/g, m => m[1].toUpperCase())
+                })
+
                 // build the typescript file
                 /* eslint-disable no-template-curly-in-string */
                 const lines = [
@@ -59,7 +64,7 @@ function sprites() {
                     ' */',
                     '',
                     'import * as classnames from \'classnames\'',
-                    'import * as fs from \'fs\'',
+                    'import * as fs from \'fs\' // eslint-disable-line import/no-nodejs-modules',
                     'import * as React from \'react\'',
                     'import injectSheet, { WithSheet } from \'react-jss\'',
                     'import { createStyles } from \'../Theme\'',
@@ -83,7 +88,6 @@ function sprites() {
                         ].join('\n')),
                     '}))',
                     '',
-                    '/* eslint-disable-next-line operator-linebreak */',
                     'type SpriteName =',
                     ...coordinates.map(sprite => `    | '${sprite.name}'`),
                     '',

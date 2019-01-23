@@ -6,10 +6,10 @@ import Theme from '../Theme'
 
 const App : React.FunctionComponent = () => (
     <Theme>
-        <React.Fragment>
+        <>
             <AppBar />
             <Content />
-        </React.Fragment>
+        </>
     </Theme>
 )
 

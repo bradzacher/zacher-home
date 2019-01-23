@@ -13,16 +13,13 @@ async function generateGraph() {
     const totalSeconds = Object.keys(data.Seconds).reduce((acc, k) => acc + data.Seconds[k], 0)
     const secondsThreshold = totalSeconds * THRESHOLD_PERCENTAGE
 
-    const languages = Object.keys(data.Seconds).reduce(
-        (acc, k) => {
-            if (data.Seconds[k] > secondsThreshold) {
-                acc[k] = data.Seconds[k]
-            }
+    const languages = Object.keys(data.Seconds).reduce<Record<string, number>>((acc, k) => {
+        if (data.Seconds[k] > secondsThreshold) {
+            acc[k] = data.Seconds[k]
+        }
 
-            return acc
-        },
-        {} as Record<string, number>,
-    )
+        return acc
+    }, {})
 
     const totalSecondsAboveThreshold = Object.keys(languages).reduce((acc, k) => acc + languages[k], 0)
 

@@ -48,7 +48,7 @@ const ProjectCard : React.FunctionComponent<Props & WithSheet<typeof styles>> = 
                     rel='noopener'
                     title='Open the project source on Github'
                 >
-                    <Sprite name='open_source' />
+                    <Sprite name='githubSmall' />
                 </a>
             )}
             {project.demo && (
@@ -59,7 +59,7 @@ const ProjectCard : React.FunctionComponent<Props & WithSheet<typeof styles>> = 
                     rel='noopener'
                     title='Open a demo of the project'
                 >
-                    <Sprite name='open_demo' />
+                    <Sprite name='openExternal' />
                 </a>
             )}
         </CardFooter>

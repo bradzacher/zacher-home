@@ -2,9 +2,7 @@ import build from './buildReact'
 import copyAssets from './copyAssets'
 import clean from './clean'
 import deploy from './deploy'
-import github from './github'
-import sprites from './sprites'
-import generateGraph from './wakatime/generateGraph'
+import generate from './generate'
 import updateWakatime from './wakatime/update'
 
 async function main() {
@@ -13,8 +11,7 @@ async function main() {
     await clean()
 
     // "prebuild" step
-    // we don't care about the order they run or finish in
-    await Promise.all([github(), sprites(), generateGraph()])
+    await generate()
 
     // "build" step
     await build()

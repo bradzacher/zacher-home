@@ -3,7 +3,7 @@ import * as React from 'react'
 import { APP_ROOT_ID, GOOGLE_SITE_VERIFICATION, HOST, META, STRUCTURED, TAGLINE, THEME_COLOUR } from '../config'
 
 function mapMeta(meta : Record<string, string>, prefix : string) {
-    return Object.keys(meta).map((key) => {
+    return Object.keys(meta).map(key => {
         const metaKey = `${prefix}:${key}`
 
         return <meta key={metaKey} property={metaKey} content={meta[key]} />

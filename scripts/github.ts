@@ -31,8 +31,8 @@ const parseStringAsync = promisify(parseString) as (xml : string) => Promise<Par
 const attributeNameMap : Record<string, string> = {
     'text-anchor': 'textAnchor',
 }
-function dumpAttributes(obj : { $: Record<string, string> }) {
-    const attrString = Object.keys(obj.$).map((k) => {
+function dumpAttributes(obj : { $ : Record<string, string> }) {
+    const attrString = Object.keys(obj.$).map(k => {
         if (k === 'class') {
             return `className={classes.${obj.$[k]}}`
         }
@@ -42,7 +42,7 @@ function dumpAttributes(obj : { $: Record<string, string> }) {
 
     return attrString.join(' ')
 }
-function indent(lines : string[], size : number) {
+function indent(lines : Array<string>, size : number) {
     const spaces = Array(size * 4)
         .fill(' ')
         .join('')
@@ -92,7 +92,7 @@ async function github() {
 
                         return acc
                     },
-                    [] as string[],
+                    [] as Array<string>,
                 ),
                 2,
             ),
