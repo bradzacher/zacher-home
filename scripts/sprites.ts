@@ -14,10 +14,9 @@ interface Coordinates {
 
 const assetFolder = `${path.resolve(__dirname, '../src/sprites/')}/`
 
-// Generate our spritesheet
-const images = globby.sync(`${path.resolve(__dirname, '../src/sprites/')}/**/*.png`)
-
 function sprites() {
+    const images = globby.sync(`${path.resolve(__dirname, '../src/sprites/')}/**/*.png`)
+
     const spriteImageDestinationFolder = createBuildFolder()
     const spriteCodeDestinationFolder = createGeneratedFolder()
     console.info('Generating spritesheet...')

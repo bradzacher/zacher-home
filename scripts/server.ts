@@ -5,6 +5,7 @@ import * as path from 'path'
 
 const scriptsFolder = path.resolve(__dirname)
 const srcFolder = path.resolve(__dirname, '..', 'src/app')
+const spritesFolder = path.resolve(__dirname, '..', 'src/sprites')
 
 const scriptFileToCommandMap : Record<string, Array<string>> = {
     '/reactSSR.tsx': [],
@@ -41,8 +42,8 @@ function createServer() {
 
     // rebuild on script change
     const scriptsWatcher = chokidar.watch(scriptsFolder)
-    function onScriptChange(fullFfilename : string) {
-        const filename = fullFfilename.replace(scriptsFolder, '')
+    function onScriptChange(fullFilename : string) {
+        const filename = fullFilename.replace(scriptsFolder, '')
         const scriptsToRun = scriptFileToCommandMap[filename]
         if (!scriptsToRun) {
             return
@@ -60,6 +61,23 @@ function createServer() {
         }
     }
     scriptsWatcher.on('change', onScriptChange)
+
+    // rebuild on sprite change
+    const spritesWatcher = chokidar.watch(spritesFolder)
+    function onSpriteChange(fullFilename : string) {
+        const filename = fullFilename.replace(spritesFolder, '')
+
+        console.info('[sprite][changed]:', filename)
+        try {
+            // use exec to run the build
+            execSync(`yarn run-script ${scriptsFolder}/sprites.ts`)
+            execSync(`yarn run-script ${scriptsFolder}/buildReact.ts`)
+            server.reload(filename)
+        } catch (e) {
+            console.error(e.message)
+        }
+    }
+    spritesWatcher.on('change', onSpriteChange)
 }
 
 export default createServer
