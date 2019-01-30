@@ -4,16 +4,13 @@
  */
 
 import * as classnames from 'classnames'
-import * as fs from 'fs' // eslint-disable-line import/no-nodejs-modules
 import * as React from 'react'
 import injectSheet, { WithSheet } from 'react-jss'
 import { createStyles } from '../Theme'
 
-const base64Spritesheet = fs.readFileSync(`${__dirname}/sprites.png`).toString('base64')
-
 const styles = createStyles(() => ({
     sprite: {
-        backgroundImage: `url(data:image/png;base64,${base64Spritesheet})`,
+        backgroundImage: 'url(sprites.png)',
         backgroundRepeat: 'no-repeat',
         display: 'inline-block',
     },

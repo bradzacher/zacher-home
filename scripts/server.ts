@@ -6,6 +6,12 @@ import * as path from 'path'
 const scriptsFolder = path.resolve(__dirname)
 const srcFolder = path.resolve(__dirname, '..', 'src/app')
 
+const scriptFileToCommandMap : Record<string, Array<string>> = {
+    '/reactSSR.tsx': [],
+    '/sprites.ts': ['/sprites.ts'],
+    '/github.ts': ['/github.ts'],
+}
+
 function createServer() {
     const server = browserSync.create('zacher-home-ssr')
     server.init({
@@ -23,11 +29,11 @@ function createServer() {
             console.info(`[src][${event}]:`, filename.replace(srcFolder, ''))
             try {
                 // use exec to run the build so it's always the latest code
-                execSync(`yarn ts-node ${scriptsFolder}/buildReact.ts`)
+                execSync(`yarn run-script ${scriptsFolder}/buildReact.ts`)
+                server.reload(filename)
             } catch (e) {
                 console.error(e.message)
             }
-            server.reload(filename)
         }
     }
     srcWatcher.on('add', onSourceChange('add'))
@@ -37,10 +43,18 @@ function createServer() {
     const scriptsWatcher = chokidar.watch(scriptsFolder)
     function onScriptChange(fullFfilename : string) {
         const filename = fullFfilename.replace(scriptsFolder, '')
+        const scriptsToRun = scriptFileToCommandMap[filename]
+        if (!scriptsToRun) {
+            return
+        }
+
         console.info('[script][changed]:', filename)
         try {
-            // use exec to run the script
-            execSync(`yarn ts-node --files ${scriptsFolder}/${filename}`)
+            // use exec to run the scripts one by one
+            scriptsToRun.forEach(script => execSync(`yarn run-script ${scriptsFolder + script}`))
+            // finally, run a fresh build
+            execSync(`yarn run-script ${scriptsFolder}/buildReact.ts`)
+            server.reload(filename)
         } catch (e) {
             console.error(e.message)
         }

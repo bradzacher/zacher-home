@@ -6,18 +6,18 @@
 export default [
     {
         name: 'TypeScript',
-        percent: 0.7622548127661123,
+        percent: 0.6850817537259442,
     },
     {
         name: 'JavaScript',
-        percent: 0.05738927908584737,
+        percent: 0.13618868470554188,
     },
     {
         name: 'JSON',
-        percent: 0.0736198551621238,
+        percent: 0.09202720300969469,
     },
     {
         name: 'Other',
-        percent: 0.10673605298591651,
+        percent: 0.08670235855881928,
     },
 ]

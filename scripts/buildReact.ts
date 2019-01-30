@@ -10,6 +10,11 @@ function build() {
     fs.writeFileSync(path.resolve(buildFolder, 'index.html'), html, 'utf8')
 
     console.info('Built new index.html')
+
+    const ampHtml = SSR(true)
+    fs.writeFileSync(path.resolve(buildFolder, 'index.amp.html'), ampHtml, 'utf8')
+
+    console.info('Built new index.amp.html')
 }
 
 export default build

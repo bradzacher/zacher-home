@@ -3,7 +3,7 @@ import * as globby from 'globby'
 import * as path from 'path'
 import * as Spritesmith from 'spritesmith'
 
-import { createGeneratedFolder } from './createBuildFolder'
+import { createBuildFolder, createGeneratedFolder } from './createBuildFolder'
 
 interface Coordinates {
     x : number
@@ -18,7 +18,8 @@ const assetFolder = `${path.resolve(__dirname, '../src/sprites/')}/`
 const images = globby.sync(`${path.resolve(__dirname, '../src/sprites/')}/**/*.png`)
 
 function sprites() {
-    const destinationFolder = createGeneratedFolder()
+    const spriteImageDestinationFolder = createBuildFolder()
+    const spriteCodeDestinationFolder = createGeneratedFolder()
     console.info('Generating spritesheet...')
 
     return new Promise((resolve, reject) => {
@@ -32,7 +33,7 @@ function sprites() {
                     return reject(err)
                 }
 
-                const spritePath = path.resolve(destinationFolder, 'sprites.png')
+                const spritePath = path.resolve(spriteImageDestinationFolder, 'sprites.png')
                 fs.writeFileSync(spritePath, result.image)
 
                 // add the coordinates for the social links
@@ -56,7 +57,6 @@ function sprites() {
                 })
 
                 // build the typescript file
-                /* eslint-disable no-template-curly-in-string */
                 const lines = [
                     '/**',
                     ' * THIS FILE HAS BEEN AUTOMATICALLY GENERATED!',
@@ -64,16 +64,13 @@ function sprites() {
                     ' */',
                     '',
                     'import * as classnames from \'classnames\'',
-                    'import * as fs from \'fs\' // eslint-disable-line import/no-nodejs-modules',
                     'import * as React from \'react\'',
                     'import injectSheet, { WithSheet } from \'react-jss\'',
                     'import { createStyles } from \'../Theme\'',
                     '',
-                    'const base64Spritesheet = fs.readFileSync(`${__dirname}/sprites.png`).toString(\'base64\')',
-                    '',
                     'const styles = createStyles(() => ({',
                     '    sprite: {',
-                    '        backgroundImage: `url(data:image/png;base64,${base64Spritesheet})`,',
+                    '        backgroundImage: \'url(sprites.png)\',',
                     '        backgroundRepeat: \'no-repeat\',',
                     '        display: \'inline-block\',',
                     '    },',
@@ -106,9 +103,8 @@ function sprites() {
                     '}',
                     '',
                 ]
-                /* eslint-enable no-template-curly-in-string */
 
-                fs.writeFileSync(path.resolve(destinationFolder, 'Sprite.tsx'), lines.join('\n'), 'utf8')
+                fs.writeFileSync(path.resolve(spriteCodeDestinationFolder, 'Sprite.tsx'), lines.join('\n'), 'utf8')
                 console.info('Generated new Sprite.tsx')
 
                 return resolve()

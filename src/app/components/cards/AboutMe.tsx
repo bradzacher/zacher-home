@@ -8,7 +8,7 @@ const styles = createStyles(() => ({
     picture: {
         borderRadius: '10%',
         float: 'left' as 'left',
-        paddingRight: '1rem',
+        marginRight: '1rem',
     },
     line: {
         lineHeight: '3rem',
@@ -45,6 +45,8 @@ const AboutMe : React.FunctionComponent<Props> = ({ classes }) => (
             <img
                 alt='A picture of my ugly mug'
                 className={classes.picture}
+                height={200}
+                width={200}
                 src='https://en.gravatar.com/userimage/88111926/67c389d0ebb48c35829460f965f820a9.png?size=200'
             />
             {lines.map((l, i) => (
