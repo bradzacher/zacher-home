@@ -1,4 +1,4 @@
-import build from './buildReact'
+import { execSync } from 'child_process'
 import copyAssets from './copyAssets'
 import clean from './clean'
 import deploy from './deploy'
@@ -14,7 +14,8 @@ async function main() {
     await generate()
 
     // "build" step
-    await build()
+    // run it via the command line so it's import is separate from our run
+    execSync('yarn build', { stdio: 'inherit' })
     await copyAssets()
 
     // "postbuild" step
