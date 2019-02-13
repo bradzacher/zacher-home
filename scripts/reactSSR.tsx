@@ -33,7 +33,7 @@ export default function render(isAmp = false) {
 
     const fullPageStr = renderToString(appStr, styles, isAmp)
 
-    console.info('Finished Full Page SSR')
+    console.info(`Finished Full Page${isAmp ? ' AMP' : ''} SSR`)
 
     return ['<!DOCTYPE html>', fullPageStr].join('\n')
 }

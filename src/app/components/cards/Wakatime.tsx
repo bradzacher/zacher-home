@@ -13,7 +13,7 @@ enum LargeArcFlag {
 
 const SVG_SCALE = 150
 const TEXT_OFFSET = 0.15 * SVG_SCALE
-const GRAPH_VIEWBOX_MODIFIER = SVG_SCALE + TEXT_OFFSET
+const GRAPH_VIEWBOX_MODIFIER = SVG_SCALE + TEXT_OFFSET + 10
 const ANGLE_OFFSET = -0.25 // 25% = 90degrees
 
 const styles = createStyles(theme => ({

@@ -29,7 +29,7 @@ type Props = WithSheet<typeof styles>
 
 const GithubCalendar : React.FunctionComponent<Props> = ({ classes }) => (
     <svg width='100%' viewBox='0 0 555 90'>
-        <g transform='translate(16, 20)' data-hydro-click='{"event_type":"user_profile.click","payload":{"profile_user_id":7462525,"target":"CONTRIBUTION_CALENDAR_SQUARE","user_id":null,"client_id":null,"originating_request_id":"A77D:0AB4:EC107:1ACF6D:5C638D42","originating_url":"https://github.com/users/bradzacher/contributions"}}' data-hydro-click-hmac='7586ca2dc4fee134557902df077fe095c5c1480795c3bfce9eeb389194d94a14'>
+        <g transform='translate(16, 20)' data-hydro-click='{"event_type":"user_profile.click","payload":{"profile_user_id":7462525,"target":"CONTRIBUTION_CALENDAR_SQUARE","user_id":null,"client_id":null,"originating_request_id":"AB24:34FA:DD40D:19472B:5C638F92","originating_url":"https://github.com/users/bradzacher/contributions"}}' data-hydro-click-hmac='d309af83cfb6196f1c6f8767d8721fdcf3324e4c23860d727d15602d5c04112d'>
             <g transform='translate(0, 0)'>
                 <rect className={classes.day} width='8' height='8' x='11' y='0' fill='#ebedf0' data-count='0' data-date='2018-02-11' />
                 <rect className={classes.day} width='8' height='8' x='11' y='10' fill='#c6e48b' data-count='7' data-date='2018-02-12' />
@@ -501,7 +501,7 @@ const GithubCalendar : React.FunctionComponent<Props> = ({ classes }) => (
             <g transform='translate(572, 0)'>
                 <rect className={classes.day} width='8' height='8' x='-41' y='0' fill='#c6e48b' data-count='1' data-date='2019-02-10' />
                 <rect className={classes.day} width='8' height='8' x='-41' y='10' fill='#7bc96f' data-count='10' data-date='2019-02-11' />
-                <rect className={classes.day} width='8' height='8' x='-41' y='20' fill='#c6e48b' data-count='6' data-date='2019-02-12' />
+                <rect className={classes.day} width='8' height='8' x='-41' y='20' fill='#c6e48b' data-count='7' data-date='2019-02-12' />
                 <rect className={classes.day} width='8' height='8' x='-41' y='30' fill='#ebedf0' data-count='0' data-date='2019-02-13' />
             </g>
             <text x='11' y='-8' className={classes.month}>Feb</text>
