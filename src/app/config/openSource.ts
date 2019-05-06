@@ -19,6 +19,7 @@ const OPEN_SOURCE : ReadonlyArray<Project> = [
         name: 'eslint-config-brad',
         description: 'My ESlint configuration for typescript projects.',
         source: 'https://github.com/bradzacher/eslint-config-brad',
+        demo: 'https://www.npmjs.com/package/eslint-config-brad',
     },
     {
         spriteName: 'mysqldump',

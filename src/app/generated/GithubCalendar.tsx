@@ -29,7 +29,7 @@ type Props = WithSheet<typeof styles>
 
 const GithubCalendar = injectSheet(styles)(({ classes } : Props) => (
     <svg width='100%' viewBox='0 0 555 90'>
-        <g transform='translate(16, 20)' data-hydro-click='{"event_type":"user_profile.click","payload":{"profile_user_id":7462525,"target":"CONTRIBUTION_CALENDAR_SQUARE","user_id":null,"client_id":null,"originating_request_id":"6428:5D5B:1898BF4:289320A:5CD071F9","originating_url":"https://github.com/users/bradzacher/contributions","referrer":null}}' data-hydro-click-hmac='c2e5cdd5e3d6f4b8db76a2ac5938000682d21d5996c26999d90af089fa4a0a77'>
+        <g transform='translate(16, 20)' data-hydro-click='{"event_type":"user_profile.click","payload":{"profile_user_id":7462525,"target":"CONTRIBUTION_CALENDAR_SQUARE","user_id":null,"client_id":null,"originating_request_id":"7DFE:1AFB:DB61EE:18575EB:5CD072C9","originating_url":"https://github.com/users/bradzacher/contributions","referrer":null}}' data-hydro-click-hmac='f342516b4fd574ae556f3184e9ba2fc153d4c6806531fbf74a8d959666081481'>
             <g transform='translate(0, 0)'>
                 <rect className={classes.day} width='8' height='8' x='11' y='0' fill='#c6e48b' data-count='5' data-date='2018-05-06' />
                 <rect className={classes.day} width='8' height='8' x='11' y='10' fill='#7bc96f' data-count='17' data-date='2018-05-07' />
