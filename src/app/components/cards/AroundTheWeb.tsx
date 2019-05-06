@@ -1,11 +1,11 @@
-import * as React from 'react'
+import React from 'react'
 import injectSheet, { WithSheet } from 'react-jss'
 
 import { SOCIAL } from '../../config'
-import Sprite from '../../generated/Sprite'
+import { Sprite } from '../../generated/Sprite'
 import { createStyles } from '../../Theme'
 import { Card, CardTitle, CardContent } from '../Card'
-import MeLink from '../MeLink'
+import { MeLink } from '../MeLink'
 
 const styles = createStyles(() => ({
     container: {
@@ -24,7 +24,7 @@ const styles = createStyles(() => ({
 
 type Props = WithSheet<typeof styles>
 
-const AroundTheWeb : React.FunctionComponent<Props> = ({ classes }) => (
+const AroundTheWeb = injectSheet(styles)(({ classes } : Props) => (
     <Card>
         <CardTitle>Around the Web</CardTitle>
         <CardContent>
@@ -42,6 +42,6 @@ const AroundTheWeb : React.FunctionComponent<Props> = ({ classes }) => (
             </div>
         </CardContent>
     </Card>
-)
+))
 
-export default injectSheet(styles)(AroundTheWeb)
+export { AroundTheWeb }

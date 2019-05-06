@@ -3,28 +3,30 @@ import React from 'react'
 import injectStylesheet, { WithSheet } from 'react-jss'
 import { createStyles } from '../../Theme'
 
-const styles = createStyles(theme => ({
+const styles = createStyles(() => ({
     container: {
-        backgroundColor: theme.palette.grey,
+        borderRadius: '2px',
+        // taken from mdl
+        boxShadow:
+            '0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)',
         display: 'flex',
-        fontSize: '3rem',
-        fontWeight: 300,
-        padding: '2rem',
-        flexDirection: 'row' as 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
+        flexDirection: 'column' as 'column',
+        marginBottom: '2rem',
+        overflow: 'hidden',
     },
 }))
+
 type Props = WithSheet<typeof styles> &
     React.WithChildren & {
         className ?: string
     }
-const CardFooter = injectStylesheet(styles)(
-    ({ children, className, classes } : Props) => (
+
+const Card = injectStylesheet(styles)(
+    ({ className, classes, children } : Props) => (
         <div className={classnames(className, classes.container)}>
             {children}
         </div>
     ),
 )
 
-export { CardFooter }
+export { Card }

@@ -2,7 +2,7 @@ import { DynamoDB } from 'aws-sdk'
 
 import { WakatimeDynamoData } from './getDataFromDynamo'
 
-async function putData(data : WakatimeDynamoData) {
+async function putData(data : WakatimeDynamoData) : Promise<void> {
     const dynamo = new DynamoDB.DocumentClient({
         region: 'ap-southeast-2',
     })

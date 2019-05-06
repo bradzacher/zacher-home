@@ -1,6 +1,9 @@
-import * as React from 'react'
+import React from 'react'
 
-type Props = React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
+type Props = React.DetailedHTMLProps<
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+>
 
 const MeLink : React.FunctionComponent<Props> = props => (
     <a {...props} target='_blank' rel='me noopener'>
@@ -8,4 +11,4 @@ const MeLink : React.FunctionComponent<Props> = props => (
     </a>
 )
 
-export default MeLink
+export { MeLink }

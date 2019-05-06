@@ -1,8 +1,8 @@
-import * as React from 'react'
+import React from 'react'
 import injectSheet, { WithSheet } from 'react-jss'
 
 import { SOCIAL } from '../../config'
-import WakatimeData from '../../generated/WakatimeData'
+import { WakatimeData } from '../../generated/WakatimeData'
 import { createStyles } from '../../Theme'
 import { Card, CardTitle, CardContent } from '../Card'
 
@@ -44,12 +44,12 @@ const COLOURS = [
     '#c51b7d',
     '#8e0152',
 ]
-const Move = (x : number, y : number) => `M${x},${y}`
-const Line = (x : number, y : number) => `L${x},${y}`
-const Arc = (x : number, y : number, arcFlag : LargeArcFlag) =>
+const Move = (x : number, y : number) : string => `M${x},${y}`
+const Line = (x : number, y : number) : string => `L${x},${y}`
+const Arc = (x : number, y : number, arcFlag : LargeArcFlag) : string =>
     `A${1 * SVG_SCALE},${1 * SVG_SCALE},0,${arcFlag},1,${x},${y}`
 
-const Wakatime : React.FunctionComponent<Props> = ({ classes }) => {
+const Wakatime = injectSheet(styles)(({ classes } : Props) => {
     const sectors = React.useMemo(() => {
         // geometry-wise 0degrees is at (1, 0)
         // we can css rotate the entire graph, or just start our math at the top instead
@@ -65,8 +65,10 @@ const Wakatime : React.FunctionComponent<Props> = ({ classes }) => {
             const arcY = Math.sin(2 * Math.PI * endAngle) * SVG_SCALE
 
             const labelAngle = cumulativeAngle + d.percent / 2
-            const labelX = Math.cos(2 * Math.PI * labelAngle) * (SVG_SCALE + TEXT_OFFSET)
-            const labelY = Math.sin(2 * Math.PI * labelAngle) * (SVG_SCALE + TEXT_OFFSET)
+            const labelX =
+                Math.cos(2 * Math.PI * labelAngle) * (SVG_SCALE + TEXT_OFFSET)
+            const labelY =
+                Math.sin(2 * Math.PI * labelAngle) * (SVG_SCALE + TEXT_OFFSET)
 
             const path = (
                 <path
@@ -82,7 +84,9 @@ const Wakatime : React.FunctionComponent<Props> = ({ classes }) => {
                             arcX,
                             arcY,
                             // if the slice takes more than 50%, we want the large arc
-                            d.percent > 0.5 ? LargeArcFlag.LargeArc : LargeArcFlag.SmallArc,
+                            d.percent > 0.5
+                                ? LargeArcFlag.LargeArc
+                                : LargeArcFlag.SmallArc,
                         ),
                         // Line back to the center
                         Line(0, 0),
@@ -123,8 +127,10 @@ const Wakatime : React.FunctionComponent<Props> = ({ classes }) => {
             <CardContent>
                 <div className={classes.container}>
                     <svg
-                        viewBox={`${-1 * GRAPH_VIEWBOX_MODIFIER} ${-1 * GRAPH_VIEWBOX_MODIFIER} ${2
-                            * GRAPH_VIEWBOX_MODIFIER} ${2 * GRAPH_VIEWBOX_MODIFIER}`}
+                        viewBox={`${-1 * GRAPH_VIEWBOX_MODIFIER} ${-1
+                            * GRAPH_VIEWBOX_MODIFIER} ${2
+                            * GRAPH_VIEWBOX_MODIFIER} ${2
+                            * GRAPH_VIEWBOX_MODIFIER}`}
                         className={classes.graph}
                     >
                         {sectors}
@@ -136,6 +142,6 @@ const Wakatime : React.FunctionComponent<Props> = ({ classes }) => {
             </CardContent>
         </Card>
     )
-}
+})
 
-export default injectSheet(styles)(Wakatime)
+export { Wakatime }

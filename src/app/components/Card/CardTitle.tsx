@@ -1,5 +1,5 @@
-import * as classnames from 'classnames'
-import * as React from 'react'
+import classnames from 'classnames'
+import React from 'react'
 import injectStylesheet, { WithSheet } from 'react-jss'
 import { createStyles } from '../../Theme'
 
@@ -17,18 +17,21 @@ const styles = createStyles(theme => ({
         backgroundColor: theme.palette.secondary,
     },
 }))
-type Props = WithSheet<typeof styles> & {
-    className ?: string
-    shaded ?: boolean
-}
-const CardTitle : React.FunctionComponent<Props> = ({ children, className, classes, shaded }) => (
-    <div
-        className={classnames(className, classes.container, {
-            [classes.withBackground]: shaded !== false,
-        })}
-    >
-        {children}
-    </div>
+type Props = WithSheet<typeof styles> &
+    React.WithChildren & {
+        className ?: string
+        shaded ?: boolean
+    }
+const CardTitle = injectStylesheet(styles)(
+    ({ children, className, classes, shaded } : Props) => (
+        <div
+            className={classnames(className, classes.container, {
+                [classes.withBackground]: shaded !== false,
+            })}
+        >
+            {children}
+        </div>
+    ),
 )
 
-export default injectStylesheet(styles)(CardTitle)
+export { CardTitle }

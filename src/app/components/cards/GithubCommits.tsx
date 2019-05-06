@@ -1,8 +1,8 @@
-import * as React from 'react'
+import React from 'react'
 import injectSheet, { WithSheet } from 'react-jss'
 
 import { SOCIAL } from '../../config'
-import GithubCalendar from '../../generated/GithubCalendar'
+import { GithubCalendar } from '../../generated/GithubCalendar'
 import { createStyles } from '../../Theme'
 import { Card, CardTitle, CardContent } from '../Card'
 
@@ -16,7 +16,7 @@ const styles = createStyles(theme => ({
 
 type Props = WithSheet<typeof styles>
 
-const GithubCommits : React.FunctionComponent<Props> = ({ classes }) => (
+const GithubCommits = injectSheet(styles)(({ classes } : Props) => (
     <Card>
         <CardTitle>Github Commits</CardTitle>
         <CardContent>
@@ -28,6 +28,6 @@ const GithubCommits : React.FunctionComponent<Props> = ({ classes }) => (
             </div>
         </CardContent>
     </Card>
-)
+))
 
-export default injectSheet(styles)(GithubCommits)
+export { GithubCommits }

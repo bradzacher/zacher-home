@@ -1,10 +1,10 @@
-import * as React from 'react'
+import React from 'react'
 
-import ProjectCardList from '../Card/ProjectCardList'
+import { ProjectCardList } from '../Card/ProjectCardList'
 import { OPEN_SOURCE } from '../../config'
 
 const OpenSource : React.FunctionComponent = React.memo(() => (
     <ProjectCardList title='Open Source' projects={OPEN_SOURCE} />
 ))
 
-export default OpenSource
+export { OpenSource }

@@ -1,6 +1,6 @@
-import * as path from 'path'
+import path from 'path'
 
-async function main() {
+async function main() : Promise<void> {
     const pathArg = process.argv[2]
     if (!pathArg) {
         throw new Error('usage: ts-node scriptExecutor.ts <path to script which export defaults a fn>')

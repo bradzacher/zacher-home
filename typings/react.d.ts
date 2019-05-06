@@ -9,3 +9,15 @@ declare global {
         }
     }
 }
+
+declare module 'react' {
+    type WithOptionalChildren = {
+        children ?: React.ReactNode | Array<React.ReactNode>
+    }
+    type WithChildren = Required<WithOptionalChildren>
+
+    type WithOptionalChild = {
+        children ?: React.ReactNode
+    }
+    type WithChild = Required<WithOptionalChild>
+}

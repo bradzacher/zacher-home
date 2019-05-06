@@ -1,7 +1,7 @@
 import * as browserSync from 'browser-sync'
 import { execSync } from 'child_process'
 import * as chokidar from 'chokidar'
-import * as path from 'path'
+import path from 'path'
 
 const scriptsFolder = path.resolve(__dirname)
 const srcFolder = path.resolve(__dirname, '..', 'src/app')
@@ -13,7 +13,7 @@ const scriptFileToCommandMap : Record<string, Array<string>> = {
     '/github.ts': ['/github.ts'],
 }
 
-function createServer() {
+function createServer() : void {
     const server = browserSync.create('zacher-home-ssr')
     server.init({
         server: path.resolve(__dirname, '..', 'build'),
@@ -25,7 +25,7 @@ function createServer() {
     const srcWatcher = chokidar.watch(srcFolder, {
         ignoreInitial: true,
     })
-    function onSourceChange(event : string) {
+    function onSourceChange(event : string) : (f : string) => void {
         return (filename : string) => {
             console.info(`[src][${event}]:`, filename.replace(srcFolder, ''))
             try {
@@ -42,7 +42,7 @@ function createServer() {
 
     // rebuild on script change
     const scriptsWatcher = chokidar.watch(scriptsFolder)
-    function onScriptChange(fullFilename : string) {
+    function onScriptChange(fullFilename : string) : void {
         const filename = fullFilename.replace(scriptsFolder, '')
         const scriptsToRun = scriptFileToCommandMap[filename]
         if (!scriptsToRun) {
@@ -64,7 +64,7 @@ function createServer() {
 
     // rebuild on sprite change
     const spritesWatcher = chokidar.watch(spritesFolder)
-    function onSpriteChange(fullFilename : string) {
+    function onSpriteChange(fullFilename : string) : void {
         const filename = fullFilename.replace(spritesFolder, '')
 
         console.info('[sprite][changed]:', filename)

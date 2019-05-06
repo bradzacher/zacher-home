@@ -2,6 +2,9 @@
     "extends": [
         "brad/react"
     ],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
     "rules": {
         "react/jsx-no-target-blank": "off"
     },
@@ -12,5 +15,13 @@
         "react": {
             "version": "16.6.3"
         }
-    }
+    },
+    "overrides": [
+        {
+            "files": ["scripts/**/*"],
+            "rules": {
+                "import/no-default-export": "off"
+            }
+        }
+    ]
 }

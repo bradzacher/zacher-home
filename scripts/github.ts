@@ -1,7 +1,7 @@
-import * as fs from 'fs'
+import fs from 'fs'
 import 'isomorphic-fetch'
 import { JSDOM } from 'jsdom'
-import * as path from 'path'
+import path from 'path'
 import { promisify } from 'util'
 import { parseString } from 'xml2js'
 
@@ -26,12 +26,12 @@ type ParsedSVG = {
         }>
     }
 }
-const parseStringAsync = promisify(parseString) as (xml : string) => Promise<ParsedSVG>
+const parseStringAsync = promisify<string, ParsedSVG>(parseString)
 
 const attributeNameMap : Record<string, string> = {
     'text-anchor': 'textAnchor',
 }
-function dumpAttributes(obj : { $ : Record<string, string> }) {
+function dumpAttributes(obj : { $ : Record<string, string> }) : string {
     const attrString = Object.keys(obj.$).map(k => {
         if (k === 'class') {
             return `className={classes.${obj.$[k]}}`
@@ -42,7 +42,7 @@ function dumpAttributes(obj : { $ : Record<string, string> }) {
 
     return attrString.join(' ')
 }
-function indent(lines : Array<string>, size : number) {
+function indent(lines : Array<string>, size : number) : Array<string> {
     const spaces = Array(size * 4)
         .fill(' ')
         .join('')
@@ -50,7 +50,7 @@ function indent(lines : Array<string>, size : number) {
     return lines.map(l => `${spaces}${l}`)
 }
 
-async function github() {
+async function github() : Promise<void> {
     const outFolder = createGeneratedFolder()
     console.info('Fetching github contributions graph...')
 
@@ -72,7 +72,7 @@ async function github() {
     const rawSvgStr = res.outerHTML
         .split('\n')
         // remove the hidden text elements
-        .filter(l => l.match(/style="display: none;"/) === null)
+        .filter(l => l.match(/style="display: none;"/) == null)
         .join('\n')
     const parsedSvg = await parseStringAsync(rawSvgStr)
     delete parsedSvg.svg.$.class
@@ -110,7 +110,7 @@ async function github() {
         ' */',
         '/* eslint-disable max-len */// produces a nicer file than generating proper wrapped lines',
         '',
-        'import * as React from \'react\'',
+        'import React from \'react\'',
         'import injectSheet, { WithSheet } from \'react-jss\'',
         'import { createStyles } from \'../Theme\'',
         '',
@@ -134,11 +134,11 @@ async function github() {
         '',
         'type Props = WithSheet<typeof styles>',
         '',
-        'const GithubCalendar : React.FunctionComponent<Props> = ({ classes }) => (',
+        'const GithubCalendar = injectSheet(styles)(({ classes } : Props) => (',
         ...reactSvg,
-        ')',
+        '))',
         '',
-        'export default injectSheet(styles)(GithubCalendar)',
+        'export { GithubCalendar }',
         '',
     ]
 

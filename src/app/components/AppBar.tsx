@@ -1,16 +1,17 @@
-import * as React from 'react'
+import React from 'react'
 import injectStylesheet, { WithSheet } from 'react-jss'
 import { createStyles } from '../Theme'
 
 import { SOCIAL } from '../config'
-import MeLink from './MeLink'
+import { MeLink } from './MeLink'
 
 const styles = createStyles(theme => ({
     header: {
         alignItems: 'center',
         backgroundColor: theme.palette.primary,
         // taken from mdl
-        boxShadow: '0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)',
+        boxShadow:
+            '0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)',
         display: 'flex',
         flexDirection: 'row' as 'row',
         justifyContent: 'space-between',
@@ -48,7 +49,7 @@ const styles = createStyles(theme => ({
 
 type Props = WithSheet<typeof styles>
 
-const AppBar : React.FunctionComponent<Props> = ({ classes }) => (
+const AppBar = injectStylesheet(styles)(({ classes } : Props) => (
     <header className={classes.header}>
         <div className={classes.title}>Brad Zacher</div>
         <nav className={classes.nav}>
@@ -63,6 +64,6 @@ const AppBar : React.FunctionComponent<Props> = ({ classes }) => (
             </MeLink>
         </nav>
     </header>
-)
+))
 
-export default injectStylesheet(styles)(AppBar)
+export { AppBar }

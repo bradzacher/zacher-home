@@ -1,12 +1,12 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import fs from 'fs'
+import path from 'path'
 
 import { createGeneratedFolder } from '../createBuildFolder'
 import getDataFromDynamo from './getDataFromDynamo'
 
 const THRESHOLD_PERCENTAGE = 0.05
 
-async function generateGraph() {
+async function generateGraph() : Promise<void> {
     const data = await getDataFromDynamo()
 
     // clean out any languages that are below a %age of the total time
@@ -29,7 +29,7 @@ async function generateGraph() {
         ' *     ANY MANUAL CHANGES WILL BE LOST!',
         ' */',
         '',
-        'export default [',
+        'const WakatimeData = [',
         ...Object.keys(languages).map(l =>
             [
                 // easier to consume from react as an array
@@ -38,7 +38,12 @@ async function generateGraph() {
                 `        percent: ${languages[l] / totalSecondsAboveThreshold},`,
                 '    },',
             ].join('\n')),
-        ']',
+        '] as ReadonlyArray<{',
+        '    name : string',
+        '    percent : number',
+        '}>',
+        '',
+        'export { WakatimeData }',
         '',
     ]
 

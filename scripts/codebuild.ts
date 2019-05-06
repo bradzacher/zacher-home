@@ -5,7 +5,7 @@ import deploy from './deploy'
 import generate from './generate'
 import updateWakatime from './wakatime/update'
 
-async function main() {
+async function main() : Promise<void> {
     // "setup" step
     await updateWakatime()
     await clean()

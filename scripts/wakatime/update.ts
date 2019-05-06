@@ -2,7 +2,7 @@ import getDataFromDynamo from './getDataFromDynamo'
 import getNewData from './getNewData'
 import putData from './putData'
 
-async function update() {
+async function update() : Promise<void> {
     // get all the data
     const oldData = await getDataFromDynamo()
     const newDataRes = await getNewData(oldData.LastReadEnd)

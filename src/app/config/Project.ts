@@ -1,11 +1,11 @@
 import { SpriteName } from '../generated/Sprite'
 
-interface Project {
+type Project = Readonly<{
     spriteName ?: SpriteName
     name : string
     description : string
     source ?: string
     demo ?: string
-}
+}>
 
-export default Project
+export { Project }

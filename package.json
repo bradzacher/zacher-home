@@ -16,7 +16,8 @@
     "lint-errors": "yarn lint --quiet",
     "run-script": "ts-node --files ./scripts/scriptExecutor.ts",
     "prestart": "yarn generate && yarn build",
-    "start": "yarn run-script ./scripts/server.ts"
+    "start": "yarn run-script ./scripts/server.ts",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/browser-sync": "^0.0.43",
@@ -45,14 +46,23 @@
     "globby": "^9.2.0",
     "isomorphic-fetch": "^2.2.1",
     "jsdom": "^15.0.0",
-    "prettier-eslint-cli": "^4.7.1",
+    "prettier": "^1.17.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-jss": "^8.6.1",
     "rimraf": "^2.6.3",
+    "schema-dts": "^0.3.1",
     "spritesmith": "^3.3.1",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5",
     "xml2js": "^0.4.19"
+  },
+  "resolutions": {
+    "@types/classnames": "2.2.7",
+    "@types/react": "16.8.16",
+    "@types/react-dom": "16.8.4",
+    "@types/react-jss": "8.6.3",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
   }
 }

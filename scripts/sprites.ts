@@ -1,6 +1,6 @@
-import * as fs from 'fs'
+import fs from 'fs'
 import * as globby from 'globby'
-import * as path from 'path'
+import path from 'path'
 import * as Spritesmith from 'spritesmith'
 
 import { createBuildFolder, createGeneratedFolder } from './createBuildFolder'
@@ -14,7 +14,7 @@ interface Coordinates {
 
 const assetFolder = `${path.resolve(__dirname, '../src/sprites/')}/`
 
-function sprites() {
+function sprites() : Promise<void> {
     const images = globby.sync(`${path.resolve(__dirname, '../src/sprites/')}/**/*.png`)
 
     const spriteImageDestinationFolder = createBuildFolder()
@@ -62,8 +62,8 @@ function sprites() {
                     ' *     ANY MANUAL CHANGES WILL BE LOST!',
                     ' */',
                     '',
-                    'import * as classnames from \'classnames\'',
-                    'import * as React from \'react\'',
+                    'import classnames from \'classnames\'',
+                    'import React from \'react\'',
                     'import injectSheet, { WithSheet } from \'react-jss\'',
                     'import { createStyles } from \'../Theme\'',
                     '',
@@ -92,12 +92,12 @@ function sprites() {
                     '    name : SpriteName',
                     '}',
                     '',
-                    'const Sprite : React.FunctionComponent<Props> = ({ className, classes, name }) => (',
+                    'const Sprite = injectSheet(styles)(({ className, classes, name } : Props) => (',
                     '    <div className={classnames(classes.sprite, classes[name], className)} />',
-                    ')',
+                    '))',
                     '',
-                    'export default injectSheet(styles)(Sprite)',
                     'export {',
+                    '    Sprite,',
                     '    SpriteName,',
                     '}',
                     '',

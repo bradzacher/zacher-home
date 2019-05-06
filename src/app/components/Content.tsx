@@ -1,13 +1,13 @@
-import * as React from 'react'
+import React from 'react'
 import injectSheet, { WithSheet } from 'react-jss'
 
 import { createStyles } from '../Theme'
-import AboutMe from './cards/AboutMe'
-import AroundTheWeb from './cards/AroundTheWeb'
-import GithubCommits from './cards/GithubCommits'
-import OpenSource from './cards/OpenSource'
-import Projects from './cards/Projects'
-import Wakatime from './cards/Wakatime'
+import { AboutMe } from './cards/AboutMe'
+import { AroundTheWeb } from './cards/AroundTheWeb'
+import { GithubCommits } from './cards/GithubCommits'
+import { OpenSource } from './cards/OpenSource'
+import { Projects } from './cards/Projects'
+import { Wakatime } from './cards/Wakatime'
 
 const styles = createStyles(theme => ({
     main: {
@@ -19,7 +19,7 @@ const styles = createStyles(theme => ({
 
 type Props = WithSheet<typeof styles>
 
-const Content : React.FunctionComponent<Props> = ({ classes }) => (
+const Content = injectSheet(styles)(({ classes } : Props) => (
     <main className={classes.main}>
         <AboutMe />
         <AroundTheWeb />
@@ -28,6 +28,6 @@ const Content : React.FunctionComponent<Props> = ({ classes }) => (
         <OpenSource />
         <Projects />
     </main>
-)
+))
 
-export default injectSheet(styles)(Content)
+export { Content }

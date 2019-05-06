@@ -8,7 +8,7 @@ export interface WakatimeDynamoData {
     Seconds : Record<string, number>
 }
 
-async function getWakatimeData() {
+async function getWakatimeData() : Promise<WakatimeDynamoData> {
     const dynamo = new DynamoDB.DocumentClient({
         region: 'ap-southeast-2',
     })
@@ -30,7 +30,7 @@ async function getWakatimeData() {
     const itemData = item.Item as WakatimeDynamoData
     console.info('Fetched old Wakatime data updated on', itemData.LastReadEnd)
 
-    return item.Item as WakatimeDynamoData
+    return itemData
 }
 
 export default getWakatimeData

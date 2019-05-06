@@ -16,7 +16,10 @@ interface WakatimeUserSummaryResponse {
 const API_URL_BASE = 'https://wakatime.com/api/v1/users/current/summaries'
 
 const DATE_STR_FORMAT = 'yyyy/mm/dd'
-async function getNewData(lastDateStr : string) {
+async function getNewData(lastDateStr : string) : Promise<{
+    data : Record<string, number>
+    readEnd : string
+} | null> {
     // start the day after the last read
     const lastDate = new Date(lastDateStr)
     lastDate.setDate(lastDate.getDate() + 1)

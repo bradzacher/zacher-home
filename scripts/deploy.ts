@@ -2,7 +2,7 @@ import { execSync } from 'child_process'
 
 import getParameterFromSSM from './getParameterFromSSM'
 
-async function deploy() {
+async function deploy() : Promise<void> {
     const s3bucket = await getParameterFromSSM('S3_BUCKET')
     const distributionId = await getParameterFromSSM('CF_DISTRIBUTION_ID')
 

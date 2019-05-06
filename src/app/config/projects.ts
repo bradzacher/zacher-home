@@ -1,6 +1,6 @@
-import Project from './Project'
+import { Project } from './Project'
 
-export default [
+const PROJECTS : ReadonlyArray<Project> = [
     {
         name: 'zacher.com.au',
         description: 'The source behind this website!',
@@ -12,4 +12,6 @@ export default [
         description: 'My honours thesis - evolves recursive solutions using GP.',
         source: 'https://github.com/bradzacher/HonsRecursiveSolverGE',
     },
-] as Array<Project>
+]
+
+export { PROJECTS }

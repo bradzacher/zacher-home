@@ -1,9 +1,9 @@
-import * as rimraf from 'rimraf'
+import rimraf from 'rimraf'
 import { promisify } from 'util'
 
 const cleanDir = promisify(rimraf)
 
-async function clean() {
+async function clean() : Promise<void> {
     await cleanDir('dist')
     await cleanDir('.cache')
     await cleanDir('build')

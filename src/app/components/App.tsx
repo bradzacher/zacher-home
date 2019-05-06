@@ -1,8 +1,8 @@
-import * as React from 'react'
+import React from 'react'
 
-import AppBar from './AppBar'
-import Content from './Content'
-import Theme from '../Theme'
+import { AppBar } from './AppBar'
+import { Content } from './Content'
+import { Theme } from '../Theme'
 
 const App : React.FunctionComponent = () => (
     <Theme>
@@ -13,4 +13,4 @@ const App : React.FunctionComponent = () => (
     </Theme>
 )
 
-export default App
+export { App }

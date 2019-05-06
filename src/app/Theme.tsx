@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import injectStylesheet, { ThemeProvider, StyleCreator } from 'react-jss'
 
 import { APP_ROOT_ID, THEME_COLOUR } from './config'
@@ -67,11 +67,15 @@ const theme = {
     },
 }
 
-const Theme : React.FunctionComponent = ({ children }) => (
+const ThemeWithoutGlobalStyles : React.FunctionComponent<{
+    children : React.ReactElement
+}> = ({ children }) => (
     <ThemeProvider theme={theme}>{React.Children.only(children)}</ThemeProvider>
 )
 
-export function createStyles<TClasses extends string>(styles : StyleCreator<TClasses, ThemeType>) {
+export function createStyles<TClasses extends string>(
+    styles : StyleCreator<TClasses, ThemeType>,
+) : StyleCreator<TClasses, ThemeType> {
     return styles
 }
 
@@ -94,8 +98,8 @@ const globalStyles = {
         },
     },
 }
-const ThemeWithGlobalStyles = injectStylesheet(globalStyles)(Theme)
+const Theme = injectStylesheet(globalStyles)(ThemeWithoutGlobalStyles)
 
-export default ThemeWithGlobalStyles
+export { Theme }
 
 type ThemeType = typeof theme

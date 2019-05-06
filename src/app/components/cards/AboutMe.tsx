@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import injectSheet, { WithSheet } from 'react-jss'
 
 import { createStyles } from '../../Theme'
@@ -34,11 +34,12 @@ const lines : Array<React.ReactNode> = [
         .
     </>,
     <>
-        You can contact me via any of the networks below, or by gmail - bradzacher <a href='/bradzacher.txt'>GPG</a>.
+        You can contact me via any of the networks below, or by gmail -
+        bradzacher <a href='/bradzacher.txt'>GPG</a>.
     </>,
 ]
 
-const AboutMe : React.FunctionComponent<Props> = ({ classes }) => (
+const AboutMe = injectSheet(styles)(({ classes } : Props) => (
     <Card>
         <CardTitle>About Me</CardTitle>
         <CardContent>
@@ -50,12 +51,13 @@ const AboutMe : React.FunctionComponent<Props> = ({ classes }) => (
                 src='https://en.gravatar.com/userimage/88111926/67c389d0ebb48c35829460f965f820a9.png?size=200'
             />
             {lines.map((l, i) => (
+                // eslint-disable-next-line react/no-array-index-key
                 <p key={`${i}`} className={classes.line}>
                     {l}
                 </p>
             ))}
         </CardContent>
     </Card>
-)
+))
 
-export default injectSheet(styles)(AboutMe)
+export { AboutMe }

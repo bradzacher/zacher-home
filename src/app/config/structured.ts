@@ -1,8 +1,9 @@
+import { Person, WithContext } from 'schema-dts'
 import * as constants from './constants'
-import social from './social'
+import { SOCIAL } from './social'
 
-export default {
-    '@context': 'http://schema.org',
+const STRUCTURED : Readonly<WithContext<Person>> = {
+    '@context': 'https://schema.org',
     '@type': 'Person',
     alumniOf: {
         '@type': 'Organization',
@@ -36,7 +37,7 @@ export default {
         '@type': 'Country',
         name: 'Australia',
     },
-    sameAs: Object.values(social),
+    sameAs: Object.values(SOCIAL),
     url: constants.HOST,
     workLocation: {
         '@type': 'Place',
@@ -47,3 +48,5 @@ export default {
         name: 'Facebook',
     },
 }
+
+export { STRUCTURED }

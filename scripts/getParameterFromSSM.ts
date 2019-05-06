@@ -1,6 +1,6 @@
 import { SSM } from 'aws-sdk'
 
-async function getParameterFromSSM(key : string) {
+async function getParameterFromSSM(key : string) : Promise<string | undefined> {
     const parameterStore = new SSM({
         region: 'ap-southeast-2',
     })

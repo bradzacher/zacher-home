@@ -1,13 +1,19 @@
-import * as CleanCss from 'clean-css'
-import * as React from 'react'
-import * as ReactDOMServer from 'react-dom/server'
+import CleanCss from 'clean-css'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
 import { JssProvider, SheetsRegistry } from 'react-jss'
 
-import App from '../src/app/components/App'
-import Page from '../src/app/components/Page'
+import { App } from '../src/app/components/App'
+import { Page } from '../src/app/components/Page'
 
-function renderToString(appStr : string, styles : string, isAmp : boolean) {
-    const fullPageStr = ReactDOMServer.renderToString(<Page app={appStr} styles={styles} isAmp={isAmp} />)
+function renderToString(
+    appStr : string,
+    styles : string,
+    isAmp : boolean,
+) : string {
+    const fullPageStr = ReactDOMServer.renderToString(
+        <Page app={appStr} styles={styles} isAmp={isAmp} />,
+    )
 
     if (!isAmp) {
         return fullPageStr
@@ -20,7 +26,7 @@ function renderToString(appStr : string, styles : string, isAmp : boolean) {
         .replace(/<img(.+?)\/>/g, '<amp-img$1></amp-img>')
 }
 
-export default function render(isAmp = false) {
+export default function render(isAmp = false) : string {
     const sheets = new SheetsRegistry()
     const appStr = ReactDOMServer.renderToStaticMarkup(
         <JssProvider registry={sheets}>

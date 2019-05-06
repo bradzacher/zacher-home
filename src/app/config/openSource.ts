@@ -1,6 +1,6 @@
-import Project from './Project'
+import { Project } from './Project'
 
-export default [
+const OPEN_SOURCE : ReadonlyArray<Project> = [
     {
         spriteName: 'typescriptEslint',
         name: 'typescript-eslint',
@@ -27,4 +27,6 @@ export default [
         source: 'https://github.com/assignar/mysqldump',
         demo: 'https://www.npmjs.com/package/@assignar/mysqldump',
     },
-] as Array<Project>
+]
+
+export { OPEN_SOURCE }
