@@ -1,8 +1,8 @@
-import React from 'react'
-import injectSheet, { WithSheet } from 'react-jss'
+import React from 'react';
+import injectSheet, { WithSheet } from 'react-jss';
 
-import { createStyles } from '../../Theme'
-import { Card, CardContent, CardTitle } from '../Card'
+import { createStyles } from '../../Theme';
+import { Card, CardContent, CardTitle } from '../Card';
 
 const styles = createStyles(() => ({
     picture: {
@@ -15,11 +15,11 @@ const styles = createStyles(() => ({
         margin: 0,
         marginBottom: '2rem',
     },
-}))
+}));
 
-type Props = WithSheet<typeof styles>
+type Props = WithSheet<typeof styles>;
 
-const lines : Array<React.ReactNode> = [
+const lines: Array<React.ReactNode> = [
     'I am a computer scientist. I am a lover of cider. I am from Adelaide, Australia.',
     'I graduated with honours in Computer Science from the University of Adelaide.',
     'I am a Software Engineer at Facebook in Menlo Park.',
@@ -37,9 +37,9 @@ const lines : Array<React.ReactNode> = [
         You can contact me via any of the networks below, or by gmail -
         bradzacher <a href='/bradzacher.txt'>GPG</a>.
     </>,
-]
+];
 
-const AboutMe = injectSheet(styles)(({ classes } : Props) => (
+const AboutMe = injectSheet(styles)(({ classes }: Props) => (
     <Card>
         <CardTitle>About Me</CardTitle>
         <CardContent>
@@ -58,6 +58,6 @@ const AboutMe = injectSheet(styles)(({ classes } : Props) => (
             ))}
         </CardContent>
     </Card>
-))
+));
 
-export { AboutMe }
+export { AboutMe };

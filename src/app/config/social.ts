@@ -7,6 +7,6 @@ const SOCIAL = {
     twitter: 'https://twitter.com/bradzacher',
     youtube: 'https://youtube.com/BradZacher1',
     wakatime: 'https://wakatime.com/@bradzacher',
-} as const
+} as const;
 
-export { SOCIAL }
+export { SOCIAL };

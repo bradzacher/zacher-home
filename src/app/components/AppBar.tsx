@@ -1,9 +1,9 @@
-import React from 'react'
-import injectStylesheet, { WithSheet } from 'react-jss'
-import { createStyles } from '../Theme'
+import React from 'react';
+import injectStylesheet, { WithSheet } from 'react-jss';
+import { createStyles } from '../Theme';
 
-import { SOCIAL } from '../config'
-import { MeLink } from './MeLink'
+import { SOCIAL } from '../config';
+import { MeLink } from './MeLink';
 
 const styles = createStyles(theme => ({
     header: {
@@ -45,11 +45,11 @@ const styles = createStyles(theme => ({
             display: 'none',
         },
     },
-}))
+}));
 
-type Props = WithSheet<typeof styles>
+type Props = WithSheet<typeof styles>;
 
-const AppBar = injectStylesheet(styles)(({ classes } : Props) => (
+const AppBar = injectStylesheet(styles)(({ classes }: Props) => (
     <header className={classes.header}>
         <div className={classes.title}>Brad Zacher</div>
         <nav className={classes.nav}>
@@ -64,6 +64,6 @@ const AppBar = injectStylesheet(styles)(({ classes } : Props) => (
             </MeLink>
         </nav>
     </header>
-))
+));
 
-export { AppBar }
+export { AppBar };

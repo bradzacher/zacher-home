@@ -1,6 +1,6 @@
-import { Project } from './Project'
+import { Project } from './Project';
 
-const OPEN_SOURCE : ReadonlyArray<Project> = [
+const OPEN_SOURCE: ReadonlyArray<Project> = [
     {
         spriteName: 'typescriptEslint',
         name: 'typescript-eslint',
@@ -28,6 +28,6 @@ const OPEN_SOURCE : ReadonlyArray<Project> = [
         source: 'https://github.com/assignar/mysqldump',
         demo: 'https://www.npmjs.com/package/@assignar/mysqldump',
     },
-]
+];
 
-export { OPEN_SOURCE }
+export { OPEN_SOURCE };

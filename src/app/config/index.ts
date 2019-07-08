@@ -1,10 +1,10 @@
-import * as constants from './constants'
+import * as constants from './constants';
 
-export * from './constants'
-export * from './social'
-export * from './openSource'
-export * from './projects'
-export * from './structured'
+export * from './constants';
+export * from './social';
+export * from './openSource';
+export * from './projects';
+export * from './structured';
 export const META = {
     facebook: {
         admins: constants.FB_PROFILE_ID,
@@ -41,4 +41,4 @@ export const META = {
         site: '@bradzacher',
         title: constants.FULL_NAME,
     },
-} as const
+} as const;

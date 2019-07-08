@@ -1,7 +1,7 @@
-import classnames from 'classnames'
-import React from 'react'
-import injectStylesheet, { WithSheet } from 'react-jss'
-import { createStyles } from '../../Theme'
+import classnames from 'classnames';
+import React from 'react';
+import injectStylesheet, { WithSheet } from 'react-jss';
+import { createStyles } from '../../Theme';
 
 const styles = createStyles(() => ({
     container: {
@@ -14,19 +14,19 @@ const styles = createStyles(() => ({
         marginBottom: '2rem',
         overflow: 'hidden',
     },
-}))
+}));
 
 type Props = WithSheet<typeof styles> &
     React.WithChildren & {
-        className ?: string
-    }
+        className?: string;
+    };
 
 const Card = injectStylesheet(styles)(
-    ({ className, classes, children } : Props) => (
+    ({ className, classes, children }: Props) => (
         <div className={classnames(className, classes.container)}>
             {children}
         </div>
     ),
-)
+);
 
-export { Card }
+export { Card };

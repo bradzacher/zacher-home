@@ -1,20 +1,20 @@
-import React from 'react'
-import injectSheet, { WithSheet } from 'react-jss'
+import React from 'react';
+import injectSheet, { WithSheet } from 'react-jss';
 
-import { SOCIAL } from '../../config'
-import { WakatimeData } from '../../generated/WakatimeData'
-import { createStyles } from '../../Theme'
-import { Card, CardTitle, CardContent } from '../Card'
+import { SOCIAL } from '../../config';
+import { WakatimeData } from '../../generated/WakatimeData';
+import { createStyles } from '../../Theme';
+import { Card, CardTitle, CardContent } from '../Card';
 
 enum LargeArcFlag {
     SmallArc = 0,
     LargeArc = 1,
 }
 
-const SVG_SCALE = 150
-const TEXT_OFFSET = 0.15 * SVG_SCALE
-const GRAPH_VIEWBOX_MODIFIER = SVG_SCALE + TEXT_OFFSET + 10
-const ANGLE_OFFSET = -0.25 // 25% = 90degrees
+const SVG_SCALE = 150;
+const TEXT_OFFSET = 0.15 * SVG_SCALE;
+const GRAPH_VIEWBOX_MODIFIER = SVG_SCALE + TEXT_OFFSET + 10;
+const ANGLE_OFFSET = -0.25; // 25% = 90degrees
 
 const styles = createStyles(theme => ({
     container: {
@@ -26,9 +26,9 @@ const styles = createStyles(theme => ({
         width: '100%',
     },
     link: theme.classes.poweredByLink,
-}))
+}));
 
-type Props = WithSheet<typeof styles>
+type Props = WithSheet<typeof styles>;
 
 // only 12.. that'll do for now?
 const COLOURS = [
@@ -43,32 +43,32 @@ const COLOURS = [
     '#de77ae',
     '#c51b7d',
     '#8e0152',
-]
-const Move = (x : number, y : number) : string => `M${x},${y}`
-const Line = (x : number, y : number) : string => `L${x},${y}`
-const Arc = (x : number, y : number, arcFlag : LargeArcFlag) : string =>
-    `A${1 * SVG_SCALE},${1 * SVG_SCALE},0,${arcFlag},1,${x},${y}`
+];
+const Move = (x: number, y: number): string => `M${x},${y}`;
+const Line = (x: number, y: number): string => `L${x},${y}`;
+const Arc = (x: number, y: number, arcFlag: LargeArcFlag): string =>
+    `A${1 * SVG_SCALE},${1 * SVG_SCALE},0,${arcFlag},1,${x},${y}`;
 
-const Wakatime = injectSheet(styles)(({ classes } : Props) => {
+const Wakatime = injectSheet(styles)(({ classes }: Props) => {
     const sectors = React.useMemo(() => {
         // geometry-wise 0degrees is at (1, 0)
         // we can css rotate the entire graph, or just start our math at the top instead
-        let cumulativeAngle = ANGLE_OFFSET
+        let cumulativeAngle = ANGLE_OFFSET;
         const previousArcEnd = {
             x: Math.cos(2 * Math.PI * ANGLE_OFFSET) * SVG_SCALE,
             y: Math.sin(2 * Math.PI * ANGLE_OFFSET) * SVG_SCALE,
-        }
+        };
 
         return WakatimeData.map((d, i) => {
-            const endAngle = cumulativeAngle + d.percent
-            const arcX = Math.cos(2 * Math.PI * endAngle) * SVG_SCALE
-            const arcY = Math.sin(2 * Math.PI * endAngle) * SVG_SCALE
+            const endAngle = cumulativeAngle + d.percent;
+            const arcX = Math.cos(2 * Math.PI * endAngle) * SVG_SCALE;
+            const arcY = Math.sin(2 * Math.PI * endAngle) * SVG_SCALE;
 
-            const labelAngle = cumulativeAngle + d.percent / 2
+            const labelAngle = cumulativeAngle + d.percent / 2;
             const labelX =
-                Math.cos(2 * Math.PI * labelAngle) * (SVG_SCALE + TEXT_OFFSET)
+                Math.cos(2 * Math.PI * labelAngle) * (SVG_SCALE + TEXT_OFFSET);
             const labelY =
-                Math.sin(2 * Math.PI * labelAngle) * (SVG_SCALE + TEXT_OFFSET)
+                Math.sin(2 * Math.PI * labelAngle) * (SVG_SCALE + TEXT_OFFSET);
 
             const path = (
                 <path
@@ -92,34 +92,34 @@ const Wakatime = injectSheet(styles)(({ classes } : Props) => {
                         Line(0, 0),
                     ].join(' ')}
                 />
-            )
+            );
 
-            let anchor = 'start'
+            let anchor = 'start';
             if (labelAngle > 0.53 + ANGLE_OFFSET) {
-                anchor = 'end'
+                anchor = 'end';
             } else if (labelAngle < 0.47 + ANGLE_OFFSET) {
-                anchor = 'start'
+                anchor = 'start';
             } else {
-                anchor = 'middle'
+                anchor = 'middle';
             }
             const label = (
                 <text x={labelX} y={labelY} textAnchor={anchor}>
                     {d.name}
                 </text>
-            )
+            );
 
-            previousArcEnd.x = arcX
-            previousArcEnd.y = arcY
-            cumulativeAngle = endAngle
+            previousArcEnd.x = arcX;
+            previousArcEnd.y = arcY;
+            cumulativeAngle = endAngle;
 
             return (
                 <g key={d.name}>
                     {path}
                     {label}
                 </g>
-            )
-        })
-    }, [])
+            );
+        });
+    }, []);
 
     return (
         <Card>
@@ -141,7 +141,7 @@ const Wakatime = injectSheet(styles)(({ classes } : Props) => {
                 </div>
             </CardContent>
         </Card>
-    )
-})
+    );
+});
 
-export { Wakatime }
+export { Wakatime };

@@ -1,27 +1,27 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'fs';
+import path from 'path';
 
-import { createGeneratedFolder } from '../createBuildFolder'
-import getDataFromDynamo from './getDataFromDynamo'
+import { createGeneratedFolder } from '../createBuildFolder';
+import getDataFromDynamo from './getDataFromDynamo';
 
-const THRESHOLD_PERCENTAGE = 0.05
+const THRESHOLD_PERCENTAGE = 0.05;
 
-async function generateGraph() : Promise<void> {
-    const data = await getDataFromDynamo()
+async function generateGraph(): Promise<void> {
+    const data = await getDataFromDynamo();
 
     // clean out any languages that are below a %age of the total time
-    const totalSeconds = Object.keys(data.Seconds).reduce((acc, k) => acc + data.Seconds[k], 0)
-    const secondsThreshold = totalSeconds * THRESHOLD_PERCENTAGE
+    const totalSeconds = Object.keys(data.Seconds).reduce((acc, k) => acc + data.Seconds[k], 0);
+    const secondsThreshold = totalSeconds * THRESHOLD_PERCENTAGE;
 
     const languages = Object.keys(data.Seconds).reduce<Record<string, number>>((acc, k) => {
         if (data.Seconds[k] > secondsThreshold) {
-            acc[k] = data.Seconds[k]
+            acc[k] = data.Seconds[k];
         }
 
-        return acc
-    }, {})
+        return acc;
+    }, {});
 
-    const totalSecondsAboveThreshold = Object.keys(languages).reduce((acc, k) => acc + languages[k], 0)
+    const totalSecondsAboveThreshold = Object.keys(languages).reduce((acc, k) => acc + languages[k], 0);
 
     const lines = [
         '/**',
@@ -45,12 +45,12 @@ async function generateGraph() : Promise<void> {
         '',
         'export { WakatimeData }',
         '',
-    ]
+    ];
 
-    const dest = createGeneratedFolder()
-    fs.writeFileSync(path.resolve(dest, 'WakatimeData.ts'), lines.join('\n'))
+    const dest = createGeneratedFolder();
+    fs.writeFileSync(path.resolve(dest, 'WakatimeData.ts'), lines.join('\n'));
 
-    console.info('Generated new WakatimeData.ts')
+    console.info('Generated new WakatimeData.ts');
 }
 
-export default generateGraph
+export default generateGraph;

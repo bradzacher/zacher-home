@@ -1,24 +1,31 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'fs';
+import path from 'path';
 
-export const buildPath = path.resolve(__dirname, '../build')
-export const generatedPath = path.resolve(__dirname, '../src/app/generated')
+const buildPath = path.resolve(__dirname, '../build');
+const generatedPath = path.resolve(__dirname, '../src/app/generated');
 
-export function createBuildFolder() : string {
+function createBuildFolder(): string {
     try {
-        fs.mkdirSync(buildPath)
+        fs.mkdirSync(buildPath);
     } catch (_) {
         // ignored
     }
 
-    return buildPath
+    return buildPath;
 }
-export function createGeneratedFolder() : string {
+function createGeneratedFolder(): string {
     try {
-        fs.mkdirSync(generatedPath)
+        fs.mkdirSync(generatedPath);
     } catch (_) {
         // ignored
     }
 
-    return generatedPath
+    return generatedPath;
 }
+
+export {
+    buildPath,
+    generatedPath,
+    createBuildFolder,
+    createGeneratedFolder,
+};

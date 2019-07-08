@@ -1,8 +1,8 @@
-import { Person, WithContext } from 'schema-dts'
-import * as constants from './constants'
-import { SOCIAL } from './social'
+import { Person, WithContext } from 'schema-dts';
+import * as constants from './constants';
+import { SOCIAL } from './social';
 
-const STRUCTURED : Readonly<WithContext<Person>> = {
+const STRUCTURED: Readonly<WithContext<Person>> = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     alumniOf: {
@@ -47,6 +47,6 @@ const STRUCTURED : Readonly<WithContext<Person>> = {
         '@type': 'Organization',
         name: 'Facebook',
     },
-}
+};
 
-export { STRUCTURED }
+export { STRUCTURED };

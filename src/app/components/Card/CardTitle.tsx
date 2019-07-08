@@ -1,7 +1,7 @@
-import classnames from 'classnames'
-import React from 'react'
-import injectStylesheet, { WithSheet } from 'react-jss'
-import { createStyles } from '../../Theme'
+import classnames from 'classnames';
+import React from 'react';
+import injectStylesheet, { WithSheet } from 'react-jss';
+import { createStyles } from '../../Theme';
 
 const styles = createStyles(theme => ({
     container: {
@@ -16,14 +16,14 @@ const styles = createStyles(theme => ({
     withBackground: {
         backgroundColor: theme.palette.secondary,
     },
-}))
+}));
 type Props = WithSheet<typeof styles> &
     React.WithChildren & {
-        className ?: string
-        shaded ?: boolean
-    }
+        className?: string;
+        shaded?: boolean;
+    };
 const CardTitle = injectStylesheet(styles)(
-    ({ children, className, classes, shaded } : Props) => (
+    ({ children, className, classes, shaded }: Props) => (
         <div
             className={classnames(className, classes.container, {
                 [classes.withBackground]: shaded !== false,
@@ -32,6 +32,6 @@ const CardTitle = injectStylesheet(styles)(
             {children}
         </div>
     ),
-)
+);
 
-export { CardTitle }
+export { CardTitle };

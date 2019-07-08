@@ -1,25 +1,25 @@
-import fs from 'fs'
-import * as globby from 'globby'
-import path from 'path'
-import * as Spritesmith from 'spritesmith'
+import fs from 'fs';
+import * as globby from 'globby';
+import path from 'path';
+import * as Spritesmith from 'spritesmith';
 
-import { createBuildFolder, createGeneratedFolder } from './createBuildFolder'
+import { createBuildFolder, createGeneratedFolder } from './createBuildFolder';
 
 interface Coordinates {
-    x : number
-    y : number
-    width : number
-    height : number
+    x: number;
+    y: number;
+    width: number;
+    height: number;
 }
 
-const assetFolder = `${path.resolve(__dirname, '../src/sprites/')}/`
+const assetFolder = `${path.resolve(__dirname, '../src/sprites/')}/`;
 
-function sprites() : Promise<void> {
-    const images = globby.sync(`${path.resolve(__dirname, '../src/sprites/')}/**/*.png`)
+function sprites(): Promise<void> {
+    const images = globby.sync(`${path.resolve(__dirname, '../src/sprites/')}/**/*.png`);
 
-    const spriteImageDestinationFolder = createBuildFolder()
-    const spriteCodeDestinationFolder = createGeneratedFolder()
-    console.info('Generating spritesheet...')
+    const spriteImageDestinationFolder = createBuildFolder();
+    const spriteCodeDestinationFolder = createGeneratedFolder();
+    console.info('Generating spritesheet...');
 
     return new Promise((resolve, reject) => {
         Spritesmith.run(
@@ -29,31 +29,31 @@ function sprites() : Promise<void> {
             },
             (err, result) => {
                 if (err) {
-                    return reject(err)
+                    return reject(err);
                 }
 
-                const spritePath = path.resolve(spriteImageDestinationFolder, 'sprites.png')
-                fs.writeFileSync(spritePath, result.image)
+                const spritePath = path.resolve(spriteImageDestinationFolder, 'sprites.png');
+                fs.writeFileSync(spritePath, result.image);
 
                 // add the coordinates for the social links
-                const coordinates : Array<Coordinates & { name : string }> = []
+                const coordinates: Array<Coordinates & { name: string }> = [];
                 Object.keys(result.coordinates).forEach(k => {
-                    const name = k.replace(assetFolder, '').replace('.png', '')
+                    const name = k.replace(assetFolder, '').replace('.png', '');
                     if (name.startsWith('around_the_web')) {
-                        return
+                        return;
                     }
 
                     coordinates.push(
                         Object.assign({}, result.coordinates[k], {
                             name,
                         }),
-                    )
-                })
+                    );
+                });
 
                 // fix up any kebab casing to be camel case
                 coordinates.forEach(sprite => {
-                    sprite.name = sprite.name.replace(/(-\w)/g, m => m[1].toUpperCase())
-                })
+                    sprite.name = sprite.name.replace(/(-\w)/g, m => m[1].toUpperCase());
+                });
 
                 // build the typescript file
                 const lines = [
@@ -101,15 +101,15 @@ function sprites() : Promise<void> {
                     '    SpriteName,',
                     '}',
                     '',
-                ]
+                ];
 
-                fs.writeFileSync(path.resolve(spriteCodeDestinationFolder, 'Sprite.tsx'), lines.join('\n'), 'utf8')
-                console.info('Generated new Sprite.tsx')
+                fs.writeFileSync(path.resolve(spriteCodeDestinationFolder, 'Sprite.tsx'), lines.join('\n'), 'utf8');
+                console.info('Generated new Sprite.tsx');
 
-                return resolve()
+                return resolve();
             },
-        )
-    })
+        );
+    });
 }
 
-export default sprites
+export default sprites;

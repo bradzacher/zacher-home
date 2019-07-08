@@ -1,10 +1,10 @@
-import React from 'react'
-import injectSheet, { WithSheet } from 'react-jss'
+import React from 'react';
+import injectSheet, { WithSheet } from 'react-jss';
 
-import { ProjectCard } from '../Card/ProjectCard'
-import { Card, CardTitle, CardContent } from '../Card'
-import { Project } from '../../config/Project'
-import { createStyles } from '../../Theme'
+import { ProjectCard } from '../Card/ProjectCard';
+import { Card, CardTitle, CardContent } from '../Card';
+import { Project } from '../../config/Project';
+import { createStyles } from '../../Theme';
 
 const styles = createStyles(theme => ({
     container: {
@@ -19,15 +19,15 @@ const styles = createStyles(theme => ({
         width: `${theme.spacing.pageWidth / 2
             - 2 * theme.spacing.card.contentPadding}rem`,
     },
-}))
+}));
 
 type Props = WithSheet<typeof styles> & {
-    title : string
-    projects : ReadonlyArray<Project>
-}
+    title: string;
+    projects: ReadonlyArray<Project>;
+};
 
 const ProjectCardList = injectSheet(styles)(
-    ({ classes, title, projects } : Props) => (
+    ({ classes, title, projects }: Props) => (
         <Card>
             <CardTitle>{title}</CardTitle>
             <CardContent>
@@ -43,6 +43,6 @@ const ProjectCardList = injectSheet(styles)(
             </CardContent>
         </Card>
     ),
-)
+);
 
-export { ProjectCardList }
+export { ProjectCardList };

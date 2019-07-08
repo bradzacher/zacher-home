@@ -1,11 +1,11 @@
-import React from 'react'
-import injectSheet, { WithSheet } from 'react-jss'
+import React from 'react';
+import injectSheet, { WithSheet } from 'react-jss';
 
-import { SOCIAL } from '../../config'
-import { Sprite } from '../../generated/Sprite'
-import { createStyles } from '../../Theme'
-import { Card, CardTitle, CardContent } from '../Card'
-import { MeLink } from '../MeLink'
+import { SOCIAL } from '../../config';
+import { Sprite } from '../../generated/Sprite';
+import { createStyles } from '../../Theme';
+import { Card, CardTitle, CardContent } from '../Card';
+import { MeLink } from '../MeLink';
 
 const styles = createStyles(() => ({
     container: {
@@ -20,16 +20,16 @@ const styles = createStyles(() => ({
         marginRight: '0.5rem',
         marginBottom: '0.5rem',
     },
-}))
+}));
 
-type Props = WithSheet<typeof styles>
+type Props = WithSheet<typeof styles>;
 
-const AroundTheWeb = injectSheet(styles)(({ classes } : Props) => (
+const AroundTheWeb = injectSheet(styles)(({ classes }: Props) => (
     <Card>
         <CardTitle>Around the Web</CardTitle>
         <CardContent>
             <div className={classes.container}>
-                {Object.keys(SOCIAL).map((key : keyof typeof SOCIAL) => (
+                {Object.keys(SOCIAL).map((key: keyof typeof SOCIAL) => (
                     <MeLink
                         key={key}
                         className={classes.link}
@@ -42,6 +42,6 @@ const AroundTheWeb = injectSheet(styles)(({ classes } : Props) => (
             </div>
         </CardContent>
     </Card>
-))
+));
 
-export { AroundTheWeb }
+export { AroundTheWeb };

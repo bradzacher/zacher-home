@@ -1,11 +1,11 @@
-import classnames from 'classnames'
-import React from 'react'
-import injectStylesheet, { WithSheet } from 'react-jss'
+import classnames from 'classnames';
+import React from 'react';
+import injectStylesheet, { WithSheet } from 'react-jss';
 
-import { Card, CardTitle, CardContent, CardFooter } from '.'
-import { Project } from '../../config/Project'
-import { createStyles } from '../../Theme'
-import { Sprite } from '../../generated/Sprite'
+import { Card, CardTitle, CardContent, CardFooter } from '.';
+import { Project } from '../../config/Project';
+import { createStyles } from '../../Theme';
+import { Sprite } from '../../generated/Sprite';
 
 const styles = createStyles(() => ({
     container: {
@@ -25,15 +25,15 @@ const styles = createStyles(() => ({
     titleText: {
         maxWidth: 'calc(100% - 8rem)',
     },
-}))
+}));
 
 type Props = WithSheet<typeof styles> & {
-    className ?: string
-    project : Readonly<Project>
-}
+    className?: string;
+    project: Readonly<Project>;
+};
 
 const ProjectCard = injectStylesheet(styles)(
-    ({ className, classes, project } : Props) => (
+    ({ className, classes, project }: Props) => (
         <Card className={classnames(className, classes.container)}>
             <CardTitle shaded={false} className={classes.title}>
                 <div className={classes.titleText}>{project.name}</div>
@@ -71,6 +71,6 @@ const ProjectCard = injectStylesheet(styles)(
             </CardFooter>
         </Card>
     ),
-)
+);
 
-export { ProjectCard }
+export { ProjectCard };

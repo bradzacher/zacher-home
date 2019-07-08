@@ -1,10 +1,10 @@
-import React from 'react'
-import injectSheet, { WithSheet } from 'react-jss'
+import React from 'react';
+import injectSheet, { WithSheet } from 'react-jss';
 
-import { SOCIAL } from '../../config'
-import { GithubCalendar } from '../../generated/GithubCalendar'
-import { createStyles } from '../../Theme'
-import { Card, CardTitle, CardContent } from '../Card'
+import { SOCIAL } from '../../config';
+import { GithubCalendar } from '../../generated/GithubCalendar';
+import { createStyles } from '../../Theme';
+import { Card, CardTitle, CardContent } from '../Card';
 
 const styles = createStyles(theme => ({
     container: {
@@ -12,11 +12,11 @@ const styles = createStyles(theme => ({
         height: '15rem',
     },
     link: theme.classes.poweredByLink,
-}))
+}));
 
-type Props = WithSheet<typeof styles>
+type Props = WithSheet<typeof styles>;
 
-const GithubCommits = injectSheet(styles)(({ classes } : Props) => (
+const GithubCommits = injectSheet(styles)(({ classes }: Props) => (
     <Card>
         <CardTitle>Github Commits</CardTitle>
         <CardContent>
@@ -28,6 +28,6 @@ const GithubCommits = injectSheet(styles)(({ classes } : Props) => (
             </div>
         </CardContent>
     </Card>
-))
+));
 
-export { GithubCommits }
+export { GithubCommits };

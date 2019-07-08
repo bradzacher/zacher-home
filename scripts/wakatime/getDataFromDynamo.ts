@@ -1,17 +1,17 @@
-import { DynamoDB } from 'aws-sdk'
+import { DynamoDB } from 'aws-sdk';
 
 export interface WakatimeDynamoData {
-    CacheKey : 'WakatimeStats'
+    CacheKey: 'WakatimeStats';
     // The last read date string in the format YYYY/MM/DD
-    LastReadEnd : string
+    LastReadEnd: string;
     // A map of language name to number of seconds counter for the language
-    Seconds : Record<string, number>
+    Seconds: Record<string, number>;
 }
 
-async function getWakatimeData() : Promise<WakatimeDynamoData> {
+async function getWakatimeData(): Promise<WakatimeDynamoData> {
     const dynamo = new DynamoDB.DocumentClient({
         region: 'ap-southeast-2',
-    })
+    });
 
     const item = await dynamo
         .get({
@@ -20,17 +20,17 @@ async function getWakatimeData() : Promise<WakatimeDynamoData> {
             },
             TableName: 'Zacher.com.au',
         })
-        .promise()
+        .promise();
 
     if (!item.Item) {
-        console.error(item.$response.error)
-        throw new Error('Unable to get stored wakatime data')
+        console.error(item.$response.error);
+        throw new Error('Unable to get stored wakatime data');
     }
 
-    const itemData = item.Item as WakatimeDynamoData
-    console.info('Fetched old Wakatime data updated on', itemData.LastReadEnd)
+    const itemData = item.Item as WakatimeDynamoData;
+    console.info('Fetched old Wakatime data updated on', itemData.LastReadEnd);
 
-    return itemData
+    return itemData;
 }
 
-export default getWakatimeData
+export default getWakatimeData;

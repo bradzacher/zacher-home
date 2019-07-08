@@ -6,19 +6,15 @@
 const WakatimeData = [
     {
         name: 'JSON',
-        percent: 0.06938435912583935,
+        percent: 0.08981555484104853,
     },
     {
         name: 'TypeScript',
-        percent: 0.799012487301401,
-    },
-    {
-        name: 'Blade Template',
-        percent: 0.061439771542398915,
+        percent: 0.8203450066569672,
     },
     {
         name: 'JavaScript',
-        percent: 0.07016338203036081,
+        percent: 0.08983943850198427,
     },
 ] as ReadonlyArray<{
     name : string

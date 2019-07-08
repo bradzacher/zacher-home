@@ -1,7 +1,7 @@
-import React from 'react'
-import injectStylesheet, { ThemeProvider, StyleCreator } from 'react-jss'
+import React from 'react';
+import injectStylesheet, { ThemeProvider, StyleCreator } from 'react-jss';
 
-import { APP_ROOT_ID, THEME_COLOUR } from './config'
+import { APP_ROOT_ID, THEME_COLOUR } from './config';
 
 const theme = {
     palette: {
@@ -65,18 +65,18 @@ const theme = {
             justifyContent: 'center',
         },
     },
-}
+};
 
-const ThemeWithoutGlobalStyles : React.FunctionComponent<{
-    children : React.ReactElement
+const ThemeWithoutGlobalStyles: React.FunctionComponent<{
+    children: React.ReactElement;
 }> = ({ children }) => (
     <ThemeProvider theme={theme}>{React.Children.only(children)}</ThemeProvider>
-)
+);
 
-export function createStyles<TClasses extends string>(
-    styles : StyleCreator<TClasses, ThemeType>,
-) : StyleCreator<TClasses, ThemeType> {
-    return styles
+function createStyles<TClasses extends string>(
+    styles: StyleCreator<TClasses, ThemeType>,
+): StyleCreator<TClasses, ThemeType> {
+    return styles;
 }
 
 const globalStyles = {
@@ -97,9 +97,9 @@ const globalStyles = {
             fontSize: '1.5rem',
         },
     },
-}
-const Theme = injectStylesheet(globalStyles)(ThemeWithoutGlobalStyles)
+};
+const Theme = injectStylesheet(globalStyles)(ThemeWithoutGlobalStyles);
 
-export { Theme }
+export { Theme, createStyles };
 
-type ThemeType = typeof theme
+type ThemeType = typeof theme;

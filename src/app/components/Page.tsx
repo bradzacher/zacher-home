@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 
-import React from 'react'
+import React from 'react';
 
 import {
     APP_ROOT_ID,
@@ -10,20 +10,20 @@ import {
     STRUCTURED,
     TAGLINE,
     THEME_COLOUR,
-} from '../config'
+} from '../config';
 
 function mapMeta(
-    meta : Record<string, string>,
-    prefix : string,
-) : Array<React.ReactNode> {
+    meta: Record<string, string>,
+    prefix: string,
+): Array<React.ReactNode> {
     return Object.keys(meta).map(key => {
-        const metaKey = `${prefix}:${key}`
+        const metaKey = `${prefix}:${key}`;
 
-        return <meta key={metaKey} property={metaKey} content={meta[key]} />
-    })
+        return <meta key={metaKey} property={metaKey} content={meta[key]} />;
+    });
 }
 
-const GOOGLE_TRACKING_ID = 'UA-44247259-1'
+const GOOGLE_TRACKING_ID = 'UA-44247259-1';
 const GOOGLE_TRACKING_SCRIPT = `
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -32,24 +32,38 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 ga('create', '${GOOGLE_TRACKING_ID}', 'auto');
 ga('send', 'pageview');
-`
+`;
 
 interface Props {
     /**
      * The raw HTML of the app
      */
-    app : string
+    app: string;
     /**
      * True to render the amp version of the page
      */
-    isAmp ?: boolean
+    isAmp?: boolean;
     /**
      * The css collected from the render
      */
-    styles : string
+    styles: string;
 }
 
-const Page : React.FunctionComponent<Props> = React.memo(
+const googleTagId = 'gtag_id';
+const ampScriptInnerHTML = {
+    __html: JSON.stringify({
+        vars: {
+            [googleTagId]: GOOGLE_TRACKING_ID,
+            config: {
+                [GOOGLE_TRACKING_ID]: {
+                    groups: 'default',
+                },
+            },
+        },
+    }),
+};
+
+const Page: React.FunctionComponent<Props> = React.memo(
     ({ app, isAmp, styles }) => (
         <html lang='en'>
             <head>
@@ -143,19 +157,7 @@ const Page : React.FunctionComponent<Props> = React.memo(
                     <amp-analytics type='gtag' data-credentials='include'>
                         <script
                             type='application/json'
-                            dangerouslySetInnerHTML={{
-                                __html: JSON.stringify({
-                                    vars: {
-                                        // eslint-disable-next-line @typescript-eslint/camelcase
-                                        gtag_id: GOOGLE_TRACKING_ID,
-                                        config: {
-                                            [GOOGLE_TRACKING_ID]: {
-                                                groups: 'default',
-                                            },
-                                        },
-                                    },
-                                }),
-                            }}
+                            dangerouslySetInnerHTML={ampScriptInnerHTML}
                         />
                     </amp-analytics>
                 ) : (
@@ -169,6 +171,6 @@ const Page : React.FunctionComponent<Props> = React.memo(
             </body>
         </html>
     ),
-)
+);
 
-export { Page }
+export { Page };
