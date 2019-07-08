@@ -27,6 +27,7 @@ type ParsedSVG = {
     }
 }
 const parseStringAsync = promisify<string, ParsedSVG>(parseString)
+const VIEW_BOX = '0 0 710 120'
 
 const attributeNameMap : Record<string, string> = {
     'text-anchor': 'textAnchor',
@@ -79,7 +80,7 @@ async function github() : Promise<void> {
 
     const reactSvg = indent(
         [
-            '<svg width=\'100%\' viewBox=\'0 0 555 90\'>',
+            `<svg width='100%' viewBox='${VIEW_BOX}'>`,
             `    <g ${dumpAttributes(parsedSvg.svg.g[0])}>`,
             ...indent(
                 parsedSvg.svg.g[0].g.reduce(
