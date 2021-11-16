@@ -33,7 +33,7 @@
         "@types/react-jss": "^8.6.3",
         "@types/rimraf": "^2.0.2",
         "@types/xml2js": "^0.4.4",
-        "aws-sdk": "^2.489.0",
+        "aws-sdk": "^2.814.0",
         "browser-sync": "^2.26.7",
         "chart.js": "^2.9.4",
         "chokidar": "^3.0.2",
