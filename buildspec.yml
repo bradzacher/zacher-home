@@ -4,6 +4,8 @@ phases:
   install:
     commands:
       - aws configure set preview.cloudfront true
+    runtime-versions:
+      nodejs: latest
   build:
     commands:
       - npm install -g yarn
