@@ -23,9 +23,4 @@ function createGeneratedFolder(): string {
     return generatedPath;
 }
 
-export {
-    buildPath,
-    generatedPath,
-    createBuildFolder,
-    createGeneratedFolder,
-};
+export { buildPath, generatedPath, createBuildFolder, createGeneratedFolder };

@@ -127,10 +127,11 @@ const Wakatime = injectSheet(styles)(({ classes }: Props) => {
             <CardContent>
                 <div className={classes.container}>
                     <svg
-                        viewBox={`${-1 * GRAPH_VIEWBOX_MODIFIER} ${-1
-                            * GRAPH_VIEWBOX_MODIFIER} ${2
-                            * GRAPH_VIEWBOX_MODIFIER} ${2
-                            * GRAPH_VIEWBOX_MODIFIER}`}
+                        viewBox={`${-1 * GRAPH_VIEWBOX_MODIFIER} ${
+                            -1 * GRAPH_VIEWBOX_MODIFIER
+                        } ${2 * GRAPH_VIEWBOX_MODIFIER} ${
+                            2 * GRAPH_VIEWBOX_MODIFIER
+                        }`}
                         className={classes.graph}
                     >
                         {sectors}

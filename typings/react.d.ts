@@ -5,7 +5,10 @@ import { DetailedHTMLProps } from 'react';
 declare global {
     namespace JSX {
         interface IntrinsicElements {
-            'amp-analytics': DetailedHTMLProps<React.ScriptHTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+            'amp-analytics': DetailedHTMLProps<
+                React.ScriptHTMLAttributes<HTMLDivElement>,
+                HTMLDivElement
+            >;
         }
     }
 }

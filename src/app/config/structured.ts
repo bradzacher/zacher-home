@@ -25,7 +25,18 @@ const STRUCTURED: Readonly<WithContext<Person>> = {
     honorificPrefix: 'Mr.',
     image: constants.GRAVATAR_URL,
     jobTitle: 'Software Engineer',
-    knowsAbout: ['TypeScript', 'JavaScript', 'React', 'GraphQL', 'Node', 'SQL', 'C#', 'PHP', 'HTML', 'CSS'],
+    knowsAbout: [
+        'TypeScript',
+        'JavaScript',
+        'React',
+        'GraphQL',
+        'Node',
+        'SQL',
+        'C#',
+        'PHP',
+        'HTML',
+        'CSS',
+    ],
     knowsLanguage: [
         {
             '@type': 'Language',

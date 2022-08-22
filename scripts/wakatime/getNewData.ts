@@ -23,7 +23,9 @@ async function getNewData(lastDateStr: string): Promise<{
     // start the day after the last read
     const lastDate = new Date(lastDateStr);
     lastDate.setDate(lastDate.getDate() + 1);
-    const rangeStart = lastDate.toISOString().substring(0, DATE_STR_FORMAT.length);
+    const rangeStart = lastDate
+        .toISOString()
+        .substring(0, DATE_STR_FORMAT.length);
 
     // finish the day before today
     const now = new Date();
@@ -36,7 +38,13 @@ async function getNewData(lastDateStr: string): Promise<{
         return null;
     }
 
-    console.info('Fetching Wakatime data between', rangeStart, 'and', rangeEnd, '...');
+    console.info(
+        'Fetching Wakatime data between',
+        rangeStart,
+        'and',
+        rangeEnd,
+        '...',
+    );
 
     // fetch the new dataset
     const apiKey = await getKey('WAKATIME_KEY');
@@ -53,7 +61,9 @@ async function getNewData(lastDateStr: string): Promise<{
     }
 
     // consolidate the data
-    const languages = jsonResponse.data[0].languages.reduce<Record<string, number>>((acc, language) => {
+    const languages = jsonResponse.data[0].languages.reduce<
+        Record<string, number>
+    >((acc, language) => {
         acc[language.name] = language.total_seconds;
 
         return acc;

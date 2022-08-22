@@ -56,9 +56,12 @@ async function github(): Promise<void> {
     console.info('Fetching github contributions graph...');
 
     // fetch the contribution graph
-    const response = await fetch('https://github.com/users/bradzacher/contributions', {
-        method: 'GET',
-    });
+    const response = await fetch(
+        'https://github.com/users/bradzacher/contributions',
+        {
+            method: 'GET',
+        },
+    );
     const rawHtml = await response.text();
 
     // use JSDOM to get the svg element
@@ -67,7 +70,9 @@ async function github(): Promise<void> {
     const res = dom.window.document.querySelector('svg.js-calendar-graph-svg');
 
     if (!res) {
-        throw new Error('Couldn\'t find svg element in github contributions response');
+        throw new Error(
+            "Couldn't find svg element in github contributions response",
+        );
     }
 
     const hiddenRegex = /style="display: none;"/;
@@ -84,21 +89,28 @@ async function github(): Promise<void> {
             `<svg width='100%' viewBox='${VIEW_BOX}'>`,
             `    <g ${dumpAttributes(parsedSvg.svg.g[0])}>`,
             ...indent(
-                parsedSvg.svg.g[0].g.reduce(
-                    (acc, g) => {
-                        acc.push(
-                            `<g ${dumpAttributes(g)}>`,
-                            ...indent(g.rect.map(rect => `<rect ${dumpAttributes(rect)} />`), 1),
-                            '</g>',
-                        );
+                parsedSvg.svg.g[0].g.reduce((acc, g) => {
+                    acc.push(
+                        `<g ${dumpAttributes(g)}>`,
+                        ...indent(
+                            g.rect.map(
+                                rect => `<rect ${dumpAttributes(rect)} />`,
+                            ),
+                            1,
+                        ),
+                        '</g>',
+                    );
 
-                        return acc;
-                    },
-                    [] as Array<string>,
+                    return acc;
+                }, [] as Array<string>),
+                2,
+            ),
+            ...indent(
+                parsedSvg.svg.g[0].text.map(
+                    text => `<text ${dumpAttributes(text)}>${text._}</text>`,
                 ),
                 2,
             ),
-            ...indent(parsedSvg.svg.g[0].text.map(text => `<text ${dumpAttributes(text)}>${text._}</text>`), 2),
             '    </g>',
             '</svg>',
         ],
@@ -112,15 +124,15 @@ async function github(): Promise<void> {
         ' */',
         '/* eslint-disable max-len */// produces a nicer file than generating proper wrapped lines',
         '',
-        'import React from \'react\'',
-        'import injectSheet, { WithSheet } from \'react-jss\'',
-        'import { createStyles } from \'../Theme\'',
+        "import React from 'react'",
+        "import injectSheet, { WithSheet } from 'react-jss'",
+        "import { createStyles } from '../Theme'",
         '',
         'const styles = createStyles(theme => {',
         '    const label = {',
         // svg colours the text via fill...
         '        fill: theme.palette.grey,',
-        '        fontSize: \'1rem\',',
+        "        fontSize: '1rem',",
         '    }',
         '',
         '    return {',
@@ -144,7 +156,11 @@ async function github(): Promise<void> {
         '',
     ];
 
-    fs.writeFileSync(path.resolve(outFolder, 'GithubCalendar.tsx'), lines.join('\n'), 'utf8');
+    fs.writeFileSync(
+        path.resolve(outFolder, 'GithubCalendar.tsx'),
+        lines.join('\n'),
+        'utf8',
+    );
 
     console.info('Generated new GithubCalendar.tsx');
 }

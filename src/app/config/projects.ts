@@ -9,7 +9,8 @@ const PROJECTS: ReadonlyArray<Project> = [
     {
         spriteName: 'HonsRecursiveSolverGE',
         name: 'From Pictures to Programs',
-        description: 'My honours thesis - evolves recursive solutions using GP.',
+        description:
+            'My honours thesis - evolves recursive solutions using GP.',
         source: 'https://github.com/bradzacher/HonsRecursiveSolverGE',
     },
 ];

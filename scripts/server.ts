@@ -52,7 +52,9 @@ function createServer(): void {
         console.info('[script][changed]:', filename);
         try {
             // use exec to run the scripts one by one
-            scriptsToRun.forEach(script => execSync(`yarn run-script ${scriptsFolder + script}`));
+            scriptsToRun.forEach(script =>
+                execSync(`yarn run-script ${scriptsFolder + script}`),
+            );
             // finally, run a fresh build
             execSync(`yarn run-script ${scriptsFolder}/buildReact.ts`);
             server.reload(filename);

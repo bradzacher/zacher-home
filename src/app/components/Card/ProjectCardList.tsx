@@ -16,8 +16,9 @@ const styles = createStyles(theme => ({
     },
     children: {
         margin: '1rem',
-        width: `${theme.spacing.pageWidth / 2
-            - 2 * theme.spacing.card.contentPadding}rem`,
+        width: `${
+            theme.spacing.pageWidth / 2 - 2 * theme.spacing.card.contentPadding
+        }rem`,
     },
 }));
 

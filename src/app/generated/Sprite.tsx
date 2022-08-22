@@ -3,10 +3,10 @@
  *     ANY MANUAL CHANGES WILL BE LOST!
  */
 
-import classnames from 'classnames'
-import React from 'react'
-import injectSheet, { WithSheet } from 'react-jss'
-import { createStyles } from '../Theme'
+import classnames from 'classnames';
+import React from 'react';
+import injectSheet, { WithSheet } from 'react-jss';
+import { createStyles } from '../Theme';
 
 const styles = createStyles(() => ({
     sprite: {
@@ -104,7 +104,7 @@ const styles = createStyles(() => ({
         width: '64px',
         backgroundPosition: '0px -192px',
     },
-}))
+}));
 
 type SpriteName =
     | 'HonsRecursiveSolverGE'
@@ -121,18 +121,15 @@ type SpriteName =
     | 'twitter'
     | 'typescriptEslint'
     | 'wakatime'
-    | 'youtube'
+    | 'youtube';
 
 type Props = WithSheet<typeof styles> & {
-    className ?: string
-    name : SpriteName
-}
+    className?: string;
+    name: SpriteName;
+};
 
-const Sprite = injectSheet(styles)(({ className, classes, name } : Props) => (
+const Sprite = injectSheet(styles)(({ className, classes, name }: Props) => (
     <div className={classnames(classes.sprite, classes[name], className)} />
-))
+));
 
-export {
-    Sprite,
-    SpriteName,
-}
+export { Sprite, SpriteName };

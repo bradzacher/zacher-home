@@ -17,8 +17,8 @@ const WakatimeData = [
         percent: 0.08983943850198427,
     },
 ] as ReadonlyArray<{
-    name : string
-    percent : number
-}>
+    name: string;
+    percent: number;
+}>;
 
-export { WakatimeData }
+export { WakatimeData };

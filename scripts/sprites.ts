@@ -15,7 +15,9 @@ interface Coordinates {
 const assetFolder = `${path.resolve(__dirname, '../src/sprites/')}/`;
 
 function sprites(): Promise<void> {
-    const images = globby.sync(`${path.resolve(__dirname, '../src/sprites/')}/**/*.png`);
+    const images = globby.sync(
+        `${path.resolve(__dirname, '../src/sprites/')}/**/*.png`,
+    );
 
     const spriteImageDestinationFolder = createBuildFolder();
     const spriteCodeDestinationFolder = createGeneratedFolder();
@@ -32,7 +34,10 @@ function sprites(): Promise<void> {
                     return reject(err);
                 }
 
-                const spritePath = path.resolve(spriteImageDestinationFolder, 'sprites.png');
+                const spritePath = path.resolve(
+                    spriteImageDestinationFolder,
+                    'sprites.png',
+                );
                 fs.writeFileSync(spritePath, result.image);
 
                 // add the coordinates for the social links
@@ -52,7 +57,9 @@ function sprites(): Promise<void> {
 
                 // fix up any kebab casing to be camel case
                 coordinates.forEach(sprite => {
-                    sprite.name = sprite.name.replace(/(-\w)/g, m => m[1].toUpperCase());
+                    sprite.name = sprite.name.replace(/(-\w)/g, m =>
+                        m[1].toUpperCase(),
+                    );
                 });
 
                 // build the typescript file
@@ -62,16 +69,16 @@ function sprites(): Promise<void> {
                     ' *     ANY MANUAL CHANGES WILL BE LOST!',
                     ' */',
                     '',
-                    'import classnames from \'classnames\'',
-                    'import React from \'react\'',
-                    'import injectSheet, { WithSheet } from \'react-jss\'',
-                    'import { createStyles } from \'../Theme\'',
+                    "import classnames from 'classnames'",
+                    "import React from 'react'",
+                    "import injectSheet, { WithSheet } from 'react-jss'",
+                    "import { createStyles } from '../Theme'",
                     '',
                     'const styles = createStyles(() => ({',
                     '    sprite: {',
-                    '        backgroundImage: \'url(sprites.png)\',',
-                    '        backgroundRepeat: \'no-repeat\',',
-                    '        display: \'inline-block\',',
+                    "        backgroundImage: 'url(sprites.png)',",
+                    "        backgroundRepeat: 'no-repeat',",
+                    "        display: 'inline-block',",
                     '    },',
                     ...coordinates.map(sprite =>
                         [
@@ -81,7 +88,8 @@ function sprites(): Promise<void> {
                             `        width: '${sprite.width}px',`,
                             `        backgroundPosition: '${-sprite.x}px ${-sprite.y}px',`,
                             '    },',
-                        ].join('\n')),
+                        ].join('\n'),
+                    ),
                     '}))',
                     '',
                     'type SpriteName =',
@@ -103,7 +111,11 @@ function sprites(): Promise<void> {
                     '',
                 ];
 
-                fs.writeFileSync(path.resolve(spriteCodeDestinationFolder, 'Sprite.tsx'), lines.join('\n'), 'utf8');
+                fs.writeFileSync(
+                    path.resolve(spriteCodeDestinationFolder, 'Sprite.tsx'),
+                    lines.join('\n'),
+                    'utf8',
+                );
                 console.info('Generated new Sprite.tsx');
 
                 return resolve();

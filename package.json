@@ -9,7 +9,7 @@
         "build": "yarn run-script ./scripts/buildReact.ts",
         "clean": "yarn run-script ./scripts/clean.ts",
         "copy-assets": "cpx ./src/assets/**/* ./build",
-        "format-no-write": "prettier 'src/**/*.{ts,tsx}' 'config/**/*.{ts,tsx}' 'scripts/**/*.{ts,tsx}' 'typings/**/*.{ts,tsx}' --config=.prettierrc",
+        "format-no-write": "prettier 'src/**/*.{ts,tsx}' 'scripts/**/*.{ts,tsx}' 'typings/**/*.{ts,tsx}' --config=.prettierrc",
         "format": "yarn format-no-write --write && yarn lint --fix",
         "format-check": "yarn format-no-write --list-different",
         "lint": "eslint src scripts typings --ext=.ts,.tsx",
