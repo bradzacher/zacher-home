@@ -2,14 +2,12 @@
     // Format a file on save. A formatter must be available, the file must not be auto-saved, and editor must not be shutting down.
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "eslint.autoFixOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
 
     // An array of languages where Emmet abbreviations should not be expanded.
-    "emmet.excludeLanguages": [
-        "markdown",
-        "typescript",
-        "typescriptreact"
-    ],
+    "emmet.excludeLanguages": ["markdown", "typescript", "typescriptreact"],
 
     // Default normal quote, can be ' or ".
     "esQuotes.defaultQuote": "'",
@@ -18,14 +16,8 @@
     "eslint.validate": [
         "javascript",
         "javascriptreact",
-        {
-            "language": "typescript",
-            "autoFix": true
-        },
-        {
-            "language": "typescriptreact",
-            "autoFix": true
-        }
+        "typescript",
+        "typescriptreact"
     ],
 
     // When enabled, will trim trailing whitespace when saving a file.
@@ -33,9 +25,9 @@
 
     // typescript auto-format settings
     "typescript.tsdk": "node_modules/typescript/lib",
-    "javascript.preferences.importModuleSpecifier": "auto",
-    "typescript.preferences.importModuleSpecifier": "auto",
+    "javascript.preferences.importModuleSpecifier": "shortest",
+    "typescript.preferences.importModuleSpecifier": "shortest",
     "javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single",
-    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always"
 }
