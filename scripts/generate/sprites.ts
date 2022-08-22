@@ -70,6 +70,7 @@ async function sprites(): Promise<void> {
           '',
           "import classnames from 'classnames'",
           "import React from 'react'",
+          '',
           "import { createUseThemedStyles } from '../Theme'",
           '',
           'const useStyles = createUseThemedStyles(() => ({',
@@ -105,10 +106,8 @@ async function sprites(): Promise<void> {
           '  );',
           '}',
           '',
-          'export {',
-          '  Sprite,',
-          '  SpriteName,',
-          '}',
+          'export { Sprite };',
+          'export type { SpriteName };',
           '',
         ];
 

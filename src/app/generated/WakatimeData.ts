@@ -21,4 +21,4 @@ const WakatimeData: ReadonlyArray<{
   },
 ];
 
-export { WakatimeData };
+export { WakatimeData }

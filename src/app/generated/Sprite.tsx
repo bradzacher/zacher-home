@@ -135,5 +135,5 @@ function Sprite({ className, name }: Props): JSX.Element {
   );
 }
 
+export { Sprite };
 export type { SpriteName };
-export { Sprite }

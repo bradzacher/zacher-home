@@ -104,11 +104,22 @@ const Page = React.memo(({ app, isAmp, styles }: Props) => (
       />
 
       {isAmp === true ? (
-        <style type="text/css" amp-custom="true">
-          {styles}
-        </style>
+        <style
+          type="text/css"
+          amp-custom="true"
+          // need to inject this so that react doesn't escape html characters like quotes
+          dangerouslySetInnerHTML={{
+            __html: styles,
+          }}
+        />
       ) : (
-        <style type="text/css">{styles}</style>
+        <style
+          type="text/css"
+          // need to inject this so that react doesn't escape html characters like quotes
+          dangerouslySetInnerHTML={{
+            __html: styles,
+          }}
+        />
       )}
 
       {isAmp === true ? (
