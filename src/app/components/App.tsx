@@ -1,16 +1,16 @@
 import React from 'react';
 
+import { Theme } from '../Theme';
 import { AppBar } from './AppBar';
 import { Content } from './Content';
-import { Theme } from '../Theme';
 
-const App: React.FunctionComponent = () => (
+function App(): JSX.Element {
+  return (
     <Theme>
-        <>
-            <AppBar />
-            <Content />
-        </>
+      <AppBar />
+      <Content />
     </Theme>
-);
+  );
+}
 
 export { App };

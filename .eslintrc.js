@@ -1,22 +1,27 @@
+/** @type {import('@typescript-eslint/experimental-utils').TSESLint.Linter.Config} */
 module.exports = {
-    extends: ['brad/react'],
-    parserOptions: {
-        project: './tsconfig.json',
+  parserOptions: {
+    project: './tsconfig.eslint.json',
+  },
+  rules: {
+    'react/jsx-no-target-blank': 'off',
+  },
+  settings: {
+    react: {
+      version: '18.2.0',
     },
-    rules: {
-        'react/jsx-no-target-blank': 'off',
+  },
+  overrides: [
+    {
+      files: ['src/**/*'],
+      extends: ['brad/react'],
     },
-    settings: {
-        react: {
-            version: '18.2.0',
-        },
+    {
+      files: ['scripts/**/*', 'typings/**/*'],
+      extends: ['brad'],
+      rules: {
+        'import/no-default-export': 'off',
+      },
     },
-    overrides: [
-        {
-            files: ['scripts/**/*'],
-            rules: {
-                'import/no-default-export': 'off',
-            },
-        },
-    ],
+  ],
 };

@@ -3,114 +3,114 @@
  *     ANY MANUAL CHANGES WILL BE LOST!
  */
 
-import classnames from 'classnames';
-import React from 'react';
-import injectSheet, { WithSheet } from 'react-jss';
-import { createStyles } from '../Theme';
+import classnames from 'classnames'
+import React from 'react'
 
-const styles = createStyles(() => ({
-    sprite: {
-        backgroundImage: 'url(sprites.png)',
-        backgroundRepeat: 'no-repeat',
-        display: 'inline-block',
-    },
+import { createUseThemedStyles } from '../Theme'
 
-    HonsRecursiveSolverGE: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-64px 0px',
-    },
+const useStyles = createUseThemedStyles(() => ({
+  sprite: {
+    backgroundImage: 'url(sprites.png)',
+    backgroundRepeat: 'no-repeat',
+    display: 'inline-block',
+  },
 
-    eslint: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-64px -128px',
-    },
+  eslint: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '0px 0px',
+  },
 
-    githubSmall: {
-        height: '32px',
-        width: '32px',
-        backgroundPosition: '-96px -192px',
-    },
+  githubSmall: {
+    height: '32px',
+    width: '32px',
+    backgroundPosition: '-64px -192px',
+  },
 
-    github: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-64px -64px',
-    },
+  github: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '-64px 0px',
+  },
 
-    instagram: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-128px 0px',
-    },
+  honsRecursiveSolverGE: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '0px -64px',
+  },
 
-    linkedin: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-128px -64px',
-    },
+  instagram: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '-64px -64px',
+  },
 
-    medium: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '0px -128px',
-    },
+  linkedin: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '-128px 0px',
+  },
 
-    mysqldump: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '0px 0px',
-    },
+  medium: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '-128px -64px',
+  },
 
-    natural20: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-128px -128px',
-    },
+  mysqldump: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '0px -128px',
+  },
 
-    openExternal: {
-        height: '32px',
-        width: '32px',
-        backgroundPosition: '-64px -192px',
-    },
+  natural20: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '-64px -128px',
+  },
 
-    steam: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-192px -64px',
-    },
+  openExternal: {
+    height: '32px',
+    width: '32px',
+    backgroundPosition: '-96px -192px',
+  },
 
-    twitter: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-192px -128px',
-    },
+  steam: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '-128px -128px',
+  },
 
-    typescriptEslint: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '-192px 0px',
-    },
+  twitter: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '-192px 0px',
+  },
 
-    wakatime: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '0px -64px',
-    },
+  typescriptEslint: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '-192px -64px',
+  },
 
-    youtube: {
-        height: '64px',
-        width: '64px',
-        backgroundPosition: '0px -192px',
-    },
-}));
+  wakatime: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '-192px -128px',
+  },
+
+  youtube: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '0px -192px',
+  },
+}))
 
 type SpriteName =
-    | 'HonsRecursiveSolverGE'
     | 'eslint'
     | 'githubSmall'
     | 'github'
+    | 'honsRecursiveSolverGE'
     | 'instagram'
     | 'linkedin'
     | 'medium'
@@ -121,15 +121,19 @@ type SpriteName =
     | 'twitter'
     | 'typescriptEslint'
     | 'wakatime'
-    | 'youtube';
+    | 'youtube'
 
-type Props = WithSheet<typeof styles> & {
-    className?: string;
-    name: SpriteName;
-};
+type Props = {
+  className?: string
+  name: SpriteName
+}
 
-const Sprite = injectSheet(styles)(({ className, classes, name }: Props) => (
+function Sprite({ className, name }: Props): JSX.Element {
+  const classes = useStyles();
+  return (
     <div className={classnames(classes.sprite, classes[name], className)} />
-));
+  );
+}
 
-export { Sprite, SpriteName };
+export type { SpriteName };
+export { Sprite }

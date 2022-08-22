@@ -5,22 +5,22 @@ const buildPath = path.resolve(__dirname, '../build');
 const generatedPath = path.resolve(__dirname, '../src/app/generated');
 
 function createBuildFolder(): string {
-    try {
-        fs.mkdirSync(buildPath);
-    } catch (_) {
-        // ignored
-    }
+  try {
+    fs.mkdirSync(buildPath);
+  } catch (_) {
+    // ignored
+  }
 
-    return buildPath;
+  return buildPath;
 }
 function createGeneratedFolder(): string {
-    try {
-        fs.mkdirSync(generatedPath);
-    } catch (_) {
-        // ignored
-    }
+  try {
+    fs.mkdirSync(generatedPath);
+  } catch (_) {
+    // ignored
+  }
 
-    return generatedPath;
+  return generatedPath;
 }
 
 export { buildPath, generatedPath, createBuildFolder, createGeneratedFolder };

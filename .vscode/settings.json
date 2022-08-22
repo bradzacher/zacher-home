@@ -29,5 +29,7 @@
     "typescript.preferences.importModuleSpecifier": "shortest",
     "javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single",
-    "typescript.updateImportsOnFileMove.enabled": "always"
+    "typescript.updateImportsOnFileMove.enabled": "always",
+
+    "cSpell.enabled": false
 }
