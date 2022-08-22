@@ -1,13 +1,13 @@
 {
-    "theme_color": "#56BA89",
-    "background_color": "#FFFFFFFF",
-    "description": "Computer scientist. Cider drinker. Motorcyclist.",
-    "display": "standalone",
-    "icons": [],
-    "name": "Brad Zacher",
-    "orientation": "any",
-    "prefer_related_applications": false,
-    "related_applications": [],
-    "short_name": "Brad Zacher",
-    "start_url": "/index.html"
+  "theme_color": "#56BA89",
+  "background_color": "#FFFFFFFF",
+  "description": "Computer scientist. Cider drinker. Dungeon Master.",
+  "display": "standalone",
+  "icons": [],
+  "name": "Brad Zacher",
+  "orientation": "any",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "short_name": "Brad Zacher",
+  "start_url": "/index.html"
 }

@@ -11,5 +11,5 @@ export const GRAVATAR_URL = `https://en.gravatar.com/userimage/88111926/67c389d0
 export const GOOGLE_SITE_VERIFICATION =
   'vy-3FkApFAwwUzQ82kIoUrl5ArQmGL8Ut_yCNhi_Aqk';
 export const HOST = 'https://zacher.com.au';
-export const TAGLINE = 'Computer scientist. Cider drinker. Motorcyclist.';
+export const TAGLINE = 'Computer scientist. Cider drinker. Dungeon Master.';
 export const THEME_COLOUR = '#56BA89';

@@ -33,37 +33,37 @@ const useStyles = createUseThemedStyles(() => ({
     backgroundPosition: '-64px 0px',
   },
 
-  honsRecursiveSolverGE: {
+  googleScholar: {
     height: '64px',
     width: '64px',
     backgroundPosition: '0px -64px',
   },
 
-  instagram: {
+  honsRecursiveSolverGE: {
     height: '64px',
     width: '64px',
     backgroundPosition: '-64px -64px',
   },
 
-  linkedin: {
+  instagram: {
     height: '64px',
     width: '64px',
     backgroundPosition: '-128px 0px',
   },
 
-  medium: {
+  linkedin: {
     height: '64px',
     width: '64px',
     backgroundPosition: '-128px -64px',
   },
 
-  mysqldump: {
+  medium: {
     height: '64px',
     width: '64px',
     backgroundPosition: '0px -128px',
   },
 
-  natural20: {
+  mysqldump: {
     height: '64px',
     width: '64px',
     backgroundPosition: '-64px -128px',
@@ -110,12 +110,12 @@ type SpriteName =
     | 'eslint'
     | 'githubSmall'
     | 'github'
+    | 'googleScholar'
     | 'honsRecursiveSolverGE'
     | 'instagram'
     | 'linkedin'
     | 'medium'
     | 'mysqldump'
-    | 'natural20'
     | 'openExternal'
     | 'steam'
     | 'twitter'

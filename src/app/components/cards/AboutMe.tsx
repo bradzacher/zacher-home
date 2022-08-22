@@ -12,17 +12,37 @@ const useStyles = createUseThemedStyles(() => ({
   line: {
     lineHeight: '3rem',
     margin: 0,
-    marginBottom: '2rem',
+    marginBottom: '1.5rem',
   },
 }));
 
 const lines: Array<React.ReactNode> = [
-  'I am a computer scientist. I am a lover of cider. I am from Adelaide, Australia.',
-  'I graduated with honours in Computer Science from the University of Adelaide.',
-  'I am a Software Engineer at Facebook in Menlo Park.',
-  'I am always looking for new things to learn. Currently digging deep into TypeScript, linting, Node and GraphQL.',
-  'I pride myself on being able to work with many technologies.',
-  'Proficient in many languages; namely TypeScript/JavaScript, PHP, SQL, C#, and C/C++.',
+  <>
+    I am a computer scientist. I am a lover of cider. I am a dad. I am from
+    Adelaide, Australia.
+  </>,
+  <>
+    I am a Software Engineer at Meta (Facebook) on the{' '}
+    <a href="https://flow.org/" rel="nofollow noreferrer noopener">
+      Flow team
+    </a>
+    .
+  </>,
+  <>
+    I am a core maintainer of{' '}
+    <a href="https://typescript-eslint.io/" rel="nofollow noreferrer noopener">
+      TypeScript-ESLint
+    </a>
+    .
+  </>,
+  <>
+    I graduated with honours in Computer Science from the University of
+    Adelaide.
+  </>,
+  <>
+    Proficient in many languages; namely TypeScript/Flow/JavaScript, Hack/PHP,
+    and SQL.
+  </>,
   <>
     You can read more about me and my history in{' '}
     <a href="/Brad_Zacher_Resume_2018.pdf" rel="nofollow" id="resume-link">
@@ -32,7 +52,10 @@ const lines: Array<React.ReactNode> = [
   </>,
   <>
     You can contact me via any of the networks below, or by gmail - bradzacher{' '}
-    <a href="/bradzacher.txt">GPG</a>.
+    <a href="/bradzacher.txt" rel="nofollow">
+      GPG
+    </a>
+    .
   </>,
 ];
 

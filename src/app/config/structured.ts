@@ -28,13 +28,14 @@ const STRUCTURED: Readonly<WithContext<Person>> = {
   jobTitle: 'Software Engineer',
   knowsAbout: [
     'TypeScript',
+    'Flow',
     'JavaScript',
     'React',
     'GraphQL',
     'Node',
     'SQL',
-    'C#',
     'PHP',
+    'Hacklang',
     'HTML',
     'CSS',
   ],
@@ -53,11 +54,11 @@ const STRUCTURED: Readonly<WithContext<Person>> = {
   url: constants.HOST,
   workLocation: {
     '@type': 'Place',
-    name: 'Menlo Park',
+    name: 'Adelaide',
   },
   worksFor: {
     '@type': 'Organization',
-    name: 'Facebook',
+    name: 'Meta',
   },
 };
 

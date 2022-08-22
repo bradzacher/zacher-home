@@ -39,7 +39,7 @@ const useStyles = createUseThemedStyles(theme => ({
 function GithubCalendar(): JSX.Element {
   const classes = useStyles();
   return (
-    <svg width='100%' viewBox='0 0 710 120'>
+    <svg width='100%' viewBox='0 0 715 120'>
         <g transform='translate(15, 20)' data-hydro-click='{"event_type":"user_profile.click","payload":{"profile_user_id":7462525,"target":"CONTRIBUTION_CALENDAR_SQUARE","user_id":null,"originating_url":"https://github.com/users/bradzacher/contributions"}}' data-hydro-click-hmac='62a19a14b57cad5a35674f234058f5b2847af386ed09d1d0d9438347ddcb1227'>
             <g transform='translate(0, 0)'>
                 <rect width='10' height='10' x='14' y='0' className={classes['ContributionCalendar-day']} rx='2' ry='2' data-count='9' data-date='2021-08-22' data-level='2' />

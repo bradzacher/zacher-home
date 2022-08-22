@@ -33,7 +33,9 @@ function AroundTheWeb(): JSX.Element {
               key={key}
               className={classes.link}
               href={SOCIAL[key]}
-              title={`External link to my ${key} profile`}>
+              title={`External link to my ${
+                key[0].toUpperCase() + key.slice(1)
+              } profile`}>
               <Sprite name={key} />
             </MeLink>
           ))}

@@ -14,7 +14,7 @@ export const META = {
   keywords: [
     constants.FULL_NAME,
     'Computer Science',
-    'Comp Scip',
+    'Comp Sci',
     'Software Engineer',
     'Applications Development',
     'Apps Dev',
