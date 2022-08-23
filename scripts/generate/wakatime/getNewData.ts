@@ -15,6 +15,7 @@ type WakatimeUserSummaryResponse = {
 };
 
 const API_URL_BASE = 'https://wakatime.com/api/v1/users/current/summaries';
+const TWO_WEEKS_MS = 2 * 7 * 24 * 60 * 60 * 1000;
 
 const DATE_STR_FORMAT = 'yyyy/mm/dd';
 async function getNewData(lastDateStr: string): Promise<{
@@ -22,15 +23,22 @@ async function getNewData(lastDateStr: string): Promise<{
   readEnd: string;
 } | null> {
   // start the day after the last read
-  const lastDate = new Date(lastDateStr);
+  let lastDate = new Date(lastDateStr);
   lastDate.setDate(lastDate.getDate() + 1);
-  const rangeStart = lastDate
-    .toISOString()
-    .substring(0, DATE_STR_FORMAT.length);
 
   // finish the day before today
   const now = new Date();
   now.setDate(now.getDate() - 1);
+
+  if (now.valueOf() - lastDate.valueOf() > TWO_WEEKS_MS) {
+    // I don't pay for it so I can only get the last 2 weeks of data
+    lastDate = new Date(now);
+    lastDate.setDate(now.getDate() - 14);
+  }
+
+  const rangeStart = lastDate
+    .toISOString()
+    .substring(0, DATE_STR_FORMAT.length);
   const rangeEnd = now.toISOString().substring(0, DATE_STR_FORMAT.length);
 
   if (rangeEnd < rangeStart) {
