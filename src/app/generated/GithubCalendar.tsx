@@ -512,6 +512,7 @@ function GithubCalendar(): JSX.Element {
             <g transform='translate(728, 0)'>
                 <rect width='10' height='10' x='-38' y='0' className={classes['ContributionCalendar-day']} rx='2' ry='2' data-count='4' data-date='2022-08-21' data-level='1' />
                 <rect width='10' height='10' x='-38' y='13' className={classes['ContributionCalendar-day']} rx='2' ry='2' data-count='13' data-date='2022-08-22' data-level='3' />
+                <rect width='10' height='10' x='-38' y='26' className={classes['ContributionCalendar-day']} rx='2' ry='2' data-count='5' data-date='2022-08-23' data-level='2' />
             </g>
             <text x='14' y='-7' className={classes['ContributionCalendar-label']}>Aug</text>
             <text x='40' y='-7' className={classes['ContributionCalendar-label']}>Sep</text>

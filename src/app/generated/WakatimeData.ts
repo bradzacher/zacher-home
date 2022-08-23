@@ -8,16 +8,24 @@ const WakatimeData: ReadonlyArray<{
   percent: number;
 }> = [
   {
+    name: 'Markdown',
+    percent: 0.06978552605719063,
+  },
+  {
+    name: 'C#',
+    percent: 0.09347567416430438,
+  },
+  {
     name: 'JSON',
-    percent: 0.07046741024299052,
+    percent: 0.06171933152698307,
   },
   {
     name: 'TypeScript',
-    percent: 0.8478734294091229,
+    percent: 0.5707627649855891,
   },
   {
     name: 'JavaScript',
-    percent: 0.08165916034788652,
+    percent: 0.2042567032659328,
   },
 ];
 
