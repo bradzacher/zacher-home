@@ -45,7 +45,7 @@ const lines: Array<React.ReactNode> = [
   </>,
   <>
     You can read more about me and my history in{' '}
-    <a href="/Brad_Zacher_Resume_2018.pdf" rel="nofollow" id="resume-link">
+    <a href="/Brad_Zacher_Resume_2022.pdf" rel="nofollow" id="resume-link">
       my resume
     </a>
     .
