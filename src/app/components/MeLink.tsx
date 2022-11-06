@@ -7,7 +7,7 @@ type Props = React.DetailedHTMLProps<
 
 function MeLink(props: Props): JSX.Element {
   return (
-    <a {...props} target="_blank" rel="noopener">
+    <a {...props} target="_blank" rel="noopener me">
       {props.children}
     </a>
   );
