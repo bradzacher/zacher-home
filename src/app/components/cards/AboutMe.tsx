@@ -22,11 +22,7 @@ const lines: Array<React.ReactNode> = [
     Adelaide, Australia.
   </>,
   <>
-    I am a Software Engineer at Meta (Facebook) on the{' '}
-    <a href="https://flow.org/" rel="nofollow noreferrer noopener">
-      Flow team
-    </a>
-    .
+    I am a Software Engineer at Canva working on Front-End infra, build tools, and DevX.
   </>,
   <>
     I am a core maintainer of{' '}
