@@ -4,11 +4,9 @@ import clean from './clean';
 import copyAssets from './copyAssets';
 import deploy from './deploy';
 import generate from './generate/generate';
-import updateWakatime from './generate/wakatime/update';
 
 async function main(): Promise<void> {
   // "setup" step
-  await updateWakatime();
   await clean();
 
   // "prebuild" step

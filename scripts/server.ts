@@ -17,6 +17,7 @@ function createServer(): void {
   const server = browserSync.create('zacher-home-ssr');
   server.init({
     server: path.resolve(__dirname, '..', 'build'),
+    serveStatic: [path.resolve(__dirname, '..', 'src', 'assets')],
     ghostMode: false,
     open: false,
   });

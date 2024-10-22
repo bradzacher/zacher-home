@@ -15,16 +15,10 @@ const useStyles = createUseThemedStyles(() => ({
     display: 'inline-block',
   },
 
-  HonsRecursiveSolverGE: {
-    height: '64px',
-    width: '64px',
-    backgroundPosition: '0px 0px',
-  },
-
   eslint: {
     height: '64px',
     width: '64px',
-    backgroundPosition: '-64px 0px',
+    backgroundPosition: '0px 0px',
   },
 
   githubSmall: {
@@ -36,10 +30,16 @@ const useStyles = createUseThemedStyles(() => ({
   github: {
     height: '64px',
     width: '64px',
-    backgroundPosition: '0px -64px',
+    backgroundPosition: '-64px 0px',
   },
 
   googleScholar: {
+    height: '64px',
+    width: '64px',
+    backgroundPosition: '0px -64px',
+  },
+
+  honsRecursiveSolverGE: {
     height: '64px',
     width: '64px',
     backgroundPosition: '-64px -64px',
@@ -113,11 +113,11 @@ const useStyles = createUseThemedStyles(() => ({
 }))
 
 type SpriteName =
-    | 'HonsRecursiveSolverGE'
     | 'eslint'
     | 'githubSmall'
     | 'github'
     | 'googleScholar'
+    | 'honsRecursiveSolverGE'
     | 'instagram'
     | 'linkedin'
     | 'mastodon'

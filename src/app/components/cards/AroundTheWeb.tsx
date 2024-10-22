@@ -21,6 +21,11 @@ const useStyles = createUseThemedStyles(() => ({
   },
 }));
 
+function keys<T>(obj: T): Array<keyof T> {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- this is safe
+  return Object.keys(obj) as Array<keyof T>;
+}
+
 function AroundTheWeb(): JSX.Element {
   const classes = useStyles();
   return (
@@ -28,7 +33,7 @@ function AroundTheWeb(): JSX.Element {
       <CardTitle>Around the Web</CardTitle>
       <CardContent>
         <div className={classes.container}>
-          {Object.keys(SOCIAL).map((key: keyof typeof SOCIAL) => (
+          {keys(SOCIAL).map(key => (
             <MeLink
               key={key}
               className={classes.link}

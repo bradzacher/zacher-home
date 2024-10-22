@@ -3,6 +3,7 @@ import path from 'path';
 
 const buildPath = path.resolve(__dirname, '../build');
 const generatedPath = path.resolve(__dirname, '../src/app/generated');
+const assetsPath = path.resolve(__dirname, '../src/assets');
 
 function createBuildFolder(): string {
   try {
@@ -23,4 +24,10 @@ function createGeneratedFolder(): string {
   return generatedPath;
 }
 
-export { buildPath, generatedPath, createBuildFolder, createGeneratedFolder };
+export {
+  buildPath,
+  generatedPath,
+  assetsPath,
+  createBuildFolder,
+  createGeneratedFolder,
+};

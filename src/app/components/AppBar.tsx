@@ -52,9 +52,6 @@ function AppBar(): JSX.Element {
     <header className={classes.header}>
       <div className={classes.title}>Brad Zacher</div>
       <nav className={classes.nav}>
-        <MeLink className={classes.navItem} href={SOCIAL.medium}>
-          Blog
-        </MeLink>
         <MeLink className={classes.navItem} href={SOCIAL.github}>
           Github
         </MeLink>

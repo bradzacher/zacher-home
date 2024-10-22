@@ -1,66 +1,19 @@
 import fs from 'fs';
-import path from 'path';
+import path from 'node:path';
 
-import { createGeneratedFolder } from '../../createBuildFolder';
-import getDataFromDynamo from './getDataFromDynamo';
-
-const THRESHOLD_PERCENTAGE = 0.05;
+import { assetsPath } from '../../createBuildFolder';
 
 async function generateGraph(): Promise<void> {
-  const data = await getDataFromDynamo();
-
-  // clean out any languages that are below a %age of the total time
-  const totalSeconds = Object.keys(data.Seconds).reduce(
-    (acc, k) => acc + data.Seconds[k],
-    0,
-  );
-  const secondsThreshold = totalSeconds * THRESHOLD_PERCENTAGE;
-
-  const languages = Object.keys(data.Seconds).reduce<Record<string, number>>(
-    (acc, k) => {
-      if (data.Seconds[k] > secondsThreshold) {
-        acc[k] = data.Seconds[k];
-      }
-
-      return acc;
+  const response = await fetch(
+    'https://wakatime.com/share/@bradzacher/49374896-4333-4a7d-81f6-97e5557bca12.svg',
+    {
+      method: 'get',
     },
-    {},
   );
+  const rawSvg = await response.text();
+  fs.writeFileSync(path.join(assetsPath, 'WakatimeChart.svg'), rawSvg, 'utf8');
 
-  const totalSecondsAboveThreshold = Object.keys(languages).reduce(
-    (acc, k) => acc + languages[k],
-    0,
-  );
-
-  const lines = [
-    '/**',
-    ' * THIS FILE HAS BEEN AUTOMATICALLY GENERATED!',
-    ' *     ANY MANUAL CHANGES WILL BE LOST!',
-    ' */',
-    '',
-    'const WakatimeData: ReadonlyArray<{',
-    '  name: string;',
-    '  percent: number;',
-    '}> = [',
-    ...Object.keys(languages).map(l =>
-      [
-        // easier to consume from react as an array
-        '  {',
-        `    name: '${l}',`,
-        `    percent: ${languages[l] / totalSecondsAboveThreshold},`,
-        '  },',
-      ].join('\n'),
-    ),
-    '];',
-    '',
-    'export { WakatimeData }',
-    '',
-  ];
-
-  const dest = createGeneratedFolder();
-  fs.writeFileSync(path.resolve(dest, 'WakatimeData.ts'), lines.join('\n'));
-
-  console.info('Generated new WakatimeData.ts');
+  console.info('Generated new WakatimeChart.svg');
 }
 
 export default generateGraph;
