@@ -22,7 +22,8 @@ const lines: Array<React.ReactNode> = [
     Adelaide, Australia.
   </>,
   <>
-    I am a Software Engineer at Canva working on Front-End infra, build tools, and DevX.
+    I am a Software Engineer at Canva working on Front-End infra, build tools,
+    and DevX.
   </>,
   <>
     I am a core maintainer of{' '}
@@ -36,8 +37,7 @@ const lines: Array<React.ReactNode> = [
     Adelaide.
   </>,
   <>
-    Proficient in many languages; namely TypeScript/Flow/JavaScript, Hack/PHP,
-    and SQL.
+    Proficient in many languages; namely TypeScript/Flow/JavaScript and Rust.
   </>,
   <>
     You can read more about me and my history in{' '}
