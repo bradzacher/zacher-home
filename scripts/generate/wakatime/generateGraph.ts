@@ -17,7 +17,8 @@ async function fetchSvg(): Promise<string> {
 async function generateGraph(): Promise<void> {
   let rawSvg = await fetchSvg();
   if (rawSvg.includes('updating in background')) {
-    await setTimeout(5000);
+    console.info('Wakatime is updating, waiting 10 seconds before retrying');
+    await setTimeout(10000);
     rawSvg = await fetchSvg();
   }
 
