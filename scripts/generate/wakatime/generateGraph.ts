@@ -14,12 +14,17 @@ async function fetchSvg(): Promise<string> {
   return response.text();
 }
 
+const MAX_RETRIES = 5;
 async function generateGraph(): Promise<void> {
-  let rawSvg = await fetchSvg();
-  if (rawSvg.includes('updating in background')) {
-    console.info('Wakatime is updating, waiting 10 seconds before retrying');
-    await setTimeout(10000);
+  let rawSvg;
+  for (let i = 0; i < MAX_RETRIES; i += 1) {
     rawSvg = await fetchSvg();
+    if (rawSvg.includes('updating in background')) {
+      console.info('Wakatime is updating, waiting 5 seconds before retrying');
+      await setTimeout(5000);
+    } else {
+      break;
+    }
   }
 
   fs.writeFileSync(path.join(assetsPath, 'WakatimeChart.svg'), rawSvg, 'utf8');
